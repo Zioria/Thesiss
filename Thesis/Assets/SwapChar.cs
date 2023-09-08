@@ -15,13 +15,8 @@ public class SwapChar : MonoBehaviour
     
     public KeyCode[] anyKey;
 
-    private bool mc_G;
-    private bool mc_M;
-
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         
         mc_g.SetActive(true);
         mc_m.SetActive(false);
@@ -33,13 +28,11 @@ public class SwapChar : MonoBehaviour
         {
             mc_m.SetActive(false);
             mc_g.SetActive(true);
-            mc_G = true;
         }
         else if (Input.GetKeyDown(anyKey[1]))
         {
             mc_g.SetActive(false);
             mc_m.SetActive(true);
-            mc_M = true;
         }
 
         
