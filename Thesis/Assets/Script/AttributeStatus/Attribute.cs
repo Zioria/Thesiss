@@ -9,9 +9,12 @@ public class Attribute : MonoBehaviour
     [Header("Reference")]
     [SerializeField] private Button decreaseStatusBtn;
     [SerializeField] private Button increaseStatusBtn;
+    [SerializeField] private Button ResetStatusBtn;
     [SerializeField] private Text countNumber;
 
     public int ID;
+
+    private int _resetLevel;
 
     private void Awake()
     {
@@ -23,6 +26,7 @@ public class Attribute : MonoBehaviour
             IncreaseCharacterStatus();
             IncreaseStatus();
         });
+        ResetStatusBtn.onClick.AddListener(ResetAttriute);
     }
 
     public void UpdateUI()
@@ -48,7 +52,7 @@ public class Attribute : MonoBehaviour
         }
         if (ID == 0)
         {
-            CharacterStats.Instance.health--;
+            CharacterStats.Instance.MaxHealth--;
             CharacterStats.Instance.damage--;
         }
         else if (ID == 1)
@@ -82,7 +86,7 @@ public class Attribute : MonoBehaviour
         }
         if (ID == 0)
         {
-            CharacterStats.Instance.health++;
+            CharacterStats.Instance.MaxHealth++;
             CharacterStats.Instance.damage++;
         }
         else if (ID == 1)
@@ -95,5 +99,11 @@ public class Attribute : MonoBehaviour
             CharacterStats.Instance.skillDamage++;
             CharacterStats.Instance.capEnergy++;
         }
+    }
+
+    private void ResetAttriute()
+    {
+        Instance.ResetAttributeUI();
+        Instance.AttributeLevels[ID] = _resetLevel;
     }
 }

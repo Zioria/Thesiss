@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterStats : MonoBehaviour
 {
     [Header("Status Strength")]
-    public int health;
+    public int MaxHealth;
     public int damage;
 
     [Header("Status Agility")]
@@ -18,8 +18,29 @@ public class CharacterStats : MonoBehaviour
 
     public static CharacterStats Instance;
 
+    public int CurrentHealth { get; private set; }
+    private int _currentDamage;
+    private float _currentAtkSpeed;
+    private int _currentArmor;
+    private float _currentSkillDamage;
+    private int _currentCapEnergy;
+
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        CurrentHealth = MaxHealth;
+    }
+    private void Update()
+    {
+        Debug.Log(CurrentHealth);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        CurrentHealth -= damage;
     }
 }

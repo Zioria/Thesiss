@@ -19,10 +19,12 @@ public class AttributeManager : MonoBehaviour
     public int AttributePoint;
     public List<Attribute> attributeList;
 
+    public int ResetAttributePoint { get; private set; }
+    
 
     private void Start()
     {
-        AttributePoint = 20; //Future Change logic
+        ResetAttributePoint = AttributePoint;
 
         foreach (var attribute in AttributeHolder.GetComponentsInChildren<Attribute>())
         {
@@ -45,6 +47,12 @@ public class AttributeManager : MonoBehaviour
         {
             attribute.UpdateUI();
         }
+    }
+
+    public void ResetAttributeUI()
+    {
+        AttributePoint = ResetAttributePoint;
+        UpdateAttributeUI();
     }
 
 }
