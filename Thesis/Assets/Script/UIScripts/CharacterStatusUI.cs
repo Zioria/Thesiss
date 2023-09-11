@@ -5,10 +5,31 @@ using UnityEngine.UI;
 
 public class CharacterStatusUI : MonoBehaviour
 {
+    public static CharacterStatusUI Instance;
     [SerializeField] private Text healthText;
+
+
+
+    public CharacterStats[] Stats;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
-        healthText.text = CharacterStats.Instance.CurrentHealth + " / " + CharacterStats.Instance.MaxHealth;
+        ChangeStatsCharacter();
+    }
+
+    public void ChangeStatsCharacter()
+    {
+        foreach (var stat in Stats)
+        {
+            if (stat.gameObject.activeInHierarchy)
+            {
+                healthText.text = stat.CurrentHealth + " / " + stat.MaxHealth;
+            }
+        }
     }
 }

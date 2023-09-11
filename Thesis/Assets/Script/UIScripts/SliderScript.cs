@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static CharacterStatusUI;
 
 public class SliderScript : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class SliderScript : MonoBehaviour
 
     private Slider _slider;
     private float fillValue;
-
+    private CharacterStats[] stats => Instance.Stats;
     private void Awake()
     {
         _slider = GetComponent<Slider>();
@@ -17,7 +18,14 @@ public class SliderScript : MonoBehaviour
 
     private void Update()
     {
-        fillValue = (float)CharacterStats.Instance.CurrentHealth / CharacterStats.Instance.MaxHealth;
-        _slider.value = fillValue;
+        foreach (var stat in stats) 
+        { 
+            if (stat.gameObject.activeInHierarchy)
+            {
+                Debug.Log(stat.CurrentHealth);
+                fillValue = (float)stat.CurrentHealth / stat.MaxHealth;
+                _slider.value = fillValue;
+            }
+        }
     }
 }

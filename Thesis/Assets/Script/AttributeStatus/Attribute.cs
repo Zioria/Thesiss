@@ -11,10 +11,10 @@ public class Attribute : MonoBehaviour
     [SerializeField] private Button increaseStatusBtn;
     [SerializeField] private Button ResetStatusBtn;
     [SerializeField] private Text countNumber;
+    [SerializeField] private int resetLevel;
 
     public int ID;
 
-    private int _resetLevel;
 
     private void Awake()
     {
@@ -53,17 +53,17 @@ public class Attribute : MonoBehaviour
         if (ID == 0)
         {
             CharacterStats.Instance.MaxHealth--;
-            CharacterStats.Instance.damage--;
+            CharacterStats.Instance.Damage--;
         }
         else if (ID == 1)
         {
-            CharacterStats.Instance.atkSpeed--;
-            CharacterStats.Instance.armor--;
+            CharacterStats.Instance.AtkSpeed--;
+            CharacterStats.Instance.Armor--;
         }
         else if (ID == 2)
         {
-            CharacterStats.Instance.skillDamage--;
-            CharacterStats.Instance.capEnergy--;
+            CharacterStats.Instance.SkillDamage--;
+            CharacterStats.Instance.CapEnergy--;
         }
     }
 
@@ -87,23 +87,24 @@ public class Attribute : MonoBehaviour
         if (ID == 0)
         {
             CharacterStats.Instance.MaxHealth++;
-            CharacterStats.Instance.damage++;
+            CharacterStats.Instance.Damage++;
         }
         else if (ID == 1)
         {
-            CharacterStats.Instance.atkSpeed++;
-            CharacterStats.Instance.armor++;
+            CharacterStats.Instance.AtkSpeed++;
+            CharacterStats.Instance.Armor++;
         }
         else if (ID ==2)
         {
-            CharacterStats.Instance.skillDamage++;
-            CharacterStats.Instance.capEnergy++;
+            CharacterStats.Instance.SkillDamage++;
+            CharacterStats.Instance.CapEnergy++;
         }
     }
 
     private void ResetAttriute()
     {
+        CharacterStats.Instance.ResetStats();
         Instance.ResetAttributeUI();
-        Instance.AttributeLevels[ID] = _resetLevel;
+        Instance.AttributeLevels[ID] = resetLevel;
     }
 }

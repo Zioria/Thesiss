@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    [Header("Status Strength")]
-    public int MaxHealth;
-    public int damage;
-
-    [Header("Status Agility")]
-    public float atkSpeed;
-    public int armor;
-
-    [Header("Status Technology")]
-    public float skillDamage;
-    public int capEnergy;
-
     public static CharacterStats Instance;
 
+    [SerializeField] private StatsScriptable statsScriptable;
+
     public int CurrentHealth { get; private set; }
-    private int _currentDamage;
-    private float _currentAtkSpeed;
-    private int _currentArmor;
-    private float _currentSkillDamage;
-    private int _currentCapEnergy;
+    public int CurrentArmor { get; private set; }
+    public int CurrentCapEnergy { get; private set; }
+
+    public int MaxHealth;
+    public int Damage;
+    public int AtkSpeed;
+    public int Armor;
+    public int SkillDamage;
+    public int CapEnergy;
+
+    private bool _isRunOneTime;
 
     private void Awake()
     {
@@ -32,15 +28,49 @@ public class CharacterStats : MonoBehaviour
 
     private void Start()
     {
-        CurrentHealth = MaxHealth;
+        if (_isRunOneTime)
+        {
+            return;
+        }
+        Initialize();
+        _isRunOneTime = true;
     }
     private void Update()
     {
-        Debug.Log(CurrentHealth);
+        //Debug.Log(CurrentHealth);
     }
 
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;
+    }
+
+    public void HealDamage(int amount)
+    {
+        CurrentHealth += amount;
+    }
+
+    private void Initialize()
+    {
+        MaxHealth = statsScriptable.defaultMaxHealth;
+        Damage = statsScriptable.DefaultDamage;
+        AtkSpeed = statsScriptable.DefaultAtkSpeed;
+        Armor = statsScriptable.DefaultArmor;
+        SkillDamage = statsScriptable.DefaultSkillDamage;
+        CapEnergy = statsScriptable.DefaultCapEnergy;
+
+        CurrentHealth = MaxHealth;
+        CurrentArmor = Armor;
+        CurrentCapEnergy = CapEnergy;
+    }
+
+    public void ResetStats()
+    {
+        int tempHealth = CurrentHealth;
+        Initialize();
+        if (tempHealth < MaxHealth)
+        {
+            CurrentHealth = tempHealth;
+        }
     }
 }

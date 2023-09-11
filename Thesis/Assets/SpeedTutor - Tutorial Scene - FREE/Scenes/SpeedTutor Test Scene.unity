@@ -337,7 +337,6 @@ GameObject:
   - component: {fileID: 62542464}
   - component: {fileID: 62542463}
   - component: {fileID: 62542465}
-  - component: {fileID: 62542466}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -421,24 +420,6 @@ MonoBehaviour:
   addnumber_g: 1
   addnumber_m: 2
   anyKey: 310000003200000066000000
---- !u!114 &62542466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62542460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fbc0596eb4e72947b22e21c509e6450, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 10
-  damage: 10
-  atkSpeed: 5
-  armor: 5
-  skillDamage: 10
-  capEnergy: 100
 --- !u!1 &91929314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,6 +1617,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthText: {fileID: 8902061}
+  Stats:
+  - {fileID: 1424290734}
+  - {fileID: 635095812}
 --- !u!1 &406967508
 GameObject:
   m_ObjectHideFlags: 3
@@ -2738,7 +2722,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633953029}
-  m_LocalRotation: {x: 0.17475945, y: -0.00000001467185, z: 0.000000002604119, w: 0.98461115}
+  m_LocalRotation: {x: 0.17475945, y: 0.000000014671851, z: -0.000000002604119, w: 0.98461115}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2756,6 +2740,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 635095811}
+  - component: {fileID: 635095812}
   m_Layer: 0
   m_Name: MC_M
   m_TagString: Untagged
@@ -2779,6 +2764,25 @@ Transform:
   m_Father: {fileID: 62542461}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &635095812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635095810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbc0596eb4e72947b22e21c509e6450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsScriptable: {fileID: 11400000, guid: eb94418b2557ee84faa25efb9f792307, type: 2}
+  MaxHealth: 0
+  Damage: 0
+  AtkSpeed: 0
+  Armor: 0
+  SkillDamage: 0
+  CapEnergy: 0
 --- !u!1 &636527051
 GameObject:
   m_ObjectHideFlags: 0
@@ -3274,7 +3278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &973991002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3340,7 +3344,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 62542466}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CharacterStats, Assembly-CSharp
         m_MethodName: TakeDamage
         m_Mode: 3
@@ -4236,6 +4240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1424290733}
+  - component: {fileID: 1424290734}
   m_Layer: 0
   m_Name: MC_G
   m_TagString: Untagged
@@ -4259,6 +4264,25 @@ Transform:
   m_Father: {fileID: 62542461}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1424290734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424290732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbc0596eb4e72947b22e21c509e6450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsScriptable: {fileID: 11400000, guid: e931cac5a66aa0a4d91fa0811a5b8832, type: 2}
+  MaxHealth: 0
+  Damage: 0
+  AtkSpeed: 0
+  Armor: 0
+  SkillDamage: 0
+  CapEnergy: 0
 --- !u!1 &1430694966
 GameObject:
   m_ObjectHideFlags: 0
@@ -5552,7 +5576,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794676874}
-  m_LocalRotation: {x: 0.117906064, y: 1.3198771e-15, z: -2.0944326e-16, w: 0.99302477}
+  m_LocalRotation: {x: 0.11790607, y: -0.000000007398611, z: 8.784687e-10, w: 0.99302477}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6637,6 +6661,7 @@ MonoBehaviour:
   increaseStatusBtn: {fileID: 3268580662890522356}
   ResetStatusBtn: {fileID: 21788787}
   countNumber: {fileID: 4580612787586973349}
+  resetLevel: 0
   ID: 0
 --- !u!1 &386374067217012863
 GameObject:
@@ -8618,6 +8643,7 @@ MonoBehaviour:
   increaseStatusBtn: {fileID: 9093489484447605605}
   ResetStatusBtn: {fileID: 21788787}
   countNumber: {fileID: 138469291887150109}
+  resetLevel: 0
   ID: 0
 --- !u!222 &6819403819688113266
 CanvasRenderer:
@@ -8775,6 +8801,7 @@ MonoBehaviour:
   increaseStatusBtn: {fileID: 3348073959922204066}
   ResetStatusBtn: {fileID: 21788787}
   countNumber: {fileID: 5355311770600220874}
+  resetLevel: 0
   ID: 0
 --- !u!1 &7384901078828189977
 GameObject:

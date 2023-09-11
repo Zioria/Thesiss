@@ -8,7 +8,7 @@ public class Cotroller : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
     
-    private float speed => CharacterStats.Instance.atkSpeed;
+    private float speed => CharacterStats.Instance.AtkSpeed;
     public float zero = 0f;
     public float turnSmoothTime = 0.1f;
     private float turnSmootVelocity;
