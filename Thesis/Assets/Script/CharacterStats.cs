@@ -24,10 +24,7 @@ public class CharacterStats : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
 
-    private void Start()
-    {
         if (_isRunOneTime)
         {
             return;
@@ -35,9 +32,10 @@ public class CharacterStats : MonoBehaviour
         Initialize();
         _isRunOneTime = true;
     }
+
     private void Update()
     {
-        //Debug.Log(CurrentHealth);
+        Debug.Log(_isRunOneTime);
     }
 
     public void TakeDamage(int damage)
