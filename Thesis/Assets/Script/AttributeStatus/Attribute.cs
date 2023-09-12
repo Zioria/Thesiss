@@ -80,8 +80,8 @@ public class Attribute : MonoBehaviour
     {
         if (Instance.AttributePoint <= 0 || Instance.AttributeLevels[ID] >= Instance.AttributeCaps[ID])
         {
-            return;
-        }        
+            return; 
+        }
         Instance.AttributeLevels[ID]++;
         Instance.AttributePoint--;
         Instance.UpdateAttributeUI();   

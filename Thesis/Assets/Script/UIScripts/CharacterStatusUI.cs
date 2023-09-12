@@ -26,10 +26,11 @@ public class CharacterStatusUI : MonoBehaviour
     {
         foreach (var stat in Stats)
         {
-            if (stat.gameObject.activeInHierarchy)
+            if (!stat.gameObject.activeInHierarchy)
             {
-                healthText.text = stat.CurrentHealth + " / " + stat.MaxHealth;
+                continue;
             }
+            healthText.text = stat.CurrentHealth + " / " + stat.MaxHealth;
         }
     }
 }
