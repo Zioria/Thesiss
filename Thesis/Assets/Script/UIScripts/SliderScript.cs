@@ -6,11 +6,13 @@ using static CharacterStatusUI;
 
 public class SliderScript : MonoBehaviour
 {
+    [SerializeField, Tooltip("Only Enter Health, Energy")] private string nameObject;
     [SerializeField] private Image fillImage;
 
     private Slider _slider;
     private float fillValue;
     private CharacterStats[] stats => Instance.Stats;
+    private CharacterStats stat;
     private void Awake()
     {
         _slider = GetComponent<Slider>();
@@ -18,14 +20,20 @@ public class SliderScript : MonoBehaviour
 
     private void Update()
     {
-        foreach (var stat in stats) 
-        { 
-            if (stat.gameObject.activeInHierarchy)
-            {
-                Debug.Log(stat.CurrentHealth);
-                fillValue = (float)stat.CurrentHealth / stat.MaxHealth;
-                _slider.value = fillValue;
-            }
+        stat = Instance.CurrentActive(stats);
+        SliderUpdate();
+    }
+
+    private void SliderUpdate()
+    {
+        if (nameObject == "Health")
+        {
+            fillValue = (float)stat.CurrentHealth / stat.MaxHealth;
         }
+        if (nameObject == "Energy")
+        {
+            fillValue = (float)stat.CurrentCapEnergy / stat.CapEnergy;
+        }
+        _slider.value = fillValue;
     }
 }

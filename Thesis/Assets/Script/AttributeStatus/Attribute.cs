@@ -13,7 +13,8 @@ public class Attribute : MonoBehaviour
     [SerializeField] private Text countNumber;
     [SerializeField] private int resetLevel;
 
-    private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
+    private CharacterStats[] stats => CharacterStatusUI.Instance.Stats;
+    private CharacterStats stat;
 
     public int ID;
 
@@ -29,6 +30,11 @@ public class Attribute : MonoBehaviour
             IncreaseStatus();
         });
         ResetStatusBtn.onClick.AddListener(ResetAttriute);
+    }
+
+    private void Update()
+    {
+        stat = CharacterStatusUI.Instance.CurrentActive(stats);
     }
 
     public void UpdateUI()
@@ -52,27 +58,20 @@ public class Attribute : MonoBehaviour
         {
             return;
         }
-        foreach (var stat in _stats)
+        if (ID == 0)
         {
-            if (!stat.gameObject.activeInHierarchy)
-            {
-                continue;
-            }
-            if (ID == 0)
-            {
-                stat.MaxHealth--;
-                stat.Damage--;
-            }
-            else if (ID == 1)
-            {
-                stat.AtkSpeed--;
-                stat.Armor--;
-            }
-            else if (ID == 2)
-            {
-                stat.SkillDamage--;
-                stat.CapEnergy--;
-            }
+            stat.MaxHealth--;
+            stat.Damage--;
+        }
+        else if (ID == 1)
+        {
+            stat.AtkSpeed--;
+            stat.Armor--;
+        }
+        else if (ID == 2)
+        {
+            stat.SkillDamage--;
+            stat.CapEnergy--;
         }
     }
 
@@ -93,34 +92,27 @@ public class Attribute : MonoBehaviour
         {
             return;
         }
-        foreach(var stat in _stats)
+        if (ID == 0)
         {
-            if (!stat.gameObject.activeInHierarchy)
-            {
-                continue;
-            }
-            if (ID == 0)
-            {
-                stat.MaxHealth++;
-                stat.Damage++;
-            }
-            else if (ID == 1)
-            {
-                stat.AtkSpeed++;
-                stat.Armor++;
-            }
-            else if (ID ==2)
-            {
-                stat.SkillDamage++;
-                stat.CapEnergy++;
-            }
+            stat.MaxHealth++;
+            stat.Damage++;
+        }
+        else if (ID == 1)
+        {
+            stat.AtkSpeed++;
+            stat.Armor++;
+        }
+        else if (ID == 2)
+        {
+            stat.SkillDamage++;
+            stat.CapEnergy++;
         }
     }
 
     private void ResetAttriute()
     {
         
-        foreach (var stat in _stats)
+        foreach (var stat in stats)
         {
             stat.ResetStats();
         }

@@ -7,10 +7,11 @@ public class CharacterStatusUI : MonoBehaviour
 {
     public static CharacterStatusUI Instance;
     [SerializeField] private Text healthText;
-
+    [SerializeField] private Text energyText;
 
 
     public CharacterStats[] Stats;
+    private CharacterStats currentActive;
 
     private void Awake()
     {
@@ -24,13 +25,22 @@ public class CharacterStatusUI : MonoBehaviour
 
     public void ChangeStatsCharacter()
     {
-        foreach (var stat in Stats)
+        CharacterStats stat = CurrentActive(Stats);
+        healthText.text = stat.CurrentHealth + " / " + stat.MaxHealth;
+        energyText.text = stat.CurrentCapEnergy + " / " + stat.CapEnergy;
+    }
+
+    public CharacterStats CurrentActive(CharacterStats[] stats)
+    {
+        foreach (var stat in stats)
         {
             if (!stat.gameObject.activeInHierarchy)
             {
                 continue;
             }
-            healthText.text = stat.CurrentHealth + " / " + stat.MaxHealth;
+            currentActive = stat;
         }
+
+        return currentActive;
     }
 }
