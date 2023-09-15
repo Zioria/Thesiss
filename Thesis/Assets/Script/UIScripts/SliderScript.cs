@@ -10,9 +10,9 @@ public class SliderScript : MonoBehaviour
     [SerializeField] private Image fillImage;
 
     private Slider _slider;
-    private float fillValue;
-    private CharacterStats[] stats => Instance.Stats;
-    private CharacterStats stat;
+    private float _fillValue;
+    private CharacterStats[] _stats => Instance.Stats;
+    private CharacterStats _stat;
     private void Awake()
     {
         _slider = GetComponent<Slider>();
@@ -20,7 +20,7 @@ public class SliderScript : MonoBehaviour
 
     private void Update()
     {
-        stat = Instance.CurrentActive(stats);
+        _stat = Instance.CurrentActive(_stats);
         SliderUpdate();
     }
 
@@ -28,12 +28,12 @@ public class SliderScript : MonoBehaviour
     {
         if (nameObject == "Health")
         {
-            fillValue = (float)stat.CurrentHealth / stat.MaxHealth;
+            _fillValue = (float)_stat.CurrentHealth / _stat.MaxHealth;
         }
         if (nameObject == "Energy")
         {
-            fillValue = (float)stat.CurrentCapEnergy / stat.CapEnergy;
+            _fillValue = (float)_stat.CurrentCapEnergy / _stat.CapEnergy;
         }
-        _slider.value = fillValue;
+        _slider.value = _fillValue;
     }
 }

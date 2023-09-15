@@ -35,7 +35,7 @@ public class CharacterStats : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_isRunOneTime);
+        //Debug.Log(_isRunOneTime);
     }
 
     public void TakeDamage(int damage)
@@ -46,6 +46,10 @@ public class CharacterStats : MonoBehaviour
     public void HealDamage(int amount)
     {
         CurrentHealth += amount;
+        if (CurrentHealth >= MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
     }
 
     private void Initialize()
