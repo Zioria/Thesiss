@@ -2,33 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Cotroller : MonoBehaviour
 {
     public CharacterController controller;
-    public Rigidbody rb;
     public Transform cam;
-    public KeyCode AltRun;
-    public KeyCode dash;
-
-    [Header("Speed")]
-    public float boost_speed = 0f;
-    public float cur_speed = 0f;
-    public float speed = 6f;
-
-    [Header("Dash")] 
-    public float dashForce;
-    public float dashDuration;
     
-    
+    private float speed => CharacterStats.Instance.AtkSpeed;
     public float zero = 0f;
     public float turnSmoothTime = 0.1f;
     private float turnSmootVelocity;
     private void Update()
     {
-        
-             
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal,  vertical , 0f).normalized;
@@ -41,47 +26,7 @@ public class Cotroller : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir * cur_speed * Time.deltaTime);
+            controller.Move(moveDir * speed * Time.deltaTime);
         }
-
-        #region SpeedControl
-     
-        if (Input.GetKey(AltRun))
-        {
-            cur_speed = speed * boost_speed;
-        }
-        else
-        {
-            cur_speed = speed;
-        }
-        #endregion
-
-        #region DashControl
-
-        if (Input.GetKeyDown(dash))
-        {
-            Dash();
-        }
-        
-
-        #endregion
     }
-    
-    #region Dash
-
-    private void Dash()
-    {
-        Vector3 forceToApply = Vector3.forward * dashForce;
-        
-        rb.AddForce(forceToApply, ForceMode.Impulse);
-        
-        Invoke(nameof(ResetDash), dashDuration);
-    }
-
-    private void ResetDash()
-    {
-        
-    }
-
-    #endregion
 }

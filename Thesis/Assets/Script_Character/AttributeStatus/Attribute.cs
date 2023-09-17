@@ -9,9 +9,14 @@ public class Attribute : MonoBehaviour
     [Header("Reference")]
     [SerializeField] private Button decreaseStatusBtn;
     [SerializeField] private Button increaseStatusBtn;
+    [SerializeField] private Button ResetStatusBtn;
     [SerializeField] private Text countNumber;
+    [SerializeField] private int resetLevel;
+
+    private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
 
     public int ID;
+
 
     private void Awake()
     {
@@ -23,6 +28,7 @@ public class Attribute : MonoBehaviour
             IncreaseCharacterStatus();
             IncreaseStatus();
         });
+        ResetStatusBtn.onClick.AddListener(ResetAttriute);
     }
 
     public void UpdateUI()
@@ -46,20 +52,27 @@ public class Attribute : MonoBehaviour
         {
             return;
         }
-        if (ID == 0)
+        foreach (var stat in _stats)
         {
-            CharacterStats.Instance.health--;
-            CharacterStats.Instance.damage--;
-        }
-        else if (ID == 1)
-        {
-            CharacterStats.Instance.atkSpeed--;
-            CharacterStats.Instance.armor--;
-        }
-        else if (ID == 2)
-        {
-            CharacterStats.Instance.skillDamage--;
-            CharacterStats.Instance.capEnergy--;
+            if (!stat.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+            if (ID == 0)
+            {
+                stat.MaxHealth--;
+                stat.Damage--;
+            }
+            else if (ID == 1)
+            {
+                stat.AtkSpeed--;
+                stat.Armor--;
+            }
+            else if (ID == 2)
+            {
+                stat.SkillDamage--;
+                stat.CapEnergy--;
+            }
         }
     }
 
@@ -80,20 +93,38 @@ public class Attribute : MonoBehaviour
         {
             return;
         }
-        if (ID == 0)
+        foreach(var stat in _stats)
         {
-            CharacterStats.Instance.health++;
-            CharacterStats.Instance.damage++;
+            if (!stat.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+            if (ID == 0)
+            {
+                stat.MaxHealth++;
+                stat.Damage++;
+            }
+            else if (ID == 1)
+            {
+                stat.AtkSpeed++;
+                stat.Armor++;
+            }
+            else if (ID ==2)
+            {
+                stat.SkillDamage++;
+                stat.CapEnergy++;
+            }
         }
-        else if (ID == 1)
+    }
+
+    private void ResetAttriute()
+    {
+        
+        foreach (var stat in _stats)
         {
-            CharacterStats.Instance.atkSpeed++;
-            CharacterStats.Instance.armor++;
+            stat.ResetStats();
         }
-        else if (ID ==2)
-        {
-            CharacterStats.Instance.skillDamage++;
-            CharacterStats.Instance.capEnergy++;
-        }
+        Instance.ResetAttributeUI();
+        Instance.AttributeLevels[ID] = resetLevel;
     }
 }
