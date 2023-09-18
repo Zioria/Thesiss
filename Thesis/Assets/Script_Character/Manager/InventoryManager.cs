@@ -7,7 +7,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
 
-    private List<ItemScriptable> _items = new List<ItemScriptable>();
+    public List<ItemScriptable> _items = new List<ItemScriptable>();
     private InventoryItemController[] _inventoryItem;
 
     [SerializeField] private Transform contentTranform;
