@@ -1,4 +1,5 @@
 ﻿ using UnityEngine;
+ using UnityEngine.EventSystems;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -18,9 +19,17 @@ namespace StarterAssets
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
 
+        public float CurrentSpeed;
+
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
-
+        
+        [Header("DashControl")]
+        public float DashSpeed = 20f;
+        public float DashMaxDuration = 0.5f;
+        public float DashMinDuration = 0f;
+        public float CurrentDashDuration = 0f;
+        [Space(10)]
         [Tooltip("How fast the character turns to face movement direction")]
         [Range(0.0f, 0.3f)]
         public float RotationSmoothTime = 0.12f;
@@ -86,6 +95,7 @@ namespace StarterAssets
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
+        
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -105,9 +115,10 @@ namespace StarterAssets
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
-
+        private Rigidbody _rb;
         private const float _threshold = 0.01f;
-
+        private Vector3 _moveDirection;
+        
         private bool _hasAnimator;
 
         private bool IsCurrentDeviceMouse
@@ -145,6 +156,8 @@ namespace StarterAssets
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
 
+            CurrentDashDuration = DashMaxDuration;
+            
             AssignAnimationIDs();
 
             // reset our timeouts on start
@@ -155,10 +168,11 @@ namespace StarterAssets
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
-
+            
             JumpAndGravity();
             GroundedCheck();
             Move();
+            Dash();
         }
 
         private void LateUpdate()
@@ -270,7 +284,7 @@ namespace StarterAssets
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-
+            
             // update animator if using character
             if (_hasAnimator)
             {
@@ -346,6 +360,39 @@ namespace StarterAssets
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
+        }
+
+        private void Dash()
+        {
+            if (Grounded)
+            {
+                if (Input.GetKeyDown(KeyCode.LeftControl))
+                {
+                    CurrentDashDuration = 0f;
+               
+                }
+            
+                // normalise input direction
+                Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;           
+                if (_input.move != Vector2.zero)
+                {
+                    _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
+                                      _mainCamera.transform.eulerAngles.y;
+                    float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
+                        RotationSmoothTime);
+
+                    // rotate to face input direction relative to camera position
+                    transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                }
+                Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+            
+                if (CurrentDashDuration < DashMaxDuration)
+                {
+                    CurrentDashDuration += DashMinDuration;
+                    _controller.Move(targetDirection.normalized * (DashSpeed * Time.deltaTime));
+                }
+            }
+            
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
