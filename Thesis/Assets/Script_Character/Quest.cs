@@ -9,8 +9,8 @@ public class Quest
 
     public string title;
     public string description;
-    public int expReward;
     public int goldReward;
+    public int AttributePointReward;
 
     public QuestGoal goal;
 

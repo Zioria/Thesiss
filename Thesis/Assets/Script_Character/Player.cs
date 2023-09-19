@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   public int hp = 100;
-   public int exp = 50;
-   public int gold = 1000;
+   public int hp;
+   public int AttributePoint;
+   public int gold;
 
    public Quest quest;
 
-   public void GoBattle()
+   public void SavePlayer ()
    {
-    
-        hp -= 5;
-        exp += 5;
+        Debug.Log("Save completed!");
+        Savesystem.SavePlayer(this);
+   }
+
+   public void LoadPlayer ()
+   {
+        Debug.Log("LoadSave completed!");
+        PlayerData data = Savesystem.LoadPlayer();
+
+        AttributePoint = data.AttributePoint;
+        gold = data.gold;
+
+   }
+
+   public void GoBattle(AttributeManager AttributePoint)
+   {
+        
         gold += 5;
 
         if (quest.isActive)
@@ -22,10 +36,12 @@ public class Player : MonoBehaviour
             quest.goal.EnemyKilled();
             if (quest.goal.IsReached())
             {
-                exp += quest.expReward;
+                //AttributePoint += quest.AttributePointReward;
                 gold += quest.goldReward;
                 quest.Complete();
             }
         }
    }
+
+
 }

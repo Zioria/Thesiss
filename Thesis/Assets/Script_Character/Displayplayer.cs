@@ -9,13 +9,13 @@ public class Displayplayer : MonoBehaviour
     public Player player;
 
     public Text hpdisplay;
-    public Text expdisplay;
+    public Text AttributePointdisplay;
     public Text golddisplay;
 
     public void Update()
     {
         hpdisplay.text = player.hp.ToString();
-        expdisplay.text = player.exp.ToString();
+        AttributePointdisplay.text = player.AttributePoint.ToString();
         golddisplay.text = player.gold.ToString();
     }
 }

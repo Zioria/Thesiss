@@ -12,7 +12,7 @@ public class Questgiver : MonoBehaviour
     public GameObject questUI;
     public Text title;
     public Text description;
-    public Text exp;
+    public Text AttributePoint;
     public Text gold;
 
     public void Start()
@@ -25,7 +25,7 @@ public class Questgiver : MonoBehaviour
         questUI.SetActive(true);
         title.text = quest.title;
         description.text = quest.description;
-        exp.text = quest.expReward.ToString();
+        AttributePoint.text = quest.AttributePointReward.ToString();
         gold.text = quest.goldReward.ToString();
     }
 
@@ -34,7 +34,7 @@ public class Questgiver : MonoBehaviour
         questUI.SetActive(false);
         title.text = quest.title;
         description.text = quest.description;
-        exp.text = quest.expReward.ToString();
+        AttributePoint.text = quest.AttributePointReward.ToString();
         gold.text = quest.goldReward.ToString();
     }
 

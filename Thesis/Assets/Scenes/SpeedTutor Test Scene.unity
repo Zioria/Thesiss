@@ -515,14 +515,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  exp: 50
+  AttributePoint: 0
   gold: 1000
   quest:
     isActive: 0
     title: 
     description: 
-    expReward: 0
     goldReward: 0
+    AttributePointReward: 0
     goal:
       goalType: 0
       requiredAmount: 0
@@ -943,6 +943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d71b8e570555f4aa9d1ff1826cfa79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameObject: 
   fillImage: {fileID: 113313111}
 --- !u!114 &166434335
 MonoBehaviour:
@@ -2018,6 +2019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthText: {fileID: 8902061}
+  energyText: {fileID: 0}
   Stats:
   - {fileID: 1424290734}
   - {fileID: 635095812}
@@ -2957,7 +2959,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489303593}
-  m_LocalRotation: {x: 0.14629896, y: 0.000000008510623, z: -0.0000000012586379, w: 0.98924047}
+  m_LocalRotation: {x: 0.14629896, y: -0.000000008510624, z: 0.000000001258638, w: 0.98924047}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3578,7 +3580,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633953029}
-  m_LocalRotation: {x: 0.17475945, y: -0.00000001467185, z: 0.000000002604119, w: 0.98461115}
+  m_LocalRotation: {x: 0.17475943, y: 2.7336074e-17, z: 3.1043517e-16, w: 0.98461115}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4819,14 +4821,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073627063}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4303a6e4c4c8e6340ac73b4da4c675d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 62542466}
   hpdisplay: {fileID: 441537750}
-  expdisplay: {fileID: 980171690}
+  AttributePointdisplay: {fileID: 0}
   golddisplay: {fileID: 579553499}
 --- !u!1 &1078121410
 GameObject:
@@ -4922,7 +4924,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078121410}
-  m_LocalRotation: {x: 0.14629897, y: 0.00000001702125, z: -0.000000002517276, w: 0.98924047}
+  m_LocalRotation: {x: 0.14629897, y: -0.00000001702125, z: 0.000000002517276, w: 0.98924047}
   m_LocalPosition: {x: -6.5062437, y: 3.8000002, z: -14.377127}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5769,6 +5771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1327540422}
   - component: {fileID: 1327540421}
+  - component: {fileID: 1327540423}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -5853,6 +5856,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 46.510002, y: 72.73701, z: -617.653}
+--- !u!114 &1327540423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327540420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &1343024594
 GameObject:
   m_ObjectHideFlags: 0
@@ -5966,8 +5992,8 @@ MonoBehaviour:
     isActive: 0
     title: Hunt them down
     description: Kill 5 enemy
-    expReward: 50
     goldReward: 100
+    AttributePointReward: 0
     goal:
       goalType: 0
       requiredAmount: 5
@@ -5976,7 +6002,7 @@ MonoBehaviour:
   questUI: {fileID: 2014740670}
   title: {fileID: 1190805686}
   description: {fileID: 925372570}
-  exp: {fileID: 174576560}
+  AttributePoint: {fileID: 0}
   gold: {fileID: 1886384800}
 --- !u!4 &1373711625
 Transform:
@@ -7553,7 +7579,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794676874}
-  m_LocalRotation: {x: 0.117906064, y: 8.8198317e-16, z: -1.6023277e-16, w: 0.99302477}
+  m_LocalRotation: {x: 0.11790607, y: -0.0000000073986106, z: 8.7846863e-10, w: 0.99302477}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
