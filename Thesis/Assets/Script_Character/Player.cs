@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+   public static Player Instance;  
    public int hp;
-   public int AttributePoint;
+   public int AtbPoint;
    public int gold;
 
    public Quest quest;
@@ -21,22 +22,30 @@ public class Player : MonoBehaviour
         Debug.Log("LoadSave completed!");
         PlayerData data = Savesystem.LoadPlayer();
 
-        AttributePoint = data.AttributePoint;
+        AtbPoint = data.AtbPoint;
         gold = data.gold;
 
    }
 
-   public void GoBattle(AttributeManager AttributePoint)
+   public void Awake()
+   {
+      Instance = this;
+   }
+
+   public void GoBattle()
    {
         
         gold += 5;
-
+        
         if (quest.isActive)
         {
             quest.goal.EnemyKilled();
             if (quest.goal.IsReached())
             {
-                //AttributePoint += quest.AttributePointReward;
+                AtbPoint += quest.AttributePointReward;
+                AttributeManager.Instance.AttributePoint += quest.AttributePointReward; 
+                AttributeManager.Instance.UpdateAttributeUI();
+                
                 gold += quest.goldReward;
                 quest.Complete();
             }

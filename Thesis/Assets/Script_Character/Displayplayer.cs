@@ -14,8 +14,8 @@ public class Displayplayer : MonoBehaviour
 
     public void Update()
     {
-        hpdisplay.text = player.hp.ToString();
-        AttributePointdisplay.text = player.AttributePoint.ToString();
+        //hpdisplay.text = player.hp.ToString();
+        //AttributePointdisplay.text = player.AtbPoint.ToString();
         golddisplay.text = player.gold.ToString();
     }
 }

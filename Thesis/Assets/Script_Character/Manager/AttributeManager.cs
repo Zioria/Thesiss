@@ -42,7 +42,7 @@ public class AttributeManager : MonoBehaviour
     public void UpdateAttributeUI()
     {
         pointText.text = "Attribute Points: " + AttributePoint;
-
+        
         foreach (var attribute in attributeList)
         {
             attribute.UpdateUI();

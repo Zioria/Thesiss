@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class Savesystem 
 {
+    
     public static void SavePlayer (Player player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -11,7 +12,7 @@ public static class Savesystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(player);
-
+        
         formatter.Serialize(stream, data);
         stream.Close();
     }
