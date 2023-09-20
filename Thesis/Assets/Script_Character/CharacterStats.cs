@@ -8,7 +8,7 @@ public class CharacterStats : MonoBehaviour
 
     [SerializeField] private StatsScriptable statsScriptable;
 
-    public int CurrentHealth { get; private set; }
+    public int CurrentHealth;
     public int CurrentArmor { get; private set; }
     public int CurrentCapEnergy { get; private set; }
 
