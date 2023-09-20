@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
 
 public class CursorControl : MonoBehaviour
 {
     private bool IsStatusMenuOpen;
-
+    public ThirdPersonController Controller;
     private void Awake()
     {
         IsStatusMenuOpen = false;
@@ -15,10 +16,18 @@ public class CursorControl : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        if (Input.GetKey(KeyCode.LeftAlt))
         {
-            Cursor.visible = !Cursor.visible;
+            Controller.LockCameraPosition = true;
+            Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Controller.LockCameraPosition = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            
         }
     }
 

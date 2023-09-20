@@ -1,4 +1,5 @@
-﻿ using UnityEngine;
+﻿ using Unity.VisualScripting;
+ using UnityEngine;
  using UnityEngine.EventSystems;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
@@ -15,6 +16,11 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
+        [Header("Spint&DashButton")]
+        public KeyCode KB_Dash_1;
+        [Tooltip("Use 0 for MouseLeft / 1 for MouseRight")]
+        public int MS_Dash_2;
+        
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -23,8 +29,9 @@ namespace StarterAssets
 
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
-        
-        [Header("DashControl")]
+
+        [Header("DashControl")] 
+        public bool Dash_check;
         public float DashSpeed = 20f;
         public float DashMaxDuration = 0.5f;
         public float DashMinDuration = 0f;
@@ -156,7 +163,7 @@ namespace StarterAssets
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
 
-            CurrentDashDuration = DashMaxDuration;
+            CurrentDashDuration = 0f;
             
             AssignAnimationIDs();
 
@@ -366,12 +373,7 @@ namespace StarterAssets
         {
             if (Grounded)
             {
-                if (Input.GetKeyDown(KeyCode.LeftControl))
-                {
-                    CurrentDashDuration = 0f;
                
-                }
-            
                 // normalise input direction
                 Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;           
                 if (_input.move != Vector2.zero)
@@ -386,11 +388,25 @@ namespace StarterAssets
                 }
                 Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
             
-                if (CurrentDashDuration < DashMaxDuration)
+                if (Input.GetKeyDown(KB_Dash_1) || Input.GetMouseButtonDown(MS_Dash_2))
                 {
-                    CurrentDashDuration += DashMinDuration;
-                    _controller.Move(targetDirection.normalized * (DashSpeed * Time.deltaTime));
+                    Dash_check = true;
+                    CurrentDashDuration = 0f;
+                    
+                    
+                    if (CurrentDashDuration < DashMaxDuration)
+                    {
+                        CurrentDashDuration += DashMinDuration;
+                        _controller.Move(targetDirection.normalized * (DashSpeed * Time.deltaTime));
+                    }
+                    
+
                 }
+                else if ((Input.GetKeyUp(KB_Dash_1) || Input.GetMouseButtonUp(MS_Dash_2)))
+                {
+                    Dash_check = false;
+                }
+
             }
             
         }
