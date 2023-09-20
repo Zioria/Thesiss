@@ -8,8 +8,8 @@ public class Displayplayer : MonoBehaviour
 {
     public Player player;
 
-    public Text hpdisplay;
-    public Text AttributePointdisplay;
+    //public Text hpdisplay;
+    //public Text AttributePointdisplay;
     public Text golddisplay;
 
     public void Update()

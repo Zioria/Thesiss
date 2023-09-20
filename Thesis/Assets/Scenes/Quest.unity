@@ -156,8 +156,8 @@ MonoBehaviour:
     isActive: 0
     title: Hunt them down
     description: Kill 5 enemy
-    expReward: 50
     goldReward: 100
+    AttributePointReward: 0
     goal:
       goalType: 0
       requiredAmount: 5
@@ -166,7 +166,7 @@ MonoBehaviour:
   questUI: {fileID: 2023411888}
   title: {fileID: 1513145943}
   description: {fileID: 1721120418}
-  exp: {fileID: 1686795488}
+  AttributePoint: {fileID: 0}
   gold: {fileID: 1722447734}
 --- !u!4 &38314943
 Transform:
@@ -369,14 +369,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 100
-  exp: 50
+  AtbPoint: 0
   gold: 1000
   quest:
     isActive: 0
     title: 
     description: 
-    expReward: 0
     goldReward: 0
+    AttributePointReward: 0
     goal:
       goalType: 0
       requiredAmount: 0
@@ -1577,6 +1577,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1137334158}
   - component: {fileID: 1137334157}
+  - component: {fileID: 1137334159}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1661,6 +1662,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1137334159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137334156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &1310243123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,7 +2572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 247772445}
   hpdisplay: {fileID: 620275410}
-  expdisplay: {fileID: 1677189025}
+  AttributePointdisplay: {fileID: 0}
   golddisplay: {fileID: 2122073241}
 --- !u!1 &1936267289
 GameObject:
@@ -2646,7 +2670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2023411889
 RectTransform:
   m_ObjectHideFlags: 0
