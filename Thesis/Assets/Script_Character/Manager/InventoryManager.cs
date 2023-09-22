@@ -31,12 +31,6 @@ public class InventoryManager : MonoBehaviour
 
     public void ListItem()
     {
-        //Prevent Item Duplicate
-        foreach (Transform item in contentTranform)
-        {
-            Destroy(item.gameObject);
-        }
-
         foreach (var item in _items)
         {
             GameObject obj = Instantiate(inventoryItem, contentTranform);
@@ -79,6 +73,14 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < _items.Count; i++)
         {
             _inventoryItem[i].AddItem(_items[i]);
+        }
+    }
+    public void CleanInventory()
+    {
+        //Prevent Item Duplicate
+        foreach (Transform item in contentTranform)
+        {
+            Destroy(item.gameObject);
         }
     }
 }
