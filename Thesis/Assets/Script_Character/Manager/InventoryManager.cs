@@ -31,6 +31,8 @@ public class InventoryManager : MonoBehaviour
 
     public void ListItem()
     {
+        CleanInventory();
+
         foreach (var item in _items)
         {
             GameObject obj = Instantiate(inventoryItem, contentTranform);

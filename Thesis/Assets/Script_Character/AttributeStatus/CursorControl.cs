@@ -28,14 +28,14 @@ public class CursorControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void OpenStatusMenu()
+    public void OpenMenu()
     {
         IsStatusMenuOpen = !IsStatusMenuOpen;
         Cursor.visible = IsStatusMenuOpen;
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void CloseStatusMenu()
+    public void CloseMenu()
     {
         IsStatusMenuOpen = !IsStatusMenuOpen;
         Cursor.visible = IsStatusMenuOpen;
