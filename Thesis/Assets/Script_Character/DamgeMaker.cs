@@ -36,5 +36,7 @@ public class DamgeMaker : MonoBehaviour
     private void DealDamage()
     {
         _stat.CurrentHealth -= DM_Damage;
+
+        
     }
 }

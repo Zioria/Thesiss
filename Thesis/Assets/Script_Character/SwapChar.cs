@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 using UnityEngine;
 
 public class SwapChar : MonoBehaviour
@@ -14,27 +15,101 @@ public class SwapChar : MonoBehaviour
     public int addnumber_m = 2;
     
     public KeyCode[] anyKey;
+    
+    private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
+    private CharacterStats _stat;
+    private ThirdPersonController TPC; 
+    private Animator AM;
 
+    public bool M_isAlive;
+    public bool G_isAlive;
+    
+    
     private void Start()
     {
-        
+        M_isAlive = true;
+        G_isAlive = true;
         mc_g.SetActive(true);
         mc_m.SetActive(false);
+
+        TPC = GameObject.Find("Player").GetComponent<ThirdPersonController>();
+        AM = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(anyKey[0]))
+        _stat = CharacterStatusUI.Instance.CurrentActive(_stats);
+        
+        Debug.Log(_stat.CurrentHealth + _stat.name);
+        
+        if (!G_isAlive)
+        {
+            mc_g.SetActive(false);
+            
+        }
+
+        if (!M_isAlive)
+        {
+            mc_m.SetActive(false);
+        }
+        
+        
+
+        if (_stat.CurrentHealth <= 0)
+        {
+            if (mc_g.activeInHierarchy)
+            {
+                mc_g.SetActive(false);
+                G_isAlive = false;
+                if (M_isAlive)
+                {
+                    mc_m.SetActive(true);
+                }
+               
+                
+            }
+            else if (mc_m.activeInHierarchy)
+            {
+                mc_m.SetActive(false);
+                M_isAlive = false; 
+                if (G_isAlive)
+                {
+                    mc_g.SetActive(true);
+                }
+            }
+           
+        }
+        
+        Die();
+        
+        
+        
+        if (Input.GetKeyDown(anyKey[0]) && _stat.CurrentHealth > 0) 
         {
             mc_m.SetActive(false);
             mc_g.SetActive(true);
         }
-        else if (Input.GetKeyDown(anyKey[1]))
+        else if (Input.GetKeyDown(anyKey[1]) && _stat.CurrentHealth > 0)
         {
             mc_g.SetActive(false);
             mc_m.SetActive(true);
         }
 
-        
+       
+    }
+
+    public void Die()
+    {
+        if (!M_isAlive && !G_isAlive)
+        {
+            Debug.Log("GameOver");
+            TPC.enabled = false;
+            AM.enabled = false;
+
+            foreach (var stat in _stats)
+            {
+                stat.CurrentHealth = 0;
+            }
+        }
     }
 }

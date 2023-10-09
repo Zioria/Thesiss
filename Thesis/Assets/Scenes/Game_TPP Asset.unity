@@ -2493,7 +2493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614280c302361264c8a9b9e0c24ee049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DM_Damage: 30
+  DM_Damage: 200
   _controller: {fileID: 0}
 --- !u!65 &1244802998
 BoxCollider:
@@ -3857,6 +3857,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1586897475}
     m_Modifications:
+    - target: {fileID: 3837663348675104489, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: m_Name
+      value: Model_Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -3957,9 +3961,13 @@ PrefabInstance:
       propertyPath: canPush
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8069688824785831295, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: m_Name
+      value: mc_G
+      objectReference: {fileID: 0}
     - target: {fileID: 8187455079231382173, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_Name
-      value: Armature_Mesh_M
+      value: mc_M
       objectReference: {fileID: 0}
     - target: {fileID: 8187455079231382173, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_IsActive
@@ -3971,14 +3979,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
-      insertIndex: 6
-      addedObject: {fileID: 2113686482}
+      insertIndex: 3
+      addedObject: {fileID: 2113686480}
     - targetCorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       insertIndex: 7
-      addedObject: {fileID: 2113686481}
+      addedObject: {fileID: 2113686482}
     - targetCorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2113686480}
+      insertIndex: 8
+      addedObject: {fileID: 2113686481}
     - targetCorrespondingSourceObject: {fileID: 8187455079231382173, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1974184508}
@@ -4068,6 +4076,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbc0596eb4e72947b22e21c509e6450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Model_G: {fileID: 1770305514}
+  Model_M: {fileID: 1974184505}
+  _swapchar: {fileID: 0}
   statsScriptable: {fileID: 11400000, guid: e931cac5a66aa0a4d91fa0811a5b8832, type: 2}
   CurrentHealth: 0
   MaxHealth: 0
@@ -4211,6 +4222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbc0596eb4e72947b22e21c509e6450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Model_G: {fileID: 1770305514}
+  Model_M: {fileID: 1974184505}
+  _swapchar: {fileID: 0}
   statsScriptable: {fileID: 11400000, guid: eb94418b2557ee84faa25efb9f792307, type: 2}
   CurrentHealth: 0
   MaxHealth: 0
@@ -4648,6 +4662,8 @@ MonoBehaviour:
   addnumber_g: 1
   addnumber_m: 2
   anyKey: 3100000032000000
+  M_isAlive: 0
+  G_isAlive: 0
 --- !u!114 &2113686481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4680,7 +4696,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29648375}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6daa7cbf7a2f72d45b8867bda18d6c59, type: 3}
   m_Name: 

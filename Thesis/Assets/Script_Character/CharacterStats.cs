@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
     public static CharacterStats Instance;
+    public GameObject Model_G;
+    public GameObject Model_M;
+    public SwapChar _swapchar;
+    
 
     [SerializeField] private StatsScriptable statsScriptable;
 
@@ -20,11 +25,16 @@ public class CharacterStats : MonoBehaviour
     public int CapEnergy;
 
     private bool _isRunOneTime;
+    
+    
 
     private void Awake()
     {
         Instance = this;
+        
 
+        _swapchar = GameObject.Find("Player").GetComponent<SwapChar>();
+        
         if (_isRunOneTime)
         {
             return;
@@ -36,6 +46,8 @@ public class CharacterStats : MonoBehaviour
     private void Update()
     {
         //Debug.Log(_isRunOneTime);
+       
+        
     }
 
     public void TakeDamage(int damage)
