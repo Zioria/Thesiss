@@ -11,6 +11,8 @@ public class EnemyAIController : MonoBehaviour
     [Header("Setting Patrolling")]
     [SerializeField] private Vector3 walkPoint;
     [SerializeField] private float walkPointRange;
+    [SerializeField] private float timeBetweenPatrolMin;
+    [SerializeField] private float timeBetweenPatrolMax;
 
     [Header("Setting Attacking")]
     [SerializeField] private float timeBetweenAttack;
@@ -23,6 +25,8 @@ public class EnemyAIController : MonoBehaviour
     private bool _walkPointSet;
     private bool _alreadyAttacked;
     private int _currentWaypoint;
+    private float _timeChangeDestination;
+    public bool _isDestination;
     #endregion
 
     #region UnityMethod
@@ -49,11 +53,18 @@ public class EnemyAIController : MonoBehaviour
             return;
         }
 
-        _agent.SetDestination(GameEnvironment.Instance.Waypoints[_currentWaypoint].transform.position);
+        if (_isDestination)
+        {
+            return;
+        }
         if (_agent.remainingDistance < 1)
         {
+            _agent.SetDestination(GameEnvironment.Instance.Waypoints[_currentWaypoint].transform.position);
             _walkPointSet = false;
+            _timeChangeDestination = UnityEngine.Random.Range(timeBetweenPatrolMin, timeBetweenPatrolMax);
         }
+        _isDestination = !_isDestination;
+        Invoke(nameof(ResetDestination), _timeChangeDestination);
     }
 
     private void SearchWalkPoint()
@@ -64,6 +75,7 @@ public class EnemyAIController : MonoBehaviour
             _currentWaypoint = 0;
         }
         _walkPointSet = true;
+                
     }
 
     private void ChasingPlayer()
@@ -93,6 +105,10 @@ public class EnemyAIController : MonoBehaviour
     private void ResetAttack()
     {
         _alreadyAttacked = !_alreadyAttacked;
+    }
+    private void ResetDestination()
+    {
+        _isDestination = !_isDestination;
     }
 
     private void CheckRange()
