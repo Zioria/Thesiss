@@ -19,7 +19,7 @@ public class AttributeManager : MonoBehaviour
     public int AttributePoint;
     public List<Attribute> attributeList;
 
-    public int ResetAttributePoint { get; private set; }
+    public int ResetAttributePoint;
     
 
     private void Start()
@@ -41,12 +41,16 @@ public class AttributeManager : MonoBehaviour
 
     public void UpdateAttributeUI()
     {
+        //foreach (var attribute in attributeList)
+        //{
+        //    attribute.UpdateUI();
+        //}
+        for (int i = 0; i < attributeList.Count; i++)
+        {
+            attributeList[i].UpdateUI();
+        }
         pointText.text = "Attribute Points: " + AttributePoint;
         
-        foreach (var attribute in attributeList)
-        {
-            attribute.UpdateUI();
-        }
     }
 
     public void ResetAttributeUI()

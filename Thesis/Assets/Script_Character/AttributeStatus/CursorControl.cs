@@ -16,29 +16,26 @@ public class CursorControl : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftAlt))
+        if (Input.GetKey(KeyCode.LeftAlt) || IsStatusMenuOpen)
         {
             Controller.LockCameraPosition = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            return;
         }
-        else
-        {
-            Controller.LockCameraPosition = false;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            
-        }
+        Controller.LockCameraPosition = false;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void OpenStatusMenu()
+    public void OpenMenu()
     {
         IsStatusMenuOpen = !IsStatusMenuOpen;
         Cursor.visible = IsStatusMenuOpen;
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void CloseStatusMenu()
+    public void CloseMenu()
     {
         IsStatusMenuOpen = !IsStatusMenuOpen;
         Cursor.visible = IsStatusMenuOpen;

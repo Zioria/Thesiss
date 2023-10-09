@@ -43,7 +43,8 @@ public class Player : MonoBehaviour
             if (quest.goal.IsReached())
             {
                 AtbPoint += quest.AttributePointReward;
-                AttributeManager.Instance.AttributePoint += quest.AttributePointReward; 
+                AttributeManager.Instance.AttributePoint += quest.AttributePointReward;
+                AttributeManager.Instance.ResetAttributePoint += quest.AttributePointReward;
                 AttributeManager.Instance.UpdateAttributeUI();
                 
                 gold += quest.goldReward;
