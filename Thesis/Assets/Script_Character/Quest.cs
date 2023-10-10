@@ -13,6 +13,7 @@ public class Quest
     public int AttributePointReward;
 
     public QuestGoal goal;
+    
 
     public void Complete()
     {

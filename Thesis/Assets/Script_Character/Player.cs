@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
    public int AtbPoint;
    public int gold;
 
+   public GameObject Enemy1;
+   public GameObject questB;
+
    public Quest quest;
 
    public void SavePlayer ()
@@ -32,7 +35,7 @@ public class Player : MonoBehaviour
       Instance = this;
    }
 
-   public void GoBattle()
+   public void GoBattle(GameObject Enemy1)
    {
         
         gold += 5;
@@ -42,6 +45,7 @@ public class Player : MonoBehaviour
             quest.goal.EnemyKilled();
             if (quest.goal.IsReached())
             {
+                Destroy(Enemy1);
                 AtbPoint += quest.AttributePointReward;
                 AttributeManager.Instance.AttributePoint += quest.AttributePointReward;
                 AttributeManager.Instance.ResetAttributePoint += quest.AttributePointReward;
@@ -49,9 +53,13 @@ public class Player : MonoBehaviour
                 
                 gold += quest.goldReward;
                 quest.Complete();
+                questB.SetActive(false);
+                
+
             }
         }
-   }
+   }  
+
 
 
 }

@@ -11,7 +11,7 @@ public class QuestGoal
     public int currentAmount;
 
     public bool IsReached()
-    {
+    {   
         return (currentAmount >= requiredAmount);
     }
 
