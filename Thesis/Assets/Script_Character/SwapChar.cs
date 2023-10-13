@@ -42,18 +42,6 @@ public class SwapChar : MonoBehaviour
         
         Debug.Log(_stat.CurrentHealth + _stat.name);
         
-        if (!G_isAlive)
-        {
-            mc_g.SetActive(false);
-            
-        }
-
-        if (!M_isAlive)
-        {
-            mc_m.SetActive(false);
-        }
-        
-        
 
         if (_stat.CurrentHealth <= 0)
         {
@@ -65,37 +53,39 @@ public class SwapChar : MonoBehaviour
                 {
                     mc_m.SetActive(true);
                 }
-               
-                
+
+                return;
             }
-            else if (mc_m.activeInHierarchy)
+            mc_m.SetActive(false);
+            M_isAlive = false;
+            if (G_isAlive)
             {
-                mc_m.SetActive(false);
-                M_isAlive = false; 
-                if (G_isAlive)
-                {
-                    mc_g.SetActive(true);
-                }
+                mc_g.SetActive(true);
             }
-           
         }
         
         Die();
         
-        
-        
-        if (Input.GetKeyDown(anyKey[0]) && _stat.CurrentHealth > 0) 
+        if (!G_isAlive || !M_isAlive)
+        {
+            return;
+        }
+        SwapCharacter();
+
+    }
+
+    private void SwapCharacter()
+    {
+        if (Input.GetKeyDown(anyKey[0]) && _stat.CurrentHealth > 0)
         {
             mc_m.SetActive(false);
             mc_g.SetActive(true);
         }
-        else if (Input.GetKeyDown(anyKey[1]) && _stat.CurrentHealth > 0)
+        if (Input.GetKeyDown(anyKey[1]) && _stat.CurrentHealth > 0)
         {
             mc_g.SetActive(false);
             mc_m.SetActive(true);
         }
-
-       
     }
 
     public void Die()
