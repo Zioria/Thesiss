@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Damage
   - Waypoint
+  - Enermy
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - whatIsGround
   - whatIsPlayer
   - whatIsObstacle
-  - 
+  - Enemy
   - 
   - 
   - 

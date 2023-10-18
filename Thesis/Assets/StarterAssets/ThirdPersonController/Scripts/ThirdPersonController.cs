@@ -16,10 +16,7 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
-        [Header("Spint&DashButton")]
-        public KeyCode KB_Dash_1;
-        [Tooltip("Use 0 for MouseLeft / 1 for MouseRight")]
-        public int MS_Dash_2;
+       
         
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -388,7 +385,7 @@ namespace StarterAssets
                 }
                 Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
             
-                if (Input.GetKeyDown(KB_Dash_1) || Input.GetMouseButtonDown(MS_Dash_2))
+                if (_input.dash)
                 {
                     Dash_check = true;
                     CurrentDashDuration = 0f;
@@ -402,10 +399,9 @@ namespace StarterAssets
                     
 
                 }
-                else if ((Input.GetKeyUp(KB_Dash_1) || Input.GetMouseButtonUp(MS_Dash_2)))
-                {
-                    Dash_check = false;
-                }
+
+                _input.dash = false;
+
 
             }
             
