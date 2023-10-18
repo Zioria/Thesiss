@@ -16,10 +16,7 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
-        [Header("Spint&DashButton")]
-        public KeyCode KB_Dash_1;
-        [Tooltip("Use 0 for MouseLeft / 1 for MouseRight")]
-        public int MS_Dash_2;
+       
         
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -36,6 +33,7 @@ namespace StarterAssets
         public float DashMaxDuration = 0.5f;
         public float DashMinDuration = 0f;
         public float CurrentDashDuration = 0f;
+        [SerializeField] private float timeBetweenDash;
         [Space(10)]
         [Tooltip("How fast the character turns to face movement direction")]
         [Range(0.0f, 0.3f)]
@@ -289,7 +287,11 @@ namespace StarterAssets
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
-            _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
+            if (MaleeAttack.Instance.Attacking)
+            {
+                return;
+            }
+                _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
             
             // update animator if using character
@@ -388,27 +390,28 @@ namespace StarterAssets
                 }
                 Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
             
-                if (Input.GetKeyDown(KB_Dash_1) || Input.GetMouseButtonDown(MS_Dash_2))
+                if (_input.dash && !Dash_check)
                 {
-                    Dash_check = true;
+                    Dash_check = !Dash_check;
+                    Invoke(nameof(ResetDash), timeBetweenDash);
                     CurrentDashDuration = 0f;
-                    
                     
                     if (CurrentDashDuration < DashMaxDuration)
                     {
                         CurrentDashDuration += DashMinDuration;
                         _controller.Move(targetDirection.normalized * (DashSpeed * Time.deltaTime));
                     }
-                    
+                }
 
-                }
-                else if ((Input.GetKeyUp(KB_Dash_1) || Input.GetMouseButtonUp(MS_Dash_2)))
-                {
-                    Dash_check = false;
-                }
+                _input.dash = false;
 
             }
             
+        }
+
+        private void ResetDash()
+        {
+            Dash_check = !Dash_check;
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)

@@ -50,9 +50,9 @@ public class CharacterStats : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        CurrentHealth -= damage;
+        CurrentHealth -= (int)damage;
     }
 
     public void HealDamage(int amount)
