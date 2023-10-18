@@ -8,6 +8,8 @@ public class EnemyStat : MonoBehaviour
 
     private Animator _anim;
     private GameObject _player;
+    // public static Player Instance;
+    // public GameObject questB;
 
     private void Awake()
     {
@@ -24,11 +26,14 @@ public class EnemyStat : MonoBehaviour
         if (healthPoint <= 0)
         {
             Die();
+            Player.Instance.GoBattle(); 
         }
     }
 
     private void Die()
     {
         Destroy(this.gameObject);
+
+        
     }
 }

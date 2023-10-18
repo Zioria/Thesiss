@@ -13,5 +13,9 @@ public class Reset : MonoBehaviour
       SceneManager.LoadScene(sceneName: "Game_TPP Asset");
    }
     
+   public void Scene()
+   {
+      SceneManager.LoadScene(sceneName:"Menugame");
+   }
     
 }

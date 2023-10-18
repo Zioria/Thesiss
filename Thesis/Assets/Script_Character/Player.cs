@@ -35,17 +35,20 @@ public class Player : MonoBehaviour
       Instance = this;
    }
 
-   public void GoBattle(GameObject Enemy1)
+   // private void Die()
+   // {
+        //Destroy(this.gameObject);
+  //  }
+
+   public void GoBattle()
    {
-        
-        gold += 5;
         
         if (quest.isActive)
         {
             quest.goal.EnemyKilled();
             if (quest.goal.IsReached())
             {
-                Destroy(Enemy1);
+                
                 AtbPoint += quest.AttributePointReward;
                 AttributeManager.Instance.AttributePoint += quest.AttributePointReward;
                 AttributeManager.Instance.ResetAttributePoint += quest.AttributePointReward;

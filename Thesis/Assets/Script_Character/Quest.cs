@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Quest 
 {
+    public static Quest Instance;
     public bool isActive;
 
     public string title;
@@ -14,6 +15,11 @@ public class Quest
 
     public QuestGoal goal;
     
+
+   public void Awake()
+   {
+      Instance = this;
+   }
 
     public void Complete()
     {
