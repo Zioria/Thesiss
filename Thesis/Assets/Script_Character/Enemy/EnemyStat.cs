@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStat : MonoBehaviour
 {
     [SerializeField] private float healthPoint;
 
+    [SerializeField] private float minDestroy;
+    [SerializeField] private float maxDestroy;
+
     private Animator _anim;
     private GameObject _player;
+    private static readonly int _deathAnim = Animator.StringToHash("isDeath");
+    private static readonly int _getHitAnim = Animator.StringToHash("isGetHit");
     // public static Player Instance;
     // public GameObject questB;
 
@@ -21,19 +27,22 @@ public class EnemyStat : MonoBehaviour
     public void TakeDamage(float damage)
     {
         healthPoint -= damage;
-        _anim.SetTrigger("Damage");
 
         if (healthPoint <= 0)
         {
             Die();
-            Player.Instance.GoBattle(); 
+            Player.Instance.GoBattle();
+            return;
         }
+
+        _anim.SetTrigger(_getHitAnim);
     }
 
     private void Die()
     {
-        Destroy(this.gameObject);
-
-        
+        _anim.SetTrigger(_deathAnim);
+        _anim.GetComponent<Collider>().enabled = false;
+        _anim.GetComponent<NavMeshAgent>().SetDestination(gameObject.transform.position);
+        //Destroy(this.gameObject, Random.Range(minDestroy, maxDestroy));
     }
 }

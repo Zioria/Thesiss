@@ -92,7 +92,6 @@ public class EnemyAIController : MonoBehaviour
 
     private void ChasingPlayer()
     {
-        _agent.isStopped = false;
         _agent.speed = chasingSpeed;
         _anim.SetFloat("Speed", 1);
         _agent.SetDestination(playerPos.position);
@@ -100,12 +99,8 @@ public class EnemyAIController : MonoBehaviour
 
     private void AttackingPlayer()
     {
-        if (Vector3.Distance(transform.position, playerPos.position) > attackRange)
-        {
-            return;
-        }
         //Make Enemy not move
-        _agent.isStopped = true;
+        _agent.SetDestination(transform.position);
 
         //Looking at Player
         transform.LookAt(playerPos);
@@ -135,7 +130,7 @@ public class EnemyAIController : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patrolling();
+        if (!playerInSightRange && !playerInAttackRange && !_alreadyAttacked) Patrolling();
         if (playerInSightRange && !playerInAttackRange && !_alreadyAttacked) ChasingPlayer();
         if (playerInSightRange && playerInAttackRange) AttackingPlayer();
         
