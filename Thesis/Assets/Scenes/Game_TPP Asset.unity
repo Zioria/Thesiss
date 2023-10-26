@@ -9997,12 +9997,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2113686487}
   attackPoint: {fileID: 1310519597}
-  attackRange: 0.5
+  attackRange: 0.7
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
   Attacking: 0
-  attackValue: 1
+  attackValue: 3
   timeBetweenAttack: 0.3
   Allenemy: []
   NearestENM: {fileID: 0}
