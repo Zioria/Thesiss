@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
 
    public void GoBattle()
    {
+     
         gold += 10;
         if (quest.isActive)
         {

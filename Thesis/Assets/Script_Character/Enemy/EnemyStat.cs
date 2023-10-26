@@ -27,8 +27,7 @@ public class EnemyStat : MonoBehaviour
         _anim = GetComponent<Animator>();
         _player = GameObject.FindWithTag("Player");
     }
-
-   
+    
 
     public void TakeDamage(float damage)
     {
@@ -36,10 +35,12 @@ public class EnemyStat : MonoBehaviour
 
         if (healthPoint <= 0)
         {
+            isEnemyDie = true;
             _enemy.gameObject.tag = "Die";
             _anim.SetTrigger(_deathAnim);
-            Invoke("Die", 3);
+            Die();
             Player.Instance.GoBattle();
+            Disappear();
             return;
         }
 
@@ -49,14 +50,15 @@ public class EnemyStat : MonoBehaviour
     
     private void Die()
     {
-        Destroy(this.gameObject);
-        isEnemyDie = true;
         //_enemy.SetActive(false);
         _anim.GetComponent<Collider>().enabled = false;
         _anim.GetComponent<NavMeshAgent>().SetDestination(gameObject.transform.position);
-        
-        
     }
+
+   private void Disappear()
+   {
+       Destroy(this.gameObject ,3);
+   }
 
    
 }
