@@ -9,8 +9,11 @@ public class Player : MonoBehaviour
    public int AtbPoint;
    public int gold;
 
-   public GameObject Enemy1;
    public GameObject questB;
+   public GameObject UIq1;
+   public GameObject UIq2;
+   public GameObject UIq3;
+
 
    public Quest quest;
 
@@ -42,7 +45,7 @@ public class Player : MonoBehaviour
 
    public void GoBattle()
    {
-        
+        gold += 10;
         if (quest.isActive)
         {
             quest.goal.EnemyKilled();
@@ -57,6 +60,9 @@ public class Player : MonoBehaviour
                 gold += quest.goldReward;
                 quest.Complete();
                 questB.SetActive(false);
+                UIq1.SetActive(false);
+                UIq2.SetActive(false);
+                UIq3.SetActive(false);
                 
 
             }
