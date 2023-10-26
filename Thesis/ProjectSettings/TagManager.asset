@@ -9,6 +9,7 @@ TagManager:
   - Damage
   - Waypoint
   - Enermy
+  - Die
   layers:
   - Default
   - TransparentFX
