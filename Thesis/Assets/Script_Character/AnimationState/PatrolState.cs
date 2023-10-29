@@ -20,8 +20,8 @@ public class PatrolState : StateMachineBehaviour
         _agent = animator.GetComponent<NavMeshAgent>();
         _agent.speed = agentSpeed;
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-        _tempIndex = _currentIndex = Random.Range(0, GameEnvironment.Instance.Waypoints.Count);
-        _agent.SetDestination(GameEnvironment.Instance.Waypoints[_currentIndex].transform.position);
+        _tempIndex = _currentIndex = Random.Range(0, WaypointManager.Instance.Children.Count);
+        _agent.SetDestination(WaypointManager.Instance.Children[_currentIndex].position);
         animator.SetBool(_patrolAnim, true);
     }
 
@@ -42,10 +42,10 @@ public class PatrolState : StateMachineBehaviour
 
         if (_tempIndex == _currentIndex)
         {
-            _currentIndex = Random.Range(0, GameEnvironment.Instance.Waypoints.Count);
+            _currentIndex = Random.Range(0, WaypointManager.Instance.Children.Count);
         }
 
-        _agent.SetDestination(GameEnvironment.Instance.Waypoints[_currentIndex].transform.position);
+        _agent.SetDestination(WaypointManager.Instance.Children[_currentIndex].position);
         _tempIndex = _currentIndex;
     }
 
