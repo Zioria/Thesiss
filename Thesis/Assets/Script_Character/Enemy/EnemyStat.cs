@@ -7,9 +7,12 @@ using UnityEngine.AI;
 public class EnemyStat : MonoBehaviour
 {
     [SerializeField] private float healthPoint;
-
     [SerializeField] private float minDestroy;
     [SerializeField] private float maxDestroy;
+
+
+    public float AttackRange;
+    public float ChaseRange;
 
     private GameObject _enemy;
     private Animator _anim;
@@ -44,7 +47,7 @@ public class EnemyStat : MonoBehaviour
             return;
         }
 
-        _anim.SetTrigger(_getHitAnim);
+        //_anim.SetTrigger(_getHitAnim);
     }
 
     
@@ -60,5 +63,21 @@ public class EnemyStat : MonoBehaviour
        Destroy(this.gameObject ,3);
    }
 
-   
+    public void StartDealDamage()
+    {
+        GetComponentInChildren<WeaponDamageMarker>().StartDealDamage();
+    }
+
+    public void EndDealDamage()
+    {
+        GetComponentInChildren<WeaponDamageMarker>().EndDealDamage();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, AttackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, ChaseRange);
+    }
 }

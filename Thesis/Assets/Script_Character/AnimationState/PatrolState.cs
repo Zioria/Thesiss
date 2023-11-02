@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class PatrolState : StateMachineBehaviour
 {
-    [SerializeField] private float _chaseRange;
+    //[SerializeField] private float _chaseRange;
     [SerializeField] private float agentSpeed;
+    private EnemyStat _enemyStat;
     private NavMeshAgent _agent;
     private int _currentIndex;
     private int _tempIndex;
@@ -17,6 +18,7 @@ public class PatrolState : StateMachineBehaviour
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _enemyStat = animator.GetComponent<EnemyStat>();
         _agent = animator.GetComponent<NavMeshAgent>();
         _agent.speed = agentSpeed;
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
@@ -29,13 +31,13 @@ public class PatrolState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         float distance = Vector3.Distance(_playerPos.position, animator.transform.position);
-        if (distance < _chaseRange)
+        if (distance < _enemyStat.ChaseRange)
         {
             animator.SetBool(_chaseAnim, true);
             return;
         }
 
-        if (_agent.remainingDistance > _agent.stoppingDistance)
+        if (_agent.remainingDistance >= 1)
         {
             return;
         }
@@ -56,15 +58,15 @@ public class PatrolState : StateMachineBehaviour
         animator.SetBool(_patrolAnim, false);
     }
 
-    //OnStateMove is called right after Animator.OnAnimatorMove()
-    override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        // Implement code that processes and affects root motion
-    }
+    ////OnStateMove is called right after Animator.OnAnimatorMove()
+    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that processes and affects root motion
+    //}
 
-    //OnStateIK is called right after Animator.OnAnimatorIK()
-    override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        // Implement code that sets up animation IK (inverse kinematics)
-    }
+    ////OnStateIK is called right after Animator.OnAnimatorIK()
+    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    // Implement code that sets up animation IK (inverse kinematics)
+    //}
 }
