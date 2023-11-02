@@ -5,15 +5,16 @@ using UnityEngine;
 public class IdleState : StateMachineBehaviour
 {
     
-    [SerializeField] private float chaseRange;
-    [SerializeField] private float attackRange;
+    //[SerializeField] private float attackRange;
     private Transform _playerPos;
+    private EnemyStat _enemyStat;
     private static readonly int _patrolAnim = Animator.StringToHash("isPatrol");
     private static readonly int _idleAnim = Animator.StringToHash("isIdle");
     private static readonly int _attackAnim = Animator.StringToHash("isAttack");
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _enemyStat = animator.GetComponent<EnemyStat>();
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         animator.SetBool(_idleAnim, true);
     }
@@ -23,7 +24,7 @@ public class IdleState : StateMachineBehaviour
     {
         
         float distance = Vector3.Distance(_playerPos.position, animator.transform.position);
-        if (distance <= attackRange)
+        if (distance <= _enemyStat.AttackRange)
         {
             animator.SetBool(_attackAnim, true);
             return;

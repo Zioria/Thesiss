@@ -6,8 +6,9 @@ using UnityEngine.AI;
 public class ChaseState : StateMachineBehaviour
 {
     [SerializeField] private float agentSpeed;
-    [SerializeField] private float attackRange;
-    [SerializeField] private float chaseRange;
+    //[SerializeField] private float attackRange;
+    //[SerializeField] private float chaseRange;
+    private EnemyStat _enemyStat;
     private NavMeshAgent _agent;
     private Transform _playerPos;
     private static readonly int _chaseAnim = Animator.StringToHash("isChase");
@@ -16,6 +17,7 @@ public class ChaseState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _enemyStat = animator.GetComponent<EnemyStat>();
         _agent = animator.GetComponent<NavMeshAgent>();
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         _agent.speed = agentSpeed;
@@ -26,13 +28,13 @@ public class ChaseState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         float distance = Vector3.Distance(_playerPos.position, animator.transform.position);
-        if (distance > chaseRange)
+        if (distance > _enemyStat.ChaseRange)
         {
             animator.SetBool(_idleAnim, true);
             return;
         }
 
-        if (distance <=attackRange)
+        if (distance <= _enemyStat.AttackRange)
         {
             animator.SetBool(_attackAnim, true);
             return;

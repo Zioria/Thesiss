@@ -72,7 +72,7 @@ public class EnemyAIController : MonoBehaviour
             return;
         }
 
-        _agent.SetDestination(GameEnvironment.Instance.Waypoints[_currentWaypoint].transform.position);
+        _agent.SetDestination(WaypointManager.Instance.Children[_currentWaypoint].position);
         _walkPointSet = false;
         _timeChangeDestination = UnityEngine.Random.Range(timeBetweenPatrolMin, timeBetweenPatrolMax);
         _isDestination = !_isDestination;
@@ -82,7 +82,7 @@ public class EnemyAIController : MonoBehaviour
     private void SearchWalkPoint()
     {
         _currentWaypoint++;
-        if (_currentWaypoint >= GameEnvironment.Instance.Waypoints.Count)
+        if (_currentWaypoint >= WaypointManager.Instance.Children.Count)
         {
             _currentWaypoint = 0;
         }
