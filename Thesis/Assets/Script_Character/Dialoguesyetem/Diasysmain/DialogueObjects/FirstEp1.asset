@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9bf6f3b99eb7a048b3ff731a17cd696, type: 3}
+  m_Name: FirstEp1
+  m_EditorClassIdentifier: 
+  dialogue:
+  - 'Welcome to ma town!!!
+
+    .
+
+    .
+
+    First press spacebar to Next Dialogue
+    and Click Next to go another Dialogue.'
+  - Item Heal can use on inventory
+  - 'WASD move
+
+    spacebar jump'
+  responses:
+  - responseText: Next
+    dialogueObject: {fileID: 11400000, guid: 8ff352b3448794a45be8bcb94568c072, type: 2}

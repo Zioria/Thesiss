@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
    public GameObject UIq2;
    public GameObject UIq3;
 
-
+  
    public Quest quest;
 
    public void SavePlayer ()
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         gold = data.gold;
 
    }
-
+   
    public void Awake()
    {
       Instance = this;
