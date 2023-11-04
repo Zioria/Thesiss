@@ -21,10 +21,10 @@ public class WaypointManager : MonoBehaviour
         }
         _children = GetChildren(transform);
 
-        foreach (Transform child in _children)
-        {
-            Debug.Log(child.name);
-        }
+        //foreach (Transform child in _children)
+        //{
+        //    Debug.Log(child.name);
+        //}
     }
 
     private List<Transform> GetChildren(Transform parent)
