@@ -11772,7 +11772,7 @@ MonoBehaviour:
   NearestENM: {fileID: 0}
   distance: 0
   nearstDistance: 3
-  Player: {fileID: 29648375}
+  mc_G: {fileID: 1770305514}
   rotationSpeed: 100
 --- !u!54 &2113686493
 Rigidbody:

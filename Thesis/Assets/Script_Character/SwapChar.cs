@@ -21,6 +21,7 @@ public class SwapChar : MonoBehaviour
     private ThirdPersonController TPC; 
     private Animator AM;
 
+
     public bool M_isAlive;
     public bool G_isAlive;
     
@@ -65,6 +66,8 @@ public class SwapChar : MonoBehaviour
         }
         
         Die();
+
+       
         
         if (!G_isAlive || !M_isAlive)
         {
@@ -99,6 +102,7 @@ public class SwapChar : MonoBehaviour
             foreach (var stat in _stats)
             {
                 stat.CurrentHealth = 0;
+                
             }
         }
     }

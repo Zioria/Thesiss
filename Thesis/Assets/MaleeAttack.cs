@@ -29,9 +29,10 @@ public class MaleeAttack : MonoBehaviour
     public GameObject NearestENM;
     public float distance;
     public float nearstDistance;
-    public GameObject Player;
+    public GameObject mc_G;
     public float rotationSpeed;
     private EnemyStat _enemystat;
+    
 
     private void Awake()
     {
@@ -48,7 +49,7 @@ public class MaleeAttack : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
-        if (_controller.Grounded && !Attacking)
+        if (_controller.Grounded && !Attacking && mc_G.activeInHierarchy)
         {
 
             attack();
@@ -61,7 +62,7 @@ public class MaleeAttack : MonoBehaviour
 
         if (Attacking)
         {
-            if (NearestENM != null && NearestENM.activeInHierarchy)
+            if (NearestENM != null && NearestENM.activeInHierarchy )
             {
                 Vector3 directionToTarget = NearestENM.transform.position - transform.position;
                 directionToTarget.y = 0; // If you don't want to rotate in the y-axis
