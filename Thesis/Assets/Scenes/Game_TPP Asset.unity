@@ -15055,19 +15055,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6de307873c67124a8edf3479fc265a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 2113686465}
   animator: {fileID: 2113686487}
+  nearestEnemy: {fileID: 0}
   attackPoint: {fileID: 1310519597}
   attackRange: 0.7
+  OverlapRadius: 3
+  minimumDistance: 0
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
   Attacking: 0
-  attackValue: 3
+  attackValue: 0
   timeBetweenAttack: 0.3
-  Allenemy: []
-  NearestENM: {fileID: 0}
-  distance: 0
-  nearstDistance: 3
   mc_G: {fileID: 1770305514}
   rotationSpeed: 100
 --- !u!54 &2113686493

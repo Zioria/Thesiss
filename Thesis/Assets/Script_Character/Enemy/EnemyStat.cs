@@ -36,6 +36,7 @@ public class EnemyStat : MonoBehaviour
     public void TakeDamage(float damage)
     {
         healthPoint -= damage;
+        Debug.Log(_enemy.name + damage);
 
         if (healthPoint <= 0)
         {
