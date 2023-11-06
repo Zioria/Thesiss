@@ -55,17 +55,17 @@ public class ItemPickUp : MonoBehaviour
         } while (_popupQueue.Count > 0);
 
         _itemLogHolder.SetActive(false);
+        _queueCheker = null;
     }
 
     private void AddToQueue(string text)
     {
         _popupQueue.Enqueue(text);
 
-        if (_queueCheker != null)
+        if (_queueCheker == null)
         {
-            return;
+            _queueCheker = StartCoroutine(CheckQueue());
         }
-        _queueCheker = StartCoroutine(CheckQueue());
     }
 
     private void ShowPopup(string text)
