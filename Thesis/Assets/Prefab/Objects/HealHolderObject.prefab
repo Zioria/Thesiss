@@ -116,7 +116,7 @@ Transform:
   m_Children:
   - {fileID: 7443991207495141023}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &4698901030693110077
 SphereCollider:
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 503c136c86f5e0e4ab29be78b909510a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: Health Potion
   item: {fileID: 11400000, guid: e2836adf66a7189488b6c4c346520c87, type: 2}
 --- !u!1 &7304288079977567661
 GameObject:
