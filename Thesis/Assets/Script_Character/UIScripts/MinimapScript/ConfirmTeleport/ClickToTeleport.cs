@@ -15,8 +15,10 @@ public class ClickToTeleport : MonoBehaviour
     [SerializeField] private float timeToReset;
     
     private int _id;
+    private PlayerRespawn _playerRespawn;
     private void Awake()
     {
+        _playerRespawn = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerRespawn>();
         teleportBtn.onClick.AddListener(() =>
         {
             CheckSpawnpoint();
@@ -35,6 +37,7 @@ public class ClickToTeleport : MonoBehaviour
             {
                 playerController.IsDisable = true;
                 playerObject.transform.position = CheckpointManager.Instance.CheckpointList[i].SpawnPoint.position;
+                _playerRespawn.SetSpawnpoint(CheckpointManager.Instance.CheckpointList[i].SpawnPoint.position);
                 Invoke(nameof(ResetPlayerController), timeToReset);
             }
         }
