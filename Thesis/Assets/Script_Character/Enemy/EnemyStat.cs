@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Animator))]
 public class EnemyStat : MonoBehaviour
 {
     [SerializeField] private float healthPoint;
@@ -35,6 +36,7 @@ public class EnemyStat : MonoBehaviour
     public void TakeDamage(float damage)
     {
         healthPoint -= damage;
+        Debug.Log(_enemy.name + damage);
 
         if (healthPoint <= 0)
         {

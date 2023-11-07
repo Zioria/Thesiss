@@ -49,7 +49,7 @@ public class AttributeManager : MonoBehaviour
         {
             attributeList[i].UpdateUI();
         }
-        pointText.text = "Attribute Points: " + AttributePoint;
+        pointText.text = "Points: " + AttributePoint;
         
     }
 

@@ -10,6 +10,7 @@ TagManager:
   - Waypoint
   - Enermy
   - Die
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - whatIsPlayer
   - whatIsObstacle
   - Enemy
-  - 
+  - MiniMapPoint
   - 
   - 
   - 

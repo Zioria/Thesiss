@@ -16,7 +16,7 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
-       
+        public bool IsDisable;
         
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -146,6 +146,7 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+            IsDisable = false;
         }
 
         private void Start()
@@ -172,6 +173,9 @@ namespace StarterAssets
 
         private void Update()
         {
+            if (IsDisable) {
+                return;
+            }
             _hasAnimator = TryGetComponent(out _animator);
             
             JumpAndGravity();
@@ -287,7 +291,7 @@ namespace StarterAssets
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
-            if (MaleeAttack.Instance.Attacking)
+            if (MCGattack.Instance.Attacking)
             {
                 return;
             }

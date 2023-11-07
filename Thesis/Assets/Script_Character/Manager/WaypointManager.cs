@@ -9,6 +9,8 @@ public class WaypointManager : MonoBehaviour
     public List<Transform> Children => _children;
 
     private List<Transform> _children;
+
+    [SerializeField] private Transform waypointParent;
     private void Awake()
     {
         if (Instance == null)
@@ -19,12 +21,12 @@ public class WaypointManager : MonoBehaviour
         {
             return;
         }
-        _children = GetChildren(transform);
+        _children = GetChildren(waypointParent);
 
-        foreach (Transform child in _children)
-        {
-            Debug.Log(child.name);
-        }
+        //foreach (Transform child in _children)
+        //{
+        //    Debug.Log(child.name);
+        //}
     }
 
     private List<Transform> GetChildren(Transform parent)
