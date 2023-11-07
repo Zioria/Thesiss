@@ -6,6 +6,7 @@ public class CheckPointScript : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject confirmTeleport;
+    [SerializeField] private GameObject flagHolder;
 
     private SpriteRenderer _spriteRen;
     private MeshRenderer _objectTexture;
@@ -30,10 +31,12 @@ public class CheckPointScript : MonoBehaviour
             return;
         }
 
+        other.GetComponent<PlayerRespawn>().SetSpawnpoint(spawnPoint.position);
         _isActive = true;
         _spriteRen.color = Color.blue;
         _boxCollider.enabled = false;
         _objectTexture.enabled = false;
+        flagHolder.SetActive(true);
     }
 
     public void PlayerClick()
