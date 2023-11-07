@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour
 {
-   public static Player Instance;  
+   public static Player Instance;
+
    //public int hp;
    public int AtbPoint;
    public int gold;
@@ -21,13 +24,15 @@ public class Player : MonoBehaviour
    {
         Debug.Log("Save completed!");
         Savesystem.SavePlayer(this);
+        //AttributeManager.Instance.UpdateAttributeUI();
    }
 
    public void LoadPlayer ()
    {
         Debug.Log("LoadSave completed!");
         PlayerData data = Savesystem.LoadPlayer();
-
+        //AttributeManager.Instance.UpdateAttributeUI();
+        
         AtbPoint = data.AtbPoint;
         gold = data.gold;
 
@@ -36,12 +41,15 @@ public class Player : MonoBehaviour
    public void Awake()
    {
       Instance = this;
+      AttributeManager.Instance.UpdateAttributeUI();
    }
 
-   // private void Die()
-   // {
-        //Destroy(this.gameObject);
-  //  }
+   private void Update()
+   {
+        //AttributeManager.Instance.ResetAttributeUI();
+        AttributeManager.Instance.UpdateAttributeUI();
+        AtbPoint = AttributeManager.Instance.AttributePoint;
+   }
 
    public void GoBattle()
    {
@@ -56,7 +64,7 @@ public class Player : MonoBehaviour
                 AtbPoint += quest.AttributePointReward;
                 AttributeManager.Instance.AttributePoint += quest.AttributePointReward;
                 AttributeManager.Instance.ResetAttributePoint += quest.AttributePointReward;
-                AttributeManager.Instance.UpdateAttributeUI();
+                //AttributeManager.Instance.UpdateAttributeUI();
                 
                 gold += quest.goldReward;
                 quest.Complete();
