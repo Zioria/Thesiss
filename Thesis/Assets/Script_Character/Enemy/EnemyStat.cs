@@ -10,14 +10,16 @@ public class EnemyStat : MonoBehaviour
     [SerializeField] private StatsEnemyScriptable stat;
     [SerializeField] private float attackRange;
     [SerializeField] private float chaseRange;
+    [SerializeField] private LayerMask playerMask;
 
     private float _healthPoint;
-
     private GameObject _enemy;
     private Animator _anim;
     private GameObject _player;
     private static readonly int _deathAnim = Animator.StringToHash("isDeath");
     private static readonly int _getHitAnim = Animator.StringToHash("isGetHit");
+    private EnemyHealthBar _healthBar;
+    private bool _playerInrange;
 
     public bool isEnemyDie;
     public StatsEnemyScriptable Stat => stat;
@@ -29,6 +31,18 @@ public class EnemyStat : MonoBehaviour
         _enemy = this.gameObject;
         _anim = GetComponent<Animator>();
         _player = GameObject.FindWithTag("Player");
+        _healthBar = GetComponentInChildren<EnemyHealthBar>();
+    }
+
+    private void Start()
+    {
+        Initialize();
+        _healthBar.UpdateHealthBar(_healthPoint, stat.MaxHealth);
+    }
+
+    private void Update()
+    {
+        HealthBarController();
     }
 
     private void Initialize()
@@ -36,13 +50,25 @@ public class EnemyStat : MonoBehaviour
         _healthPoint = stat.MaxHealth;
     }
 
+    private void HealthBarController()
+    {
+        _playerInrange = Physics.CheckSphere(transform.position, ChaseRange, playerMask);
+        if (!_playerInrange)
+        {
+            _healthBar.gameObject.SetActive(false);
+            return;
+        }
+        _healthBar.gameObject.SetActive(true);
+    }
+
     public void TakeDamage(float damage)
     {
         _healthPoint -= damage;
-        Debug.Log(_enemy.name + damage);
+        _healthBar.UpdateHealthBar(_healthPoint, stat.MaxHealth);
 
         if (_healthPoint <= 0)
         {
+            _healthBar.gameObject.SetActive(false);
             isEnemyDie = true;
             _enemy.gameObject.tag = "Die";
             _anim.SetTrigger(_deathAnim);

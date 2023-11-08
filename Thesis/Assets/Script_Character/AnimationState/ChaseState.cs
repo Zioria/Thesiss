@@ -6,8 +6,6 @@ using UnityEngine.AI;
 public class ChaseState : StateMachineBehaviour
 {
     [SerializeField] private float agentSpeed;
-    //[SerializeField] private float attackRange;
-    //[SerializeField] private float chaseRange;
     private EnemyStat _enemyStat;
     private NavMeshAgent _agent;
     private Transform _playerPos;
@@ -31,6 +29,7 @@ public class ChaseState : StateMachineBehaviour
         if (distance > _enemyStat.ChaseRange)
         {
             animator.SetBool(_idleAnim, true);
+            animator.GetComponentInChildren<EnemyHealthBar>().gameObject.SetActive(false);
             return;
         }
 
@@ -40,7 +39,6 @@ public class ChaseState : StateMachineBehaviour
             return;
         }
         _agent.SetDestination(_playerPos.position);
-
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
