@@ -7,11 +7,13 @@ public class CheckPointScript : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject confirmTeleport;
     [SerializeField] private GameObject flagHolder;
+    [SerializeField] private string namePosition;
 
     private SpriteRenderer _spriteRen;
     private MeshRenderer _objectTexture;
     private BoxCollider _boxCollider;
 
+    public string NamePosition => namePosition;
     public Transform SpawnPoint => spawnPoint;
     public bool _isActive;
     public int ID;

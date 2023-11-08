@@ -36,7 +36,6 @@ public class AttackState : StateMachineBehaviour
         if (distance > _enemyStat.AttackRange)
         {
             _timer += Time.deltaTime;
-            
         }
 
         if (_timer >= timeBetweenAttack)

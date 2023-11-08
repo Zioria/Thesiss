@@ -33,13 +33,14 @@ public class ClickToTeleport : MonoBehaviour
 
         for (int i = 0; i < CheckpointManager.Instance.CheckpointList.Count; i++)
         {
-            if (i == LargeMapPointer.Instance.ID)
+            if (i != LargeMapPointer.Instance.ID)
             {
-                playerController.IsDisable = true;
-                playerObject.transform.position = CheckpointManager.Instance.CheckpointList[i].SpawnPoint.position;
-                _playerRespawn.SetSpawnpoint(CheckpointManager.Instance.CheckpointList[i].SpawnPoint.position);
-                Invoke(nameof(ResetPlayerController), timeToReset);
+                continue;
             }
+            playerController.IsDisable = true;
+            playerObject.transform.position = CheckpointManager.Instance.CheckpointList[i].SpawnPoint.position;
+            _playerRespawn.SetSpawnpoint(CheckpointManager.Instance.CheckpointList[i].SpawnPoint.position);
+            Invoke(nameof(ResetPlayerController), timeToReset);
         }
     }
 

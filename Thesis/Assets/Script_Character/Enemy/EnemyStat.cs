@@ -7,13 +7,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Animator))]
 public class EnemyStat : MonoBehaviour
 {
-    [SerializeField] private float healthPoint;
-    [SerializeField] private float minDestroy;
-    [SerializeField] private float maxDestroy;
+    [SerializeField] private StatsEnemyScriptable stat;
+    [SerializeField] private float attackRange;
+    [SerializeField] private float chaseRange;
 
-
-    public float AttackRange;
-    public float ChaseRange;
+    private float _healthPoint;
 
     private GameObject _enemy;
     private Animator _anim;
@@ -22,8 +20,9 @@ public class EnemyStat : MonoBehaviour
     private static readonly int _getHitAnim = Animator.StringToHash("isGetHit");
 
     public bool isEnemyDie;
-    // public static Player Instance;
-    // public GameObject questB;
+    public StatsEnemyScriptable Stat => stat;
+    public float AttackRange => attackRange;
+    public float ChaseRange => chaseRange;
 
     private void Awake()
     {
@@ -31,14 +30,18 @@ public class EnemyStat : MonoBehaviour
         _anim = GetComponent<Animator>();
         _player = GameObject.FindWithTag("Player");
     }
-    
+
+    private void Initialize()
+    {
+        _healthPoint = stat.MaxHealth;
+    }
 
     public void TakeDamage(float damage)
     {
-        healthPoint -= damage;
+        _healthPoint -= damage;
         Debug.Log(_enemy.name + damage);
 
-        if (healthPoint <= 0)
+        if (_healthPoint <= 0)
         {
             isEnemyDie = true;
             _enemy.gameObject.tag = "Die";
@@ -78,8 +81,8 @@ public class EnemyStat : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, AttackRange);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, ChaseRange);
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
     }
 }
