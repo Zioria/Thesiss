@@ -13643,7 +13643,7 @@ MonoBehaviour:
   nearestEnemy: {fileID: 0}
   BulletSpawnPoint: {fileID: 499197677}
   Bulletprefab: {fileID: 1445069938118830048, guid: 6e8fb05f6d831a048a1cda91c118faff, type: 3}
-  BulletSpeeds: 20
+  BulletSpeeds: 100
   OverlapRadius: 10
   minimumDistance: 0
   enemyLayers:
@@ -14044,6 +14044,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 2945233215191390402, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3736911084751978367, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       propertyPath: playerInput
       value: 
@@ -14162,6 +14166,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7718289518585449809, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767460875449362211, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8363399273667002371, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
