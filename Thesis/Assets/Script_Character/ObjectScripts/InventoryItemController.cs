@@ -27,6 +27,8 @@ public class InventoryItemController : MonoBehaviour
         _stats = CharacterStatusUI.Instance.Stats;
         _stat = CharacterStatusUI.Instance.CurrentActive(_stats);
 
+        Debug.Log(_stat);
+        Debug.Log(_item.Value);
         _stat.HealDamage(_item.Value);
 
         RemoveItem();

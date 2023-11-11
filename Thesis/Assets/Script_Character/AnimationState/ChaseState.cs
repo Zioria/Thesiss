@@ -9,27 +9,33 @@ public class ChaseState : StateMachineBehaviour
     private EnemyStat _enemyStat;
     private NavMeshAgent _agent;
     private Transform _playerPos;
+    private EnemyHealthBar _enemyHealthBar;
     private static readonly int _chaseAnim = Animator.StringToHash("isChase");
     private static readonly int _attackAnim = Animator.StringToHash("isAttack");
     private static readonly int _idleAnim = Animator.StringToHash("isIdle");
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _enemyHealthBar = animator.transform.GetComponentInChildren<EnemyHealthBar>();
         _enemyStat = animator.GetComponent<EnemyStat>();
         _agent = animator.GetComponent<NavMeshAgent>();
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         _agent.speed = agentSpeed;
+        _enemyHealthBar.gameObject.SetActive(true);
         animator.SetBool(_chaseAnim, true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (!stateInfo.IsName("ChaseState"))
+        {
+            _enemyHealthBar.gameObject.SetActive(false);
+        }
         float distance = Vector3.Distance(_playerPos.position, animator.transform.position);
         if (distance > _enemyStat.ChaseRange)
         {
             animator.SetBool(_idleAnim, true);
-            animator.GetComponentInChildren<EnemyHealthBar>().gameObject.SetActive(false);
             return;
         }
 

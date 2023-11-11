@@ -9,9 +9,7 @@ public class Attribute : MonoBehaviour
     [Header("Reference")]
     [SerializeField] private Button decreaseStatusBtn;
     [SerializeField] private Button increaseStatusBtn;
-    [SerializeField] private Button ResetStatusBtn;
     [SerializeField] private Text countNumber;
-    [SerializeField] private Text skillTreeNumber;
     [SerializeField] private int resetLevel;
 
     private CharacterStats[] stats => CharacterStatusUI.Instance.Stats;
@@ -30,7 +28,6 @@ public class Attribute : MonoBehaviour
             IncreaseCharacterStatus();
             IncreaseStatus();
         });
-        ResetStatusBtn.onClick.AddListener(ResetAttriute);
     }
 
     private void Update()
@@ -40,7 +37,7 @@ public class Attribute : MonoBehaviour
 
     public void UpdateUI()
     {
-        skillTreeNumber.text = countNumber.text = Instance.AttributeLevels[ID].ToString();
+        countNumber.text = Instance.AttributeLevels[ID].ToString();
     }
 
     private void DecreaseStatus()
