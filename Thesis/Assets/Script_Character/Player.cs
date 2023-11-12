@@ -8,46 +8,57 @@ public class Player : MonoBehaviour
 {
    public static Player Instance;
 
+   //public Text playerName;
+   //public Datamanager datamanager;
+
    //public int hp;
    public int AtbPoint;
    public int gold;
+   public Text golddisplay;
 
    public GameObject questB;
    public GameObject UIq1;
    public GameObject UIq2;
    public GameObject UIq3;
 
-  
    public Quest quest;
-
-   public void SavePlayer ()
-   {
-        Debug.Log("Save completed!");
-        Savesystem.SavePlayer(this);
-        //AttributeManager.Instance.UpdateAttributeUI();
-   }
-
-   public void LoadPlayer ()
-   {
-        Debug.Log("LoadSave completed!");
-        PlayerData data = Savesystem.LoadPlayer();
-        //AttributeManager.Instance.UpdateAttributeUI();
-        
-        AtbPoint = data.AtbPoint;
-        gold = data.gold;
-
-   }
    
+   
+
+   void Start()
+   {
+       // datamanager.Load();
+        //playerName.text = datamanager.data.name; 
+        //gold = datamanager.data.gold1;
+   }
+
+   public void SaveFile()
+   {
+       // datamanager.Save();
+   }
+
+   //public void LoadFile()
+  // {
+       // datamanager.Load();
+  // }
+
+
+   public void ChangeName(string text)
+   {
+       //datamanager.data.name = text;
+   }
+
    public void Awake()
    {
       Instance = this;
-      AttributeManager.Instance.UpdateAttributeUI();
+      //AttributeManager.Instance.UpdateAttributeUI();
    }
 
    private void Update()
    {
         //AttributeManager.Instance.ResetAttributeUI();
-        AttributeManager.Instance.UpdateAttributeUI();
+        //AttributeManager.Instance.UpdateAttributeUI();
+        golddisplay.text = gold.ToString();
         AtbPoint = AttributeManager.Instance.AttributePoint;
    }
 
