@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Animator))]
 public class EnemyStat : MonoBehaviour
 {
     [SerializeField] private StatsEnemyScriptable stat;
@@ -22,12 +21,15 @@ public class EnemyStat : MonoBehaviour
     private bool _playerInrange;
 
     public bool isEnemyDie;
+    public bool isPatrol;
+    public Vector3 Setposition;
     public StatsEnemyScriptable Stat => stat;
     public float AttackRange => attackRange;
     public float ChaseRange => chaseRange;
 
     private void Awake()
     {
+        Setposition = transform.position;
         _enemy = this.gameObject;
         _anim = GetComponent<Animator>();
         _player = GameObject.FindWithTag("Player");

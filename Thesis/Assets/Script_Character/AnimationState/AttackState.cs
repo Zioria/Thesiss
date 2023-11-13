@@ -13,6 +13,7 @@ public class AttackState : StateMachineBehaviour
     private float _timer;
     private static readonly int _attackAnim = Animator.StringToHash("isAttack");
     private static readonly int _idleAnim = Animator.StringToHash("isIdle");
+    private static readonly int _chaseAnim = Animator.StringToHash("isChase");
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,6 +22,7 @@ public class AttackState : StateMachineBehaviour
         _agent = animator.GetComponent<NavMeshAgent>();
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         _timer = 0;
+        _agent.SetDestination(_agent.transform.position);
         animator.SetBool(_attackAnim, true);
     }
 
@@ -38,11 +40,16 @@ public class AttackState : StateMachineBehaviour
             _timer += Time.deltaTime;
         }
 
-        if (_timer >= timeBetweenAttack)
+        if (_timer < timeBetweenAttack)
         {
-            animator.SetBool(_idleAnim, true);
+            return;
         }
-
+        if (_enemyStat.isPatrol)
+        { 
+            animator.SetBool(_idleAnim, true);
+            return;
+        }
+        animator.SetBool(_chaseAnim, true);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
