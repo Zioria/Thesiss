@@ -6,14 +6,13 @@ using UnityEngine.AI;
 public class ChaseState : StateMachineBehaviour
 {
     [SerializeField] private float agentSpeed;
-    //[SerializeField] private float attackRange;
-    //[SerializeField] private float chaseRange;
     private EnemyStat _enemyStat;
     private NavMeshAgent _agent;
     private Transform _playerPos;
     private static readonly int _chaseAnim = Animator.StringToHash("isChase");
     private static readonly int _attackAnim = Animator.StringToHash("isAttack");
     private static readonly int _idleAnim = Animator.StringToHash("isIdle");
+    private static readonly int _walkBackAnim = Animator.StringToHash("isWalkBack");
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -28,25 +27,28 @@ public class ChaseState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         float distance = Vector3.Distance(_playerPos.position, animator.transform.position);
-        if (distance > _enemyStat.ChaseRange)
-        {
-            animator.SetBool(_idleAnim, true);
-            return;
-        }
-
         if (distance <= _enemyStat.AttackRange)
         {
             animator.SetBool(_attackAnim, true);
             return;
         }
-        _agent.SetDestination(_playerPos.position);
-
+        if (distance < _enemyStat.ChaseRange)
+        {
+            _agent.SetDestination(_playerPos.position);
+            return;
+        }
+        if (_enemyStat.isPatrol)
+        {
+            animator.SetBool(_idleAnim, true);
+            return;
+        }
+        animator.SetBool(_walkBackAnim, true);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _agent.SetDestination(animator.transform.position);
+        _agent.SetDestination(_agent.transform.position);
         animator.SetBool(_chaseAnim, false);
     }
 

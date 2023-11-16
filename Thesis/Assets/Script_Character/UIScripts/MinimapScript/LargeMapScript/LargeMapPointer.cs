@@ -11,6 +11,7 @@ public class LargeMapPointer : MonoBehaviour, IPointerClickHandler
 
     public static LargeMapPointer Instance;
     public int ID;
+    public string RecieveName;
 
     private void Awake()
     {
@@ -55,10 +56,11 @@ public class LargeMapPointer : MonoBehaviour, IPointerClickHandler
 
         if (Physics.Raycast(MapRay, out miniMapHit, Mathf.Infinity))
         {
-            if (miniMapHit.collider.gameObject.CompareTag("Checkpoint"))
+            if (miniMapHit.collider.CompareTag("Checkpoint"))
             {
-                miniMapHit.collider.gameObject.GetComponentInParent<CheckPointScript>().PlayerClick();
-                ID = miniMapHit.collider.gameObject.GetComponentInParent<CheckPointScript>().GetID();
+                miniMapHit.collider.GetComponentInParent<CheckPointScript>().PlayerClick();
+                ID = miniMapHit.collider.GetComponentInParent<CheckPointScript>().GetID();
+                RecieveName = miniMapHit.collider.GetComponentInParent<CheckPointScript>().NamePosition;
             }
             else
             {

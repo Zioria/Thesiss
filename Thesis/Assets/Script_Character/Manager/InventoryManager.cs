@@ -12,7 +12,6 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private Transform contentTranform;
     [SerializeField] private GameObject inventoryItem;
-    [SerializeField] private Toggle toggleRemove;
 
     private void Awake()
     {
@@ -42,29 +41,9 @@ public class InventoryManager : MonoBehaviour
 
             itemName.text = item.ItemName;
             itemIcon.sprite = item.IconImage;
-            if (toggleRemove.isOn)
-            {
-                removeBtn.gameObject.SetActive(true);
-            }
         }
 
         SetInventoryItem();
-    }
-
-    public void EnableItemRemove()
-    {
-        if (!toggleRemove.isOn)
-        {
-            foreach (Transform item in contentTranform)
-            {
-                item.Find("RemoveBtn").gameObject.SetActive(false);
-            }
-            return;
-        }
-        foreach (Transform item in contentTranform)
-        {
-            item.Find("RemoveBtn").gameObject.SetActive(true);
-        }
     }
 
     private void SetInventoryItem()

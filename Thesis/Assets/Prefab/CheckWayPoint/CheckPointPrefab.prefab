@@ -104,8 +104,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.25, y: 0.25, z: 0.25}
-  m_Center: {x: -0.0071512936, y: 0.015848778, z: -0.067721196}
+  m_Size: {x: 0.5, y: 0.5, z: 0.25}
+  m_Center: {x: 0, y: 0, z: -0.15}
 --- !u!1 &3366543203470680493
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +223,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 2965780776470864473}
   confirmTeleport: {fileID: 0}
   flagHolder: {fileID: 3366543203470680493}
+  namePosition: Position1
   _isActive: 0
   ID: 0
 --- !u!65 &3794252876324865026
