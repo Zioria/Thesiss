@@ -56,6 +56,7 @@ public class MCGattack : MonoBehaviour
     {
         if (_controller.Grounded && !Attacking && mc_G.activeInHierarchy)
         {
+            animator.SetTrigger("Idle");
             attack();
         }
     }
