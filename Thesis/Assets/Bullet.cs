@@ -19,13 +19,6 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         curAttack = MCMattack.Instance.attackValue;
-
-        life -= 1 * Time.deltaTime;
-        
-        if (life < 0)
-        {
-            Destroy(this.gameObject);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,6 +26,11 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Enermy"))
         {
             other.GetComponent<EnemyStat>().TakeDamage(curAttack);
+        }
+
+        if (other.CompareTag("Player"))
+        {
+            return;
         }
         
         Destroy(this.gameObject);
