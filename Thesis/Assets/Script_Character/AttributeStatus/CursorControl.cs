@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CursorControl : MonoBehaviour
 {
     private bool IsStatusMenuOpen;
     public ThirdPersonController Controller;
+    [SerializeField] private PlayerInput playerInput;
     private void Awake()
     {
         IsStatusMenuOpen = false;
@@ -30,6 +32,7 @@ public class CursorControl : MonoBehaviour
 
     public void OpenMenu()
     {
+        playerInput.enabled = false;
         IsStatusMenuOpen = !IsStatusMenuOpen;
         Cursor.visible = IsStatusMenuOpen;
         Cursor.lockState = CursorLockMode.None;
@@ -37,6 +40,7 @@ public class CursorControl : MonoBehaviour
 
     public void CloseMenu()
     {
+        playerInput.enabled = true;
         IsStatusMenuOpen = !IsStatusMenuOpen;
         Cursor.visible = IsStatusMenuOpen;
         Cursor.lockState = CursorLockMode.Locked;

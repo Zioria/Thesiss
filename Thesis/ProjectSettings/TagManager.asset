@@ -10,6 +10,8 @@ TagManager:
   - Waypoint
   - Enermy
   - Die
+  - Checkpoint
+  - TimeManager
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - whatIsPlayer
   - whatIsObstacle
   - Enemy
-  - 
-  - 
+  - MiniMapPoint
+  - Bullet
   - 
   - 
   - 
