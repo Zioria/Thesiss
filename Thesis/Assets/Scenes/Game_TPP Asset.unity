@@ -8888,6 +8888,7 @@ MonoBehaviour:
   Player: {fileID: 2113686465}
   animator: {fileID: 2113686487}
   nearestEnemy: {fileID: 0}
+  speedStep: 10
   attackPoint: {fileID: 1310519597}
   attackRange: 0.7
   OverlapRadius: 3
@@ -8900,6 +8901,10 @@ MonoBehaviour:
   timeBetweenAttack: 0.3
   mc_G: {fileID: 1770305514}
   rotationSpeed: 100
+  Distancedelta: 1.2
+  minRange: 1
+  maxRange: 3
+  Duration: 0.3
 --- !u!54 &2113686493
 Rigidbody:
   m_ObjectHideFlags: 0
