@@ -11,6 +11,7 @@ TagManager:
   - Enermy
   - Die
   - Checkpoint
+  - TimeManager
   layers:
   - Default
   - TransparentFX

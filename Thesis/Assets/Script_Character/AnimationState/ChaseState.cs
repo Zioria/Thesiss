@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class ChaseState : StateMachineBehaviour
 {
-    [SerializeField] private float agentSpeed;
     private EnemyStat _enemyStat;
     private NavMeshAgent _agent;
     private Transform _playerPos;
@@ -19,13 +18,14 @@ public class ChaseState : StateMachineBehaviour
         _enemyStat = animator.GetComponent<EnemyStat>();
         _agent = animator.GetComponent<NavMeshAgent>();
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
-        _agent.speed = agentSpeed;
+        _agent.speed = _enemyStat.SpeedAgent;
         animator.SetBool(_chaseAnim, true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _agent.speed = _enemyStat.SpeedAgent;
         float distance = Vector3.Distance(_playerPos.position, animator.transform.position);
         if (distance <= _enemyStat.AttackRange)
         {

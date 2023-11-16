@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class PatrolState : StateMachineBehaviour
 {
     //[SerializeField] private float _chaseRange;
-    [SerializeField] private float agentSpeed;
     private EnemyStat _enemyStat;
     private NavMeshAgent _agent;
     private int _currentIndex;
@@ -20,7 +19,7 @@ public class PatrolState : StateMachineBehaviour
     {
         _enemyStat = animator.GetComponent<EnemyStat>();
         _agent = animator.GetComponent<NavMeshAgent>();
-        _agent.speed = agentSpeed;
+        _agent.speed = _enemyStat.SpeedAgent;
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         _tempIndex = _currentIndex = Random.Range(0, WaypointManager.Instance.Children.Count);
         _agent.SetDestination(WaypointManager.Instance.Children[_currentIndex].position);
@@ -30,6 +29,7 @@ public class PatrolState : StateMachineBehaviour
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _agent.speed = _enemyStat.SpeedAgent;
         float distance = Vector3.Distance(_playerPos.position, animator.transform.position);
         if (distance < _enemyStat.ChaseRange)
         {
