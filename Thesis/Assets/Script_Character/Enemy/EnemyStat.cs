@@ -10,6 +10,7 @@ public class EnemyStat : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private float chaseRange;
     [SerializeField] private LayerMask playerMask;
+    [SerializeField] private float defultSpeed;
 
     private float _healthPoint;
     private GameObject _enemy;
@@ -26,6 +27,8 @@ public class EnemyStat : MonoBehaviour
     public StatsEnemyScriptable Stat => stat;
     public float AttackRange => attackRange;
     public float ChaseRange => chaseRange;
+    public float SpeedAgent;
+    public float DefultSpeed => defultSpeed;
 
     private void Awake()
     {
@@ -79,8 +82,6 @@ public class EnemyStat : MonoBehaviour
             Disappear();
             return;
         }
-
-        //_anim.SetTrigger(_getHitAnim);
     }
 
     
@@ -104,6 +105,11 @@ public class EnemyStat : MonoBehaviour
     public void EndDealDamage()
     {
         GetComponentInChildren<WeaponDamageMarker>().EndDealDamage();
+    }
+
+    public void UpdateSpeedAgent()
+    {
+        SpeedAgent = defultSpeed;
     }
 
     private void OnDrawGizmosSelected()

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class WalkingBackState : StateMachineBehaviour
 {
-    [SerializeField] private float speed;
+    
     private NavMeshAgent _agent;
     private EnemyStat _enemyStat;
     private Transform _playerPos;
@@ -18,9 +18,9 @@ public class WalkingBackState : StateMachineBehaviour
     {
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         _agent = animator.GetComponent<NavMeshAgent>();
-        _agent.speed = speed;
         _enemyStat = animator.GetComponent<EnemyStat>();
         _agent.SetDestination(_enemyStat.Setposition);
+        _agent.speed = _enemyStat.SpeedAgent;
         animator.SetBool(_walkBackAnim, true);
     }
 

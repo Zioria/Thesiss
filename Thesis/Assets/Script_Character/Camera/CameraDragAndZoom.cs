@@ -85,7 +85,7 @@ public class CameraDragAndZoom : MonoBehaviour
 
     private void InputScollWheel(float amout)
     {
-        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0)
+        if (Input.GetAxisRaw("Mouse ScrollWheel") < 0)
         {
             _amountZoom += amout;
             if (_amountZoom > _maxZoom)
@@ -94,7 +94,7 @@ public class CameraDragAndZoom : MonoBehaviour
             }
         }
 
-        if (Input.GetAxisRaw("Mouse ScrollWheel") < 0)
+        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0)
         {
             _amountZoom -= amout;
             if (_amountZoom < _minZoom)
