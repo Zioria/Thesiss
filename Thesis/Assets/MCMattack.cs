@@ -3,50 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using StarterAssets;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine.UIElements;
 
 
-
-public class MCGattack : MonoBehaviour
+public class MCMattack : MonoBehaviour
 {
     public Transform Player;
-    public static MCGattack Instance;
+    public static MCMattack Instance;
     public Animator animator;
     private PlayerInput _input;
     private ThirdPersonController _controller;
     public Transform nearestEnemy;
     private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
     private CharacterStats _stat;
+    
 
-    public float speedStep;
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
+    //public Transform attackPoint;
+    public Transform BulletSpawnPoint;
+    public GameObject Bulletprefab;
+    public float BulletSpeeds;
     public float OverlapRadius = 10.0f;
     public float minimumDistance;
     public LayerMask enemyLayers;
     public bool Attacking;
 
-    [SerializeField] private float attackValue;
+     
     [SerializeField] private float timeBetweenAttack;
 
     [Header("Find Enemy")] 
-    public GameObject mc_G;
+    public float attackValue;
+    public GameObject mc_M;
     public float rotationSpeed;
-    private Transform target;
     private EnemyStat _enemystat;
-
-
-    [Header("GrapClose")] 
-    public float Distancedelta;
-    [SerializeField]private float minRange;
-    [SerializeField]private float maxRange;
-    public float Duration;
     
 
     private void Awake()
@@ -65,9 +57,8 @@ public class MCGattack : MonoBehaviour
 
     public void OnAttack(InputValue value)
     {
-        if (_controller.Grounded && !Attacking && mc_G.activeInHierarchy)
+        if (_controller.Grounded && !Attacking && mc_M.activeInHierarchy)
         {
-            
             attack();
         }
     }
@@ -76,10 +67,9 @@ public class MCGattack : MonoBehaviour
     {
         _stat = CharacterStatusUI.Instance.CurrentActive(_stats);
         attackValue = _stat.Damage;
+        
+       FindEnemy();
 
-        FindEnemy();
-        
-        
         if (Attacking)
         {
             if (nearestEnemy != null )
@@ -92,13 +82,8 @@ public class MCGattack : MonoBehaviour
                     Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
                     transform.rotation =
                         Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-                    
                 }
-                
-                GrapClose(target);
             }
-            
-            
         }
 
 
@@ -106,20 +91,11 @@ public class MCGattack : MonoBehaviour
 
     void attack()
     {
-        animator.SetTrigger("Attack");
-        Collider[] hitEnemy = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
-        foreach (Collider enemy in hitEnemy)
-        {
-            if (nearestEnemy)
-            {
-                if (enemy.TryGetComponent(out EnemyStat enemyStat))
-                {
-                    enemyStat.TakeDamage(attackValue);
-                }
-            }
-        }
-        
-        
+        Debug.Log("Attackk!!!");
+        animator.SetTrigger("RangeAttack");
+        //RangeAttack
+        var bullet = Instantiate(Bulletprefab, BulletSpawnPoint.position, BulletSpawnPoint.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = BulletSpawnPoint.forward * BulletSpeeds;
 
         Attacking = !Attacking;
         Invoke(nameof(ResetAttack), timeBetweenAttack);
@@ -128,15 +104,6 @@ public class MCGattack : MonoBehaviour
     private void ResetAttack()
     {
         Attacking = !Attacking;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     void FindEnemy()
@@ -153,28 +120,10 @@ public class MCGattack : MonoBehaviour
             }
         }
     }
-
-    void GrapClose(Transform target)
-    {
-        if (Vector3.Distance(transform.position, nearestEnemy.position) > minRange &&
-            Vector3.Distance(transform.position, nearestEnemy.position) < maxRange)
-        {
-            transform.DOMove(TragetOffset(), Duration);
-        }
-    }
-
-    public Vector3 TragetOffset()
-    {
-        Vector3 position;
-        position = nearestEnemy.position;
-        return Vector3.MoveTowards(position, transform.position, Distancedelta);
-    }
     
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(Player.position, OverlapRadius);
     }
 }
-
-    

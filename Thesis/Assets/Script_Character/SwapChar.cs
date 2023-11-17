@@ -56,7 +56,6 @@ public class SwapChar : MonoBehaviour
     {
         _stat = CharacterStatusUI.Instance.CurrentActive(_stats);
         
-        //Debug.Log(_stat.CurrentHealth + _stat.name);
         
 
         if (_stat.CurrentHealth <= 0 && !_isSpawning)
@@ -104,6 +103,7 @@ public class SwapChar : MonoBehaviour
     {
         if (Input.GetKeyDown(anyKey[0]) && _stat.CurrentHealth > 0)
         {
+            _anim.Play("Idle");
             mc_m.SetActive(false);
             mc_g.SetActive(true);
             imageActive.sprite = iconGirl;
@@ -111,6 +111,7 @@ public class SwapChar : MonoBehaviour
         }
         if (Input.GetKeyDown(anyKey[1]) && _stat.CurrentHealth > 0)
         {
+            _anim.Play("Idle");
             mc_g.SetActive(false);
             mc_m.SetActive(true);
             imageActive.sprite = iconBoy;
