@@ -8,6 +8,7 @@ public class ChaseState : StateMachineBehaviour
     private EnemyStat _enemyStat;
     private NavMeshAgent _agent;
     private Transform _playerPos;
+    private TimeManager _timeManager;
     private static readonly int _chaseAnim = Animator.StringToHash("isChase");
     private static readonly int _attackAnim = Animator.StringToHash("isAttack");
     private static readonly int _idleAnim = Animator.StringToHash("isIdle");
@@ -18,6 +19,7 @@ public class ChaseState : StateMachineBehaviour
         _enemyStat = animator.GetComponent<EnemyStat>();
         _agent = animator.GetComponent<NavMeshAgent>();
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        _timeManager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
         _agent.speed = _enemyStat.SpeedAgent;
         animator.SetBool(_chaseAnim, true);
     }
@@ -25,6 +27,11 @@ public class ChaseState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (_timeManager.TimeIsStopped)
+        {
+            return;
+        }
+
         _agent.speed = _enemyStat.SpeedAgent;
         float distance = Vector3.Distance(_playerPos.position, animator.transform.position);
         if (distance <= _enemyStat.AttackRange)
