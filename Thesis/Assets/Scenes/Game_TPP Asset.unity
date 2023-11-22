@@ -8890,10 +8890,10 @@ MonoBehaviour:
   timeBetweenAttack: 0.3
   mc_G: {fileID: 1770305514}
   rotationSpeed: 100
-  Distancedelta: 0
-  minRange: 0
-  maxRange: 0
-  Duration: 0
+  Distancedelta: 1.2
+  minRange: 1
+  maxRange: 3
+  Duration: 0.3
 --- !u!54 &2113686493
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8986,7 +8986,7 @@ MonoBehaviour:
   timeBetweenAttack: 0
   attackValue: 1
   mc_M: {fileID: 1974184505}
-  rotationSpeed: 0
+  rotationSpeed: 100
 --- !u!1 &2119446351
 GameObject:
   m_ObjectHideFlags: 0
