@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
    public static Player Instance;  
-   public int hp;
+   //public int hp;
    public int AtbPoint;
    public int gold;
 
@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
    public GameObject UIq2;
    public GameObject UIq3;
 
-
+  
    public Quest quest;
 
    public void SavePlayer ()
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         gold = data.gold;
 
    }
-
+   
    public void Awake()
    {
       Instance = this;
