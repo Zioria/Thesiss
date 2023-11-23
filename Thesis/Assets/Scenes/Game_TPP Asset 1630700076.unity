@@ -3772,7 +3772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593972461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.2113, y: 0.6742, z: 5.0931}
+  m_LocalPosition: {x: -7.2113, y: 1.19, z: 5.0931}
   m_LocalScale: {x: 0.5893, y: 1.0532, z: 0.6703}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5441,6 +5441,8 @@ MonoBehaviour:
   nearMapDragSpeed: 1
   checkZoom: {fileID: 595975377}
   ZoomBar: {fileID: 595975374}
+  _maxZoom: 0
+  _minZoom: 0
 --- !u!1 &756444190
 GameObject:
   m_ObjectHideFlags: 0
