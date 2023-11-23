@@ -33,7 +33,7 @@ public class WalkingBackState : StateMachineBehaviour
             animator.SetBool(_chaseAnim, true);
             return;
         }
-        if (_agent.remainingDistance <= 0)
+        if (_agent.remainingDistance <= .1f)
         {
             animator.SetBool(_idleAnim, true);
             return;

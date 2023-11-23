@@ -10,6 +10,7 @@ public class AttackState : StateMachineBehaviour
     private EnemyStat _enemyStat;
     private NavMeshAgent _agent;
     private Transform _playerPos;
+    private TimeManager _timeManager;
     private float _timer;
     private static readonly int _attackAnim = Animator.StringToHash("isAttack");
     private static readonly int _idleAnim = Animator.StringToHash("isIdle");
@@ -20,6 +21,7 @@ public class AttackState : StateMachineBehaviour
     {
         _enemyStat = animator.GetComponent<EnemyStat>();
         _agent = animator.GetComponent<NavMeshAgent>();
+        _timeManager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         _timer = 0;
         _agent.SetDestination(_agent.transform.position);
