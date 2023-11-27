@@ -13687,7 +13687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c9e5c275b9c3c4346b460907d330ef94, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1035265737866398500, guid: c9e5c275b9c3c4346b460907d330ef94, type: 3}
       propertyPath: m_RootBone
@@ -17705,6 +17705,10 @@ PrefabInstance:
     - target: {fileID: 4416926081852918491, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416926081852918493, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4771114395735085007, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25151,6 +25155,10 @@ PrefabInstance:
     - target: {fileID: 1627206574495990621, guid: bcb9eaa3f171b824d970d21921873318, type: 3}
       propertyPath: m_Name
       value: male 1 Full@T-Pose(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1627206574495990621, guid: bcb9eaa3f171b824d970d21921873318, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2263919841855688788, guid: bcb9eaa3f171b824d970d21921873318, type: 3}
       propertyPath: m_RootBone
