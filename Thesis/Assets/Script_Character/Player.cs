@@ -1,47 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour
 {
-   public static Player Instance;  
-   public int hp;
+   public static Player Instance;
+
+   //public Text playerName;
+   //public Datamanager datamanager;
+
+   //public int hp;
    public int AtbPoint;
    public int gold;
+   public Text golddisplay;
 
    public GameObject questB;
    public GameObject UIq1;
    public GameObject UIq2;
    public GameObject UIq3;
 
-
    public Quest quest;
+   
+   
 
-   public void SavePlayer ()
+   void Start()
    {
-        Debug.Log("Save completed!");
-        Savesystem.SavePlayer(this);
+       // datamanager.Load();
+        //playerName.text = datamanager.data.name; 
+        //gold = datamanager.data.gold1;
    }
 
-   public void LoadPlayer ()
+   public void SaveFile()
    {
-        Debug.Log("LoadSave completed!");
-        PlayerData data = Savesystem.LoadPlayer();
+       // datamanager.Save();
+   }
 
-        AtbPoint = data.AtbPoint;
-        gold = data.gold;
+   //public void LoadFile()
+  // {
+       // datamanager.Load();
+  // }
 
+
+   public void ChangeName(string text)
+   {
+       //datamanager.data.name = text;
    }
 
    public void Awake()
    {
       Instance = this;
+      //AttributeManager.Instance.UpdateAttributeUI();
    }
 
-   // private void Die()
-   // {
-        //Destroy(this.gameObject);
-  //  }
+   private void Update()
+   {
+        //AttributeManager.Instance.ResetAttributeUI();
+        //AttributeManager.Instance.UpdateAttributeUI();
+        golddisplay.text = gold.ToString();
+        AtbPoint = AttributeManager.Instance.AttributePoint;
+   }
 
    public void GoBattle()
    {
