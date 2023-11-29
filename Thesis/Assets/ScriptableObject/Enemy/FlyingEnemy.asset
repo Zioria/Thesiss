@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6eb390d67a00ca4fb8049e7ea6587d9, type: 3}
-  m_Name: MeleeEnemy
+  m_Name: FlyingEnemy
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  maxAttack: 5
+  maxHealth: 4
+  maxAttack: 3
