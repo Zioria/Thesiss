@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3735a9279cafd5246972f9baad53e490, type: 3}
-  m_Name: SlowMotion
+  m_Script: {fileID: 11500000, guid: b6eb390d67a00ca4fb8049e7ea6587d9, type: 3}
+  m_Name: BossEnemy
   m_EditorClassIdentifier: 
-  abilityName: SlowMotion
-  coolDownTime: 10
-  activeTime: 5
-  iconAbility: {fileID: 21300000, guid: 6f0f611c71562e646bbccbe8bdc18887, type: 3}
+  maxHealth: 50
+  maxAttack: 5

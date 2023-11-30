@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
+    [SerializeField] private StatsEnemyScriptable _enemyStat;
     private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
     private CharacterStats _stat;
-    private StatsEnemyScriptable _enemyStat;
-
-    private void Start()
-    {
-        _enemyStat = GetComponentInParent<EnemyStat>().Stat;
-    }
 
     private void OnTriggerEnter(Collider other)
     {

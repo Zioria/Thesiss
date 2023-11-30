@@ -11,7 +11,7 @@ public class AbilityHolder : MonoBehaviour
     private float _coolDownTime;
     private float _activeTime;
 
-    private AbilityState state = AbilityState.ready;
+    public AbilityState state = AbilityState.ready;
 
     void Update()
     {
