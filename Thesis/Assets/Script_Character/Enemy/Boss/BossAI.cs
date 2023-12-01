@@ -5,12 +5,14 @@ using UnityEngine.AI;
 using DG.Tweening;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class BossAI : MonoBehaviour
+public class BossAI : MonoBehaviour, IDamagable
 {
+    [SerializeField] private StatsEnemyScriptable stat;
     [Header("Agent Setting")]
     [SerializeField] private CheckPlayerEntrance checkPlayer;
     [SerializeField] private float speedAgent;
     [SerializeField] private float timeBetweenAttack;
+    [SerializeField] private float rangeAttack;
 
     [Header("For Jump Attack")]
     [SerializeField] private float jumpHeight;
@@ -21,27 +23,40 @@ public class BossAI : MonoBehaviour
 
     [Header("Skill Setting")]
     [SerializeField] private float cooldownSkill;
-    private bool _isActivating;
+    [SerializeField] private float minDistanceSkill;
+    [SerializeField] private float maxDistanceSkill;
 
     private Transform _player;
     private NavMeshAgent _agent;
     private Animator _anim;
     private bool _isAttacking;
     private bool _isGrounded;
-    private Vector3 _distanceFromPlayer;
+    private float _distanceFromPlayer;
+    private float _healthPoint;
+    [SerializeField] private float _coolDown;
+    public StateSkill _state;
+    private EnemyHealthBar _healthBar;
     private static readonly int _AttackAnim = Animator.StringToHash("Attack");
-    private static readonly int _JAttackAnim = Animator.StringToHash("JumpAttack");
+    private static readonly int _JAttackAnim = Animator.StringToHash("Jump");
+    private static readonly int _DeadAnim = Animator.StringToHash("Death");
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _anim = GetComponent<Animator>();
+        _healthBar = GetComponentInChildren<EnemyHealthBar>();
         _agent.speed = speedAgent;
-        _isAttacking = false;
+
     }
 
-    private void LateUpdate()
+    private void Start()
+    {
+        _healthPoint = stat.MaxHealth;
+        _coolDown = cooldownSkill;
+    }
+
+    private void Update()
     {
         //if (!checkPlayer.IsPlayerEnter)
         //{
@@ -51,21 +66,36 @@ public class BossAI : MonoBehaviour
         {
             return;
         }
-        _isGrounded = Physics.CheckBox(groundCheckPosition.position, boxSize, Quaternion.identity, whatisGround);
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            JumpAttack();
-        }
-        _agent.SetDestination(_player.position);
-        _anim.ResetTrigger(_AttackAnim);
 
-        Attack();
+        switch (_state)
+        {
+            case StateSkill.Ready:
+                CheckDistance();
+                if (_distanceFromPlayer < minDistanceSkill || _distanceFromPlayer > maxDistanceSkill)
+                {
+                    return;
+                }
+                _anim.SetTrigger(_JAttackAnim);
+                break;
+            case StateSkill.Cooldown:
+                if (_coolDown > 0)
+                {
+                    _coolDown -= Time.deltaTime;
+                    _anim.ResetTrigger(_JAttackAnim);
+                    _agent.SetDestination(_player.position);
+                    Attack();
+                    return;
+                }
+                _state = StateSkill.Ready;
+                _coolDown = cooldownSkill;
+                break;
+        }
     }
 
     private void Attack()
     {
-        float distance = Vector3.Distance(transform.position, _player.position);
-        if (distance <= 1)
+        CheckDistance();
+        if (_distanceFromPlayer <= rangeAttack)
         {
             _agent.SetDestination(transform.position);
             _anim.SetTrigger(_AttackAnim);
@@ -79,20 +109,54 @@ public class BossAI : MonoBehaviour
         _isAttacking = !_isAttacking;
     }
 
+    public void ResetAttackTrigger()
+    {
+        _anim.ResetTrigger(_AttackAnim);
+    }
+
     public void JumpAttack()
     {
-
+        _isGrounded = Physics.CheckBox(groundCheckPosition.position, boxSize, Quaternion.identity, whatisGround);
         if (_isGrounded)
         {
             transform.DOJump(_player.position, jumpHeight, 1, jumpDuration);
-
             transform.LookAt(_player.position);
+            _state = StateSkill.Cooldown;
+        }
+    }
+    
+    private float CheckDistance()
+    {
+        return _distanceFromPlayer = Vector3.Distance(transform.position, _player.position);
+    }
+
+    private void TakeDamage(float damage)
+    {
+        _healthPoint -= damage;
+        _healthBar.UpdateHealthBar(_healthPoint, stat.MaxHealth);
+
+        if (_healthPoint <= 0)
+        {
+            _healthPoint = 0;
+            _anim.SetTrigger(_DeadAnim);
+            Destroy(gameObject, 4f);
         }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawCube(groundCheckPosition.position, boxSize);
+        Gizmos.DrawWireCube(groundCheckPosition.position, boxSize);
     }
+
+    public void Damage(float damageAmount)
+    {
+        TakeDamage(damageAmount);
+    }
+}
+
+public enum StateSkill
+{
+    Ready,
+    Cooldown
 }

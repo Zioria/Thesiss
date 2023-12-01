@@ -112,9 +112,13 @@ public class MCGattack : MonoBehaviour
         {
             if (nearestEnemy)
             {
-                if (enemy.TryGetComponent(out EnemyStat enemyStat))
+                if (enemy.TryGetComponent(out IDamagable enemyStat))
                 {
-                    enemyStat.TakeDamage(attackValue);
+                    IDamagable damagable = enemy.GetComponent<IDamagable>();
+                    if (damagable != null)
+                    {
+                        damagable.Damage(attackValue);
+                    }
                 }
             }
         }

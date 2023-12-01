@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyStat : MonoBehaviour
+public class EnemyStat : MonoBehaviour, IDamagable
 {
     [SerializeField] private StatsEnemyScriptable stat;
     [SerializeField] private float attackRange;
@@ -21,7 +21,6 @@ public class EnemyStat : MonoBehaviour
     private EnemyHealthBar _healthBar;
     private bool _playerInrange;
 
-    public bool isEnemyDie;
     public bool isPatrol;
     public Vector3 Setposition;
     public StatsEnemyScriptable Stat => stat;
@@ -42,28 +41,11 @@ public class EnemyStat : MonoBehaviour
     private void Start()
     {
         Initialize();
-        _healthBar.UpdateHealthBar(_healthPoint, stat.MaxHealth);
-    }
-
-    private void Update()
-    {
-        HealthBarController();
     }
 
     private void Initialize()
     {
         _healthPoint = stat.MaxHealth;
-    }
-
-    private void HealthBarController()
-    {
-        _playerInrange = Physics.CheckSphere(transform.position, ChaseRange, playerMask);
-        if (!_playerInrange)
-        {
-            _healthBar.gameObject.SetActive(false);
-            return;
-        }
-        _healthBar.gameObject.SetActive(true);
     }
 
     public void TakeDamage(float damage)
@@ -74,7 +56,6 @@ public class EnemyStat : MonoBehaviour
         if (_healthPoint <= 0)
         {
             _healthBar.gameObject.SetActive(false);
-            isEnemyDie = true;
             _enemy.gameObject.tag = "Die";
             _anim.SetTrigger(_deathAnim);
             Die();
@@ -83,7 +64,6 @@ public class EnemyStat : MonoBehaviour
             return;
         }
     }
-
     
     private void Die()
     {
@@ -118,5 +98,10 @@ public class EnemyStat : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, chaseRange);
+    }
+
+    public void Damage(float damageAmount)
+    {
+        TakeDamage(damageAmount);
     }
 }

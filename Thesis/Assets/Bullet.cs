@@ -25,7 +25,11 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Enermy"))
         {
-            other.GetComponent<EnemyStat>().TakeDamage(curAttack);
+            IDamagable damagable = other.GetComponent<IDamagable>();
+            if (damagable != null)
+            {
+                damagable.Damage(curAttack);
+            }
         }
 
         if (other.CompareTag("Player"))
