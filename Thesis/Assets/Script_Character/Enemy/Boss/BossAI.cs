@@ -4,30 +4,57 @@ using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
 
-public class BossAI : MonoBehaviour
+[RequireComponent(typeof(NavMeshAgent))]
+public class BossAI : MonoBehaviour, IDamagable
 {
+    [SerializeField] private StatsEnemyScriptable stat;
+    [Header("Agent Setting")]
     [SerializeField] private CheckPlayerEntrance checkPlayer;
     [SerializeField] private float speedAgent;
     [SerializeField] private float timeBetweenAttack;
+    [SerializeField] private float rangeAttack;
 
-    [Header("Jump Attack")]
-    [SerializeField] private float jumpPower;
-    [SerializeField] private float jDuration;
+    [Header("For Jump Attack")]
+    [SerializeField] private float jumpHeight;
+    [SerializeField] private float jumpDuration;
+    [SerializeField] private Transform groundCheckPosition;
+    [SerializeField] private LayerMask whatisGround;
+    [SerializeField] private Vector3 boxSize;
+
+    [Header("Skill Setting")]
+    [SerializeField] private float cooldownSkill;
+    [SerializeField] private float minDistanceSkill;
+    [SerializeField] private float maxDistanceSkill;
 
     private Transform _player;
     private NavMeshAgent _agent;
     private Animator _anim;
-    public bool _isAttacking;
+    private bool _isAttacking;
+    private bool _isGrounded;
+    private float _distanceFromPlayer;
+    private float _healthPoint;
+    [SerializeField] private float _coolDown;
+    public StateSkill _state;
+    private EnemyHealthBar _healthBar;
     private static readonly int _AttackAnim = Animator.StringToHash("Attack");
-    private static readonly int _JAttackAnim = Animator.StringToHash("JumpAttack");
+    private static readonly int _JAttackAnim = Animator.StringToHash("Jump");
+    private static readonly int _DeadAnim = Animator.StringToHash("Death");
+    private static readonly int _ChaseAnim = Animator.StringToHash("isChase");
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _anim = GetComponent<Animator>();
+        _healthBar = GetComponentInChildren<EnemyHealthBar>();
         _agent.speed = speedAgent;
-        _isAttacking = false;
+
+    }
+
+    private void Start()
+    {
+        _healthPoint = stat.MaxHealth;
+        _coolDown = cooldownSkill;
     }
 
     private void Update()
@@ -41,13 +68,40 @@ public class BossAI : MonoBehaviour
             return;
         }
 
-        _agent.SetDestination(_player.position);
-        _anim.SetBool("IsPlayerEnter", true);
-        _anim.ResetTrigger(_AttackAnim);
-
-        float distance = Vector3.Distance(transform.position, _player.position);
-        if (distance <= 1)
+        switch (_state)
         {
+            case StateSkill.Ready:
+                CheckDistance();
+                if (_distanceFromPlayer < minDistanceSkill || _distanceFromPlayer > maxDistanceSkill)
+                {
+                    return;
+                }
+                _anim.SetBool(_ChaseAnim, false);
+                _anim.SetTrigger(_JAttackAnim);
+                break;
+            case StateSkill.Cooldown:
+                CheckDistance();
+                if (_coolDown > 0)
+                {
+                    _coolDown -= Time.deltaTime;
+                    _anim.ResetTrigger(_JAttackAnim);
+                    _agent.SetDestination(_player.position);
+                    _anim.SetBool(_ChaseAnim, true);
+                    Attack();
+                    return;
+                }
+                _state = StateSkill.Ready;
+                _coolDown = cooldownSkill;
+                break;
+        }
+    }
+
+    private void Attack()
+    {
+        CheckDistance();
+        if (_distanceFromPlayer <= rangeAttack)
+        {
+            _anim.SetBool(_ChaseAnim, false);
             _agent.SetDestination(transform.position);
             _anim.SetTrigger(_AttackAnim);
             _isAttacking = true;
@@ -60,9 +114,57 @@ public class BossAI : MonoBehaviour
         _isAttacking = !_isAttacking;
     }
 
+    public void ResetAttackTrigger()
+    {
+        _anim.ResetTrigger(_AttackAnim);
+    }
+
     public void JumpAttack()
     {
-        Vector3 lPlayerPosition = _player.position;
-        transform.DOJump(lPlayerPosition, jumpPower, 1, jDuration);
+        _isGrounded = Physics.CheckBox(groundCheckPosition.position, boxSize, Quaternion.identity, whatisGround);
+        if (_isGrounded)
+        {
+            transform.DOJump(_player.position, jumpHeight, 1, jumpDuration);
+            transform.LookAt(_player.position);
+            _state = StateSkill.Cooldown;
+        }
     }
+    
+    private float CheckDistance()
+    {
+        return _distanceFromPlayer = Vector3.Distance(transform.position, _player.position);
+    }
+
+    private void TakeDamage(float damage)
+    {
+        _healthPoint -= damage;
+        _healthBar.UpdateHealthBar(_healthPoint, stat.MaxHealth);
+
+        if (_healthPoint <= 0)
+        {
+            _agent.SetDestination(transform.position);
+            _state = StateSkill.Dead;
+            _healthPoint = 0;
+            _anim.SetTrigger(_DeadAnim);
+            Destroy(gameObject, 4f);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(groundCheckPosition.position, boxSize);
+    }
+
+    public void Damage(float damageAmount)
+    {
+        TakeDamage(damageAmount);
+    }
+}
+
+public enum StateSkill
+{
+    Ready,
+    Cooldown,
+    Dead
 }

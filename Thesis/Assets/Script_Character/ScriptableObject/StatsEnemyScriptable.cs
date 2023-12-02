@@ -7,6 +7,8 @@ public class StatsEnemyScriptable : ScriptableObject
 {
     [Header("Stat Enemy Setting")]
     [SerializeField] private float maxHealth;
+    [SerializeField] private float maxAttack;
 
     public float MaxHealth => maxHealth;
+    public float MaxAttack => maxAttack;
 }

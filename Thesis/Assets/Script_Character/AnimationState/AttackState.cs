@@ -31,6 +31,11 @@ public class AttackState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (_timeManager.TimeIsStopped)
+        {
+            return;
+        }
+
         _agent.SetDestination(animator.transform.position);
         animator.transform.LookAt(_playerPos);
         var rot = animator.transform.eulerAngles;

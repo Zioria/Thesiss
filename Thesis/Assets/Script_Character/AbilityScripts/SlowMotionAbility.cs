@@ -5,14 +5,24 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SlowMotionAbility : AbilityScriptable
 {
+    private GameObject _tempObject;
 
-    public override void Activate(TimeManager time)
+    public override void Activate()
     {
-        time.StopTime();
+
+        if (_tempObject == null)
+        {
+            _tempObject = GameObject.FindGameObjectWithTag("TimeManager");
+        }
+        _tempObject.GetComponent<TimeManager>().StopTime();
     }
 
-    public override void BeginCooldown(TimeManager time)
+    public override void BeginCooldown()
     {
-        time.ContinueTime();
+        if (_tempObject == null)
+        {
+            _tempObject = GameObject.FindGameObjectWithTag("TimeManager");
+        }
+        _tempObject.GetComponent<TimeManager>().ContinueTime();
     }
 }

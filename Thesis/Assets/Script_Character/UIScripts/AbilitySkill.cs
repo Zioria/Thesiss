@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class AbilitySkill : MonoBehaviour
 {
     [SerializeField] private AbilityScriptable ability;
+    [Header("UI Setting")]
     [SerializeField] private Button unlockSkillBtn;
     [SerializeField] private CanvasGroup skillUI;
+    [SerializeField] private Image skillIcon;
 
     private AbilityHolder _abilityHolder;
 
     public AbilityScriptable Ability => ability;
-    public int ID;
 
     private void Awake()
     {
@@ -24,17 +25,8 @@ public class AbilitySkill : MonoBehaviour
         _abilityHolder = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilityHolder>();
         _abilityHolder.ability = this.ability;
 
+        skillIcon.sprite = ability.IconAbility;
         skillUI.alpha = 1;
         skillUI.interactable = true;
-    }
-
-    public int GetID()
-    {
-        return ID;
-    }
-
-    public AbilityScriptable AbilitySelect(AbilityScriptable select)
-    {
-        return select;
     }
 }

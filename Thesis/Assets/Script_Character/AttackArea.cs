@@ -1,7 +1,5 @@
-
 using System;
 using System.Collections.Generic;
-using Script_Character.Interface;
 using UnityEngine;
 
 public class AttackArea : MonoBehaviour

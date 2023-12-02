@@ -59,6 +59,7 @@ public class Attribute : MonoBehaviour
         if (ID == 0)
         {
             stat.MaxHealth--;
+            stat.CurrentHealth--;
             stat.Damage--;
         }
         else if (ID == 1)
@@ -70,6 +71,7 @@ public class Attribute : MonoBehaviour
         {
             stat.SkillDamage--;
             stat.CapEnergy--;
+            stat.CurrentCapEnergy--;
         }
     }
 
@@ -93,6 +95,7 @@ public class Attribute : MonoBehaviour
         if (ID == 0)
         {
             stat.MaxHealth++;
+            stat.CurrentHealth++;
             stat.Damage++;
         }
         else if (ID == 1)
@@ -104,6 +107,7 @@ public class Attribute : MonoBehaviour
         {
             stat.SkillDamage++;
             stat.CapEnergy++;
+            stat.CurrentCapEnergy++;
         }
     }
 
