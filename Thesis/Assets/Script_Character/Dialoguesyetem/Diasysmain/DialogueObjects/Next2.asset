@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - ToT XD X_X
-  responses:
-  - responseText: Next
-    dialogueObject: {fileID: 11400000, guid: 1c1b8b063645a0b4996bb22f72131169, type: 2}
+  - ToT XD X_X
+  - ToT XD X_X
+  responses: []

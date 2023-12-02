@@ -9,6 +9,8 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
 
+    //public GameObject unlocknextstage;
+
     public bool IsOpen { get; private set; }
     
     private ResponseHandler responseHandler;
@@ -80,5 +82,6 @@ public class DialogueUI : MonoBehaviour
         IsOpen = false;
         dialogueBox.SetActive(false);
         textLabel.text = string.Empty;
+        //unlocknextstage.SetActive(true);
     }
 }

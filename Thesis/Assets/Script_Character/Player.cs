@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
    public static Player Instance;
 
+   
    //public Text playerName;
    //public Datamanager datamanager;
 
@@ -89,6 +90,6 @@ public class Player : MonoBehaviour
         }
    }  
 
-
+   
 
 }

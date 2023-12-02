@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - UwU T_T
-  responses:
-  - responseText: Next
-    dialogueObject: {fileID: 11400000, guid: 75b1ba1a8536a6d4f9c863f1a3d34662, type: 2}
+  - UwU T_T
+  - UwU T_T
+  responses: []
