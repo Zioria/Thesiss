@@ -39,6 +39,7 @@ public class BossAI : MonoBehaviour, IDamagable
     private static readonly int _AttackAnim = Animator.StringToHash("Attack");
     private static readonly int _JAttackAnim = Animator.StringToHash("Jump");
     private static readonly int _DeadAnim = Animator.StringToHash("Death");
+    private static readonly int _ChaseAnim = Animator.StringToHash("isChase");
 
     private void Awake()
     {
@@ -58,10 +59,10 @@ public class BossAI : MonoBehaviour, IDamagable
 
     private void Update()
     {
-        //if (!checkPlayer.IsPlayerEnter)
-        //{
-        //    return;
-        //}
+        if (!checkPlayer.IsPlayerEnter)
+        {
+            return;
+        }
         if (_isAttacking)
         {
             return;
@@ -75,14 +76,17 @@ public class BossAI : MonoBehaviour, IDamagable
                 {
                     return;
                 }
+                _anim.SetBool(_ChaseAnim, false);
                 _anim.SetTrigger(_JAttackAnim);
                 break;
             case StateSkill.Cooldown:
+                CheckDistance();
                 if (_coolDown > 0)
                 {
                     _coolDown -= Time.deltaTime;
                     _anim.ResetTrigger(_JAttackAnim);
                     _agent.SetDestination(_player.position);
+                    _anim.SetBool(_ChaseAnim, true);
                     Attack();
                     return;
                 }
@@ -97,6 +101,7 @@ public class BossAI : MonoBehaviour, IDamagable
         CheckDistance();
         if (_distanceFromPlayer <= rangeAttack)
         {
+            _anim.SetBool(_ChaseAnim, false);
             _agent.SetDestination(transform.position);
             _anim.SetTrigger(_AttackAnim);
             _isAttacking = true;
@@ -137,6 +142,8 @@ public class BossAI : MonoBehaviour, IDamagable
 
         if (_healthPoint <= 0)
         {
+            _agent.SetDestination(transform.position);
+            _state = StateSkill.Dead;
             _healthPoint = 0;
             _anim.SetTrigger(_DeadAnim);
             Destroy(gameObject, 4f);
@@ -158,5 +165,6 @@ public class BossAI : MonoBehaviour, IDamagable
 public enum StateSkill
 {
     Ready,
-    Cooldown
+    Cooldown,
+    Dead
 }

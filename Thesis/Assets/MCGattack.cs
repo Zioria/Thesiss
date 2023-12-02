@@ -118,6 +118,7 @@ public class MCGattack : MonoBehaviour
                     if (damagable != null)
                     {
                         damagable.Damage(attackValue);
+                        _stat.GetEnergy(1);
                     }
                 }
             }

@@ -6,8 +6,9 @@ public class AbilityHolder : MonoBehaviour
 {
     public AbilityScriptable ability = null;
     [SerializeField] private KeyCode keyCode;
-    [SerializeField] private TimeManager time;
 
+    private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
+    private CharacterStats _stat;
     private float _coolDownTime;
     private float _activeTime;
 
@@ -24,7 +25,13 @@ public class AbilityHolder : MonoBehaviour
             case AbilityState.ready:
                 if (Input.GetKeyDown(keyCode))
                 {
-                    ability.Activate(time);
+                    _stat = CharacterStatusUI.Instance.CurrentActive(_stats);
+                    if (_stat.CurrentCapEnergy < ability.EnergyUse)
+                    {
+                        return;
+                    }
+                    _stat.EnergyUse((int)ability.EnergyUse);
+                    ability.Activate();
                     state = AbilityState.active;
                     _activeTime = ability.ActiveTime;
                 }
@@ -35,7 +42,7 @@ public class AbilityHolder : MonoBehaviour
                     _activeTime -= Time.deltaTime;
                     return;
                 }
-                ability.BeginCooldown(time);
+                ability.BeginCooldown();
                 state = AbilityState.cooldown;
                 _coolDownTime = ability.CoolDownTime;
                 break;

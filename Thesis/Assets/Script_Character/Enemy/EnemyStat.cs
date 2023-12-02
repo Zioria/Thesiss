@@ -72,19 +72,9 @@ public class EnemyStat : MonoBehaviour, IDamagable
         _anim.GetComponent<NavMeshAgent>().SetDestination(gameObject.transform.position);
     }
 
-   private void Disappear()
-   {
-       Destroy(this.gameObject ,3);
-   }
-
-    public void StartDealDamage()
+    private void Disappear()
     {
-        GetComponentInChildren<WeaponDamageMarker>().StartDealDamage();
-    }
-
-    public void EndDealDamage()
-    {
-        GetComponentInChildren<WeaponDamageMarker>().EndDealDamage();
+        Destroy(this.gameObject, 3);
     }
 
     public void UpdateSpeedAgent()

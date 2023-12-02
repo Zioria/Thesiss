@@ -15,7 +15,7 @@ public class CharacterStats : MonoBehaviour
 
     public int CurrentHealth;
     public int CurrentArmor { get; private set; }
-    public int CurrentCapEnergy { get; private set; }
+    public int CurrentCapEnergy;
 
     public int MaxHealth;
     public int Damage;
@@ -43,11 +43,22 @@ public class CharacterStats : MonoBehaviour
         _isRunOneTime = true;
     }
 
-    private void Update()
+    public void EnergyUse(int energy)
     {
-        //Debug.Log(_isRunOneTime);
-       
-        
+        CurrentCapEnergy -= energy;
+        if (CurrentCapEnergy <= 0)
+        {
+            CurrentCapEnergy = 0;
+        }
+    }
+
+    public void GetEnergy(int energy)
+    {
+        CurrentCapEnergy += energy;
+        if (CurrentCapEnergy >= CapEnergy)
+        {
+            CurrentCapEnergy = CapEnergy;
+        }
     }
 
     public void TakeDamage(float damage)

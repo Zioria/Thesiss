@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillTreeManager : MonoBehaviour
 {
     public static SkillTreeManager Instance;
 
     [SerializeField] private Transform skillTreeHolderUI;
+    [SerializeField] private Button skillOneBtn;
+    [SerializeField] private Button skillTwoBtn;
     public List<AbilitySkill> abilities;
 
     private void Awake()
@@ -21,9 +24,20 @@ public class SkillTreeManager : MonoBehaviour
             abilities.Add(ability);
         }
 
-        for (int i = 0; i < abilities.Count; i++)
+        skillOneBtn.interactable = false;
+        skillTwoBtn.interactable = false;
+    }
+
+    private void Update()
+    {
+        if (AttributeManager.Instance.AttributeLevels[0] == 20 && AttributeManager.Instance.AttributeLevels[1] == 20 && AttributeManager.Instance.AttributeLevels[2] == 20)
         {
-            abilities[i].ID = i;
+            skillOneBtn.interactable = true;
+        }
+
+        if (AttributeManager.Instance.AttributeLevels[0] == 15 && AttributeManager.Instance.AttributeLevels[2] == 5)
+        {
+            skillTwoBtn.interactable = true;
         }
     }
 }

@@ -9,15 +9,17 @@ public class AbilityUI : MonoBehaviour
 
     [Header("AbilityOne")]
     [SerializeField] private Image abilityImageOne;
-    [SerializeField] private AbilityScriptable abilityStat;
+
+    private AbilityScriptable abilityStat;
 
     private void Update()
     {
-        AbilityOne();
+        Ability();
     }
 
-    private void AbilityOne()
+    private void Ability()
     {
+        abilityStat = holder.ability;
         switch (holder.state)
         {
             case AbilityState.ready:

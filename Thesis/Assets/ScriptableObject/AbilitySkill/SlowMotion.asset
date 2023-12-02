@@ -15,4 +15,5 @@ MonoBehaviour:
   abilityName: SlowMotion
   coolDownTime: 10
   activeTime: 5
+  energyUse: 10
   iconAbility: {fileID: 21300000, guid: 6f0f611c71562e646bbccbe8bdc18887, type: 3}

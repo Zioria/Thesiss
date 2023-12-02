@@ -19,4 +19,13 @@ public class CheckPlayerEntrance : MonoBehaviour
         }
         IsPlayerEnter = true;
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
+        IsPlayerEnter = false;
+    }
 }
