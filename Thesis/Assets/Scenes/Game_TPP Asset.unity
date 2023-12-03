@@ -1401,7 +1401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3913b71328d78144bfc3d504674be14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 58e7850397acd3045894f7f4af5f425f, type: 2}
+  dialogueObject: {fileID: 11400000, guid: 02aa3073994d43d489abc033cee393a0, type: 2}
   events: []
 --- !u!114 &120443418
 MonoBehaviour:
@@ -1415,7 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74386572a96d14d49b56989700a1cdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 58e7850397acd3045894f7f4af5f425f, type: 2}
+  dialogueObject: {fileID: 11400000, guid: 02aa3073994d43d489abc033cee393a0, type: 2}
   unlocknextstage: {fileID: 191962843}
 --- !u!65 &120443419
 BoxCollider:
@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3913b71328d78144bfc3d504674be14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 58e7850397acd3045894f7f4af5f425f, type: 2}
+  dialogueObject: {fileID: 11400000, guid: 1c1b8b063645a0b4996bb22f72131169, type: 2}
   events: []
 --- !u!114 &191962845
 MonoBehaviour:
@@ -2108,7 +2108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74386572a96d14d49b56989700a1cdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 58e7850397acd3045894f7f4af5f425f, type: 2}
+  dialogueObject: {fileID: 11400000, guid: 1c1b8b063645a0b4996bb22f72131169, type: 2}
   unlocknextstage: {fileID: 1737148051}
 --- !u!65 &191962846
 BoxCollider:
@@ -7335,8 +7335,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -16810,7 +16810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3913b71328d78144bfc3d504674be14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 58e7850397acd3045894f7f4af5f425f, type: 2}
+  dialogueObject: {fileID: 11400000, guid: 4b49e4241e469d6408eed85175905948, type: 2}
   events: []
 --- !u!114 &1670930886
 MonoBehaviour:
@@ -16824,7 +16824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74386572a96d14d49b56989700a1cdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 58e7850397acd3045894f7f4af5f425f, type: 2}
+  dialogueObject: {fileID: 11400000, guid: 4b49e4241e469d6408eed85175905948, type: 2}
   unlocknextstage: {fileID: 120443416}
 --- !u!65 &1670930887
 BoxCollider:
@@ -17614,7 +17614,7 @@ GameObject:
   - component: {fileID: 1747823214}
   - component: {fileID: 1747823213}
   m_Layer: 0
-  m_Name: Npc Open gate 4.1
+  m_Name: Npc Close gate 4.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17632,7 +17632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3913b71328d78144bfc3d504674be14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 58e7850397acd3045894f7f4af5f425f, type: 2}
+  dialogueObject: {fileID: 11400000, guid: 35c9b8e8fceeae44fafb509581809444, type: 2}
   events: []
 --- !u!114 &1747823214
 MonoBehaviour:
@@ -17646,7 +17646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74386572a96d14d49b56989700a1cdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 58e7850397acd3045894f7f4af5f425f, type: 2}
+  dialogueObject: {fileID: 11400000, guid: 35c9b8e8fceeae44fafb509581809444, type: 2}
   unlocknextstage: {fileID: 2045160816}
 --- !u!65 &1747823215
 BoxCollider:
@@ -17952,7 +17952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3913b71328d78144bfc3d504674be14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 58e7850397acd3045894f7f4af5f425f, type: 2}
+  dialogueObject: {fileID: 11400000, guid: b6c58119acc4f394bbfa0bfe9b2cc44b, type: 2}
   events: []
 --- !u!114 &1761073811
 MonoBehaviour:
@@ -17966,7 +17966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74386572a96d14d49b56989700a1cdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: 58e7850397acd3045894f7f4af5f425f, type: 2}
+  dialogueObject: {fileID: 11400000, guid: b6c58119acc4f394bbfa0bfe9b2cc44b, type: 2}
   unlocknextstage: {fileID: 1670930884}
 --- !u!65 &1761073812
 BoxCollider:
@@ -24254,7 +24254,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2396072989433679212, guid: a6d1dcb83a33f10429e8c6febccfd8bb, type: 3}
+    - {fileID: 8738860794320732886, guid: a6d1dcb83a33f10429e8c6febccfd8bb, type: 3}
+    - {fileID: 4143979219931135249, guid: a6d1dcb83a33f10429e8c6febccfd8bb, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8593155684536031125, guid: a6d1dcb83a33f10429e8c6febccfd8bb, type: 3}
