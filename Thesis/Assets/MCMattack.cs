@@ -22,6 +22,8 @@ public class MCMattack : MonoBehaviour
     private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
     private CharacterStats _stat;
 
+    //BBagModle
+    public GameObject BagModel;
 
     //public Transform attackPoint;
     public Transform BulletSpawnPoint;
@@ -97,6 +99,7 @@ public class MCMattack : MonoBehaviour
     void Animattack()
     {
 
+        
         Debug.Log("Attackk!!!");
         animator.SetTrigger("RangeAttack");
         Attacking = !Attacking;
@@ -112,6 +115,7 @@ public class MCMattack : MonoBehaviour
     {
         //RangeAttack
         var bullet = Instantiate(Bulletprefab, BulletSpawnPoint.position, BulletSpawnPoint.rotation);
+        bullet.transform.Rotate(0,90,0);
         bullet.GetComponent<Rigidbody>().velocity = BulletSpawnPoint.forward * BulletSpeeds;
         
         Invoke(nameof(ResetAttack), timeBetweenAttack);
@@ -134,7 +138,15 @@ public class MCMattack : MonoBehaviour
         }
     }
 
-    
+    public void HideBag()
+    {
+        BagModel.SetActive(false);
+    }
+
+    public void ShowBag()
+    {
+        BagModel.SetActive(true);
+    }
 
     
     

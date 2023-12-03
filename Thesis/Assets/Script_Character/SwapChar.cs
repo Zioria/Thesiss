@@ -12,6 +12,8 @@ public class SwapChar : MonoBehaviour
     public GameObject mc_g;
     public GameObject mc_m;
 
+    [Header("Gadjet")] public GameObject BagModel;
+
     [Header("CheckControl")] 
     public int addnumber_g = 1;
     public int addnumber_m = 2;
@@ -44,6 +46,7 @@ public class SwapChar : MonoBehaviour
         G_isAlive = true;
         mc_g.SetActive(true);
         mc_m.SetActive(false);
+        BagModel.SetActive(false);
         imageActive.sprite = iconGirl;
         imageInActive.sprite = iconBoy;
 
@@ -64,10 +67,12 @@ public class SwapChar : MonoBehaviour
             if (mc_g.activeInHierarchy)
             {
                 mc_g.SetActive(false);
+                BagModel.SetActive(false);
                 G_isAlive = false;
                 if (M_isAlive)
                 {
                     mc_m.SetActive(true);
+                    BagModel.SetActive(true);
                     imageActive.sprite = iconBoy;
                     imageInActive.sprite = iconGirl;
                     _GisDeadFirst += 1;
@@ -76,10 +81,12 @@ public class SwapChar : MonoBehaviour
                 return;
             }
             mc_m.SetActive(false);
+            BagModel.SetActive(false);
             M_isAlive = false;
             if (G_isAlive)
             {
                 mc_g.SetActive(true);
+                BagModel.SetActive(true);
                 imageActive.sprite = iconGirl;
                 imageInActive.sprite = iconBoy;
             }
@@ -105,6 +112,7 @@ public class SwapChar : MonoBehaviour
         {
             _anim.Play("Idle");
             mc_m.SetActive(false);
+            BagModel.SetActive(false);
             mc_g.SetActive(true);
             imageActive.sprite = iconGirl;
             imageInActive.sprite = iconBoy;
@@ -114,6 +122,7 @@ public class SwapChar : MonoBehaviour
             _anim.Play("Idle");
             mc_g.SetActive(false);
             mc_m.SetActive(true);
+            BagModel.SetActive(true);
             imageActive.sprite = iconBoy;
             imageInActive.sprite = iconGirl;
         }
@@ -156,6 +165,7 @@ public class SwapChar : MonoBehaviour
         }
         M_isAlive = true;
         mc_m.SetActive(true);
+        BagModel.SetActive(true);
         G_isAlive = true;
         imageActive.sprite = iconBoy;
         imageInActive.sprite = iconGirl;

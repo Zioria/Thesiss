@@ -1,21 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class MapHolderUI : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private CursorControl uiCursorControl;
-
-    private void Update()
+    public bool IsOpen;
+    
+    
+    public void OnMap(InputValue value)
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (IsOpen)
         {
-            canvasGroup.alpha = 1;
-            canvasGroup.blocksRaycasts = true;
-            uiCursorControl.OpenMenu();
+            IsOpen = false;
+            canvasGroup.alpha = 0;
+            canvasGroup.blocksRaycasts = false;
+            uiCursorControl.CloseMenu();
+            return;
+            
         }
+        
+        canvasGroup.alpha = 1;
+        canvasGroup.blocksRaycasts = true;
+        uiCursorControl.OpenMenu();
+
+        IsOpen = true;
     }
 
+    public void CheckOpen()
+    {
+        IsOpen = false;
+    }
+    
 }
