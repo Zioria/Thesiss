@@ -148,6 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d2c38574e87f9c4dbf11ccc3e9287bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HomingBBullet: {fileID: -7354082127614777540}
+  closetTarget: Infinity
+  distance: 0
+  speed: 100
+  rotateSpeed: 0
 --- !u!114 &-5958819810123614008
 MonoBehaviour:
   m_ObjectHideFlags: 0

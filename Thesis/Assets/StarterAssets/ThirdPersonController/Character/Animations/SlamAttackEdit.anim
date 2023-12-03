@@ -60394,7 +60394,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.4
+        time: 1.3666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -60403,7 +60403,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 2.3333333
+        time: 2.2666667
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -60433,7 +60433,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 2.3333333
+        time: 2.2666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -60446,9 +60446,9 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_Enabled
     path: 
-    classID: 143
-    script: {fileID: 0}
-    flags: 0
+    classID: 114
+    script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+    flags: 16
   m_PPtrCurves: []
   m_SampleRate: 30
   m_WrapMode: 0
@@ -60469,9 +60469,9 @@ AnimationClip:
     - serializedVersion: 2
       path: 0
       attribute: 3305885265
-      script: {fileID: 0}
-      typeID: 143
-      customType: 0
+      script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+      typeID: 114
+      customType: 24
       isPPtrCurve: 0
       isIntCurve: 0
       isSerializeReferenceCurve: 0
@@ -122170,7 +122170,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 1.4
+        time: 1.3666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -122179,7 +122179,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 2.3333333
+        time: 2.2666667
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -122209,7 +122209,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 2.3333333
+        time: 2.2666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -122222,9 +122222,9 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_Enabled
     path: 
-    classID: 143
-    script: {fileID: 0}
-    flags: 0
+    classID: 114
+    script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+    flags: 16
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0

@@ -51,6 +51,7 @@ public class MCMattack : MonoBehaviour
 
         Instance = this;
 
+        
         _enemystat = GetComponent<EnemyStat>();
         _controller = GetComponent<ThirdPersonController>();
     }
@@ -67,6 +68,7 @@ public class MCMattack : MonoBehaviour
 
     void Update()
     {
+        
         _stat = CharacterStatusUI.Instance.CurrentActive(_stats);
         attackValue = _stat.Damage;
 
@@ -111,6 +113,7 @@ public class MCMattack : MonoBehaviour
         //RangeAttack
         var bullet = Instantiate(Bulletprefab, BulletSpawnPoint.position, BulletSpawnPoint.rotation);
         bullet.GetComponent<Rigidbody>().velocity = BulletSpawnPoint.forward * BulletSpeeds;
+        
         Invoke(nameof(ResetAttack), timeBetweenAttack);
 
     }
