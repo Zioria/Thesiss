@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
@@ -20,26 +21,26 @@ public class MCMattack : MonoBehaviour
     public Transform nearestEnemy;
     private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
     private CharacterStats _stat;
-    
+
 
     //public Transform attackPoint;
     public Transform BulletSpawnPoint;
     public GameObject Bulletprefab;
     public float BulletSpeeds;
+    public float angleChaningSpeed;
     public float OverlapRadius = 10.0f;
     public float minimumDistance;
     public LayerMask enemyLayers;
     public bool Attacking;
+    public float InvokeBbullet;
 
-     
     [SerializeField] private float timeBetweenAttack;
 
-    [Header("Find Enemy")] 
-    public float attackValue;
+    [Header("Find Enemy")] public float attackValue;
     public GameObject mc_M;
     public float rotationSpeed;
     private EnemyStat _enemystat;
-    
+
 
     private void Awake()
     {
@@ -49,17 +50,18 @@ public class MCMattack : MonoBehaviour
         }
 
         Instance = this;
-        
+
         _enemystat = GetComponent<EnemyStat>();
         _controller = GetComponent<ThirdPersonController>();
     }
-    
+
 
     public void OnAttack(InputValue value)
     {
         if (_controller.Grounded && !Attacking && mc_M.activeInHierarchy)
         {
-            attack();
+            Animattack();
+            Invoke("Onattack", InvokeBbullet);
         }
     }
 
@@ -67,12 +69,13 @@ public class MCMattack : MonoBehaviour
     {
         _stat = CharacterStatusUI.Instance.CurrentActive(_stats);
         attackValue = _stat.Damage;
-        
-       FindEnemy();
+
+        FindEnemy();
 
         if (Attacking)
         {
-            if (nearestEnemy != null )
+
+            if (nearestEnemy != null)
             {
                 Vector3 directionToTarget = nearestEnemy.transform.position - transform.position;
                 directionToTarget.y = 0; // If you don't want to rotate in the y-axis
@@ -89,16 +92,13 @@ public class MCMattack : MonoBehaviour
 
     }
 
-    void attack()
+    void Animattack()
     {
+
         Debug.Log("Attackk!!!");
         animator.SetTrigger("RangeAttack");
-        //RangeAttack
-        var bullet = Instantiate(Bulletprefab, BulletSpawnPoint.position, BulletSpawnPoint.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = BulletSpawnPoint.forward * BulletSpeeds;
-
         Attacking = !Attacking;
-        Invoke(nameof(ResetAttack), timeBetweenAttack);
+        
     }
 
     private void ResetAttack()
@@ -106,6 +106,16 @@ public class MCMattack : MonoBehaviour
         Attacking = !Attacking;
     }
 
+    void Onattack()
+    {
+        //RangeAttack
+        var bullet = Instantiate(Bulletprefab, BulletSpawnPoint.position, BulletSpawnPoint.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = BulletSpawnPoint.forward * BulletSpeeds;
+        Invoke(nameof(ResetAttack), timeBetweenAttack);
+
+    }
+
+    
     void FindEnemy()
     { 
         Collider[] hitColliders = Physics.OverlapSphere(Player.position, OverlapRadius, enemyLayers);
@@ -120,6 +130,10 @@ public class MCMattack : MonoBehaviour
             }
         }
     }
+
+    
+
+    
     
     private void OnDrawGizmos()
     {

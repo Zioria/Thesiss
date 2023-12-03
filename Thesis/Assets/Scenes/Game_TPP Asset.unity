@@ -1115,6 +1115,11 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -5.4, y: 27.000002, z: 0.3}
   m_TimeToStationary: 0.5
+--- !u!4 &423516051 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5598355383338130047, guid: edf1f414b73c023499bc56f31c0f66f8, type: 3}
+  m_PrefabInstance: {fileID: 65337987}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &427196038 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7633945836347844282, guid: a6d1dcb83a33f10429e8c6febccfd8bb, type: 3}
@@ -7033,8 +7038,7 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.025189158
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3136889907054762027, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5921446553303242804, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
     - {fileID: 1401747179231530906, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
@@ -13193,7 +13197,8 @@ MonoBehaviour:
   animator: {fileID: 2113686487}
   nearestEnemy: {fileID: 0}
   speedStep: 0
-  attackPoint: {fileID: 2013147834}
+  attackPoint1: {fileID: 2013147834}
+  attackPoint2: {fileID: 423516051}
   attackRange: 1
   OverlapRadius: 3
   minimumDistance: 0
@@ -13205,10 +13210,10 @@ MonoBehaviour:
   timeBetweenAttack: 0.3
   mc_G: {fileID: 1236389024}
   rotationSpeed: 100
-  Distancedelta: 0
-  minRange: 0
-  maxRange: 0
-  Duration: 0
+  Distancedelta: 2.5
+  minRange: 1
+  maxRange: 4
+  Duration: 0.3
 --- !u!54 &2113686493
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13291,14 +13296,16 @@ MonoBehaviour:
   nearestEnemy: {fileID: 0}
   BulletSpawnPoint: {fileID: 1904755217}
   Bulletprefab: {fileID: 1445069938118830048, guid: 6e8fb05f6d831a048a1cda91c118faff, type: 3}
-  BulletSpeeds: 20
+  BulletSpeeds: 50
+  angleChaningSpeed: 0
   OverlapRadius: 10
   minimumDistance: 0
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
   Attacking: 0
-  timeBetweenAttack: 0
+  InvokeBbullet: 0.65
+  timeBetweenAttack: 0.8
   attackValue: 1
   mc_M: {fileID: 214290991}
   rotationSpeed: 100
@@ -13777,6 +13784,10 @@ PrefabInstance:
       propertyPath: miniMapCam
       value: 
       objectReference: {fileID: 747577499}
+    - target: {fileID: 3356582758676170390, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3455933847931299330, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       propertyPath: playerInput
       value: 
@@ -13883,6 +13894,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4660875128366045369, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787707354483190482, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061400763104485952, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7990882191952827434, guid: 42eb16249f1987e41bb994155d74848c, type: 3}

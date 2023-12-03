@@ -25,7 +25,8 @@ public class MCGattack : MonoBehaviour
     private CharacterStats _stat;
 
     public float speedStep;
-    public Transform attackPoint;
+    public Transform attackPoint1;
+    public Transform attackPoint2;
     public float attackRange = 0.5f;
     public float OverlapRadius = 10.0f;
     public float minimumDistance;
@@ -107,8 +108,25 @@ public class MCGattack : MonoBehaviour
     void attack()
     {
         animator.SetTrigger("Attack");
-        Collider[] hitEnemy = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
-        foreach (Collider enemy in hitEnemy)
+        Collider[] hitEnemy1 = Physics.OverlapSphere(attackPoint1.position, attackRange, enemyLayers);
+        foreach (Collider enemy in hitEnemy1)
+        {
+            if (nearestEnemy)
+            {
+                if (enemy.TryGetComponent(out IDamagable enemyStat))
+                {
+                    IDamagable damagable = enemy.GetComponent<IDamagable>();
+                    if (damagable != null)
+                    {
+                        damagable.Damage(attackValue);
+                        _stat.GetEnergy(1);
+                    }
+                }
+            }
+        }
+        
+        Collider[] hitEnemy2 = Physics.OverlapSphere(attackPoint2.position, attackRange, enemyLayers);
+        foreach (Collider enemy in hitEnemy2)
         {
             if (nearestEnemy)
             {
@@ -137,11 +155,17 @@ public class MCGattack : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (attackPoint == null)
+        if (attackPoint1 == null)
             return;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        Gizmos.DrawWireSphere(attackPoint1.position, attackRange);
+        
+        if (attackPoint2 == null)
+            return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint2.position, attackRange);
     }
 
     void FindEnemy()
