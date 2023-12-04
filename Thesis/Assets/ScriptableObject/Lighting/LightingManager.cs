@@ -17,6 +17,7 @@ public class LightingManager : MonoBehaviour
     public SkyboxBlender skybox;
      bool isStopped;
     
+    
 
     private void Start()
     {
