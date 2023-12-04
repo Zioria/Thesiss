@@ -396,6 +396,7 @@ namespace StarterAssets
             
                 if (_input.dash && !Dash_check)
                 {
+                    _animator.SetTrigger("Dash");
                     Dash_check = !Dash_check;
                     Invoke(nameof(ResetDash), timeBetweenDash);
                     CurrentDashDuration = 0f;
