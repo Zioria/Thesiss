@@ -116,7 +116,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
 #endif
-        private Animator _animator;
+        public Animator _animator ;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
@@ -327,7 +327,7 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                /*if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -337,7 +337,7 @@ namespace StarterAssets
                     {
                         _animator.SetBool(_animIDJump, true);
                     }
-                }
+                }*/
 
                 // jump timeout
                 if (_jumpTimeoutDelta >= 0.0f)
@@ -396,6 +396,7 @@ namespace StarterAssets
             
                 if (_input.dash && !Dash_check)
                 {
+                    _animator.SetTrigger("Dash");
                     Dash_check = !Dash_check;
                     Invoke(nameof(ResetDash), timeBetweenDash);
                     CurrentDashDuration = 0f;

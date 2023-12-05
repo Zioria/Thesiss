@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class FollowPosition : MonoBehaviour
     [SerializeField] private Transform targetPos;
     [SerializeField] private float offSetZ, offSetX;
     [SerializeField] private float lerpSpeed;
+
 
     private void LateUpdate()
     {

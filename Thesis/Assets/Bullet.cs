@@ -1,33 +1,45 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float life;
-    public float curAttack;
-    private EnemyStat _enemystat;
+    private Transform Target = null;
+    [SerializeField] private Rigidbody HomingBBullet;
     
-    // Start is called before the first frame update
-    void Awake()
-    {
-        
-        
-    }
 
-    private void Update()
-    {
-        curAttack = MCMattack.Instance.attackValue;
-    }
+   void Start()
+   {
+       
+       HomingBBullet = GetComponent<Rigidbody>();
+       Target = MCMattack.Instance.nearestEnemy;
+       if (HomingBBullet == null)
+       {
+           Debug.LogError("Is NUll");
+       }
+       
+       
+   }
+
+   private void FixedUpdate()
+   {
+       StartCoroutine(MoveToEnemy());
+   }
+
+   IEnumerator MoveToEnemy()
+   {
+       if (Target != null)
+       {
+           Vector3 direction = Target.position - HomingBBullet.position;
+           direction.Normalize();
+           yield break;
+       }
+   }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enermy"))
-        {
-            other.GetComponent<EnemyStat>().TakeDamage(curAttack);
-        }
-
         if (other.CompareTag("Player"))
         {
             return;

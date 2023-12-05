@@ -136,16 +136,6 @@ public class EnemyAIController : MonoBehaviour
         
     }
 
-    public void StartDealDamage()
-    {
-        GetComponentInChildren<WeaponDamageMarker>().StartDealDamage();
-    }
-
-    public void EndDealDamage()
-    {
-        GetComponentInChildren<WeaponDamageMarker>().EndDealDamage();
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
