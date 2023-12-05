@@ -22,6 +22,11 @@ public class Player : MonoBehaviour
    public GameObject UIq2;
    public GameObject UIq3;
 
+   public GameObject questBD;
+   public GameObject UIq1D;
+   public GameObject UIq2D;
+   public GameObject UIq3D;
+
    public Quest quest;
    
    
@@ -84,6 +89,11 @@ public class Player : MonoBehaviour
                 UIq1.SetActive(false);
                 UIq2.SetActive(false);
                 UIq3.SetActive(false);
+
+                questBD.SetActive(false);
+                UIq1D.SetActive(false);
+                UIq2D.SetActive(false);
+                UIq3D.SetActive(false);
                 
 
             }
