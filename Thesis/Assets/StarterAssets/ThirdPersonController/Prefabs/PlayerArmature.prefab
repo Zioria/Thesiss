@@ -1237,7 +1237,6 @@ GameObject:
   - component: {fileID: 4416926081852918490}
   - component: {fileID: 5885216827943657505}
   - component: {fileID: 135756642000475821}
-  - component: {fileID: 1925516754252053939}
   - component: {fileID: 4416926081852918493}
   - component: {fileID: 257245293455156659}
   - component: {fileID: 2060230171158704744}
@@ -1271,7 +1270,7 @@ Transform:
   - {fileID: 3780171593987242120}
   - {fileID: 2165423884407189309}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6982812146204527121
 Animator:
@@ -1334,6 +1333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mc_g: {fileID: 8069688824785831295}
   mc_m: {fileID: 8187455079231382173}
+  BagModel: {fileID: 0}
   addnumber_g: 1
   addnumber_m: 2
   anyKey: 3100000032000000
@@ -1396,6 +1396,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  _animator: {fileID: 0}
 --- !u!114 &5885216827943657505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1433,34 +1434,6 @@ MonoBehaviour:
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
---- !u!114 &1925516754252053939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416926081852918481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f30f0cac40ddbe7428455a57ba996d96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AtbPoint: 5
-  gold: 1000
-  questB: {fileID: 0}
-  UIq1: {fileID: 0}
-  UIq2: {fileID: 0}
-  UIq3: {fileID: 0}
-  quest:
-    isActive: 0
-    title: 
-    description: 
-    goldReward: 0
-    AttributePointReward: 0
-    goal:
-      goalType: 0
-      requiredAmount: 0
-      currentAmount: 0
 --- !u!114 &4416926081852918493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,15 +1601,18 @@ MonoBehaviour:
   Player: {fileID: 3893294197879345259}
   animator: {fileID: 6982812146204527121}
   nearestEnemy: {fileID: 0}
+  BagModel: {fileID: 0}
   BulletSpawnPoint: {fileID: 3780171593987242120}
   Bulletprefab: {fileID: 1445069938118830048, guid: 6e8fb05f6d831a048a1cda91c118faff, type: 3}
   BulletSpeeds: 20
+  angleChaningSpeed: 0
   OverlapRadius: 10
   minimumDistance: 0
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
   Attacking: 0
+  InvokeBbullet: 0
   timeBetweenAttack: 0
   attackValue: 1
   mc_M: {fileID: 8187455079231382173}
@@ -1657,7 +1633,8 @@ MonoBehaviour:
   animator: {fileID: 6982812146204527121}
   nearestEnemy: {fileID: 0}
   speedStep: 0
-  attackPoint: {fileID: 6560733562517833111}
+  R_hand: {fileID: 0}
+  L_hand: {fileID: 0}
   attackRange: 0.7
   OverlapRadius: 3
   minimumDistance: 0
