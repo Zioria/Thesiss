@@ -12,6 +12,7 @@ TagManager:
   - Die
   - Checkpoint
   - TimeManager
+  - Heal
   layers:
   - Default
   - TransparentFX

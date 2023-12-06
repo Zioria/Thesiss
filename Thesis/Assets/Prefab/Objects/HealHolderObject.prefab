@@ -97,11 +97,11 @@ GameObject:
   - component: {fileID: 6365644989552788742}
   m_Layer: 0
   m_Name: HealHolderObject
-  m_TagString: Untagged
+  m_TagString: Heal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1903375812131183672
 Transform:
   m_ObjectHideFlags: 0

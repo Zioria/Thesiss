@@ -11,6 +11,7 @@ public class SwapChar : MonoBehaviour
     [Header("Character")]
     public GameObject mc_g;
     public GameObject mc_m;
+    
 
     [Header("Gadjet")] public GameObject BagModel;
 
@@ -38,6 +39,8 @@ public class SwapChar : MonoBehaviour
     public bool G_isAlive;
     public int _GisDeadFirst;
 
+    
+
 
     private void Start()
     {
@@ -49,6 +52,7 @@ public class SwapChar : MonoBehaviour
         BagModel.SetActive(false);
         imageActive.sprite = iconGirl;
         imageInActive.sprite = iconBoy;
+        //itemheal.SetActive(false);
 
         TPC = GetComponent<ThirdPersonController>();
         _anim = GetComponent<Animator>();
@@ -58,7 +62,6 @@ public class SwapChar : MonoBehaviour
     private void Update()
     {
         _stat = CharacterStatusUI.Instance.CurrentActive(_stats);
-        
         
 
         if (_stat.CurrentHealth <= 0 && !_isSpawning)
@@ -103,6 +106,35 @@ public class SwapChar : MonoBehaviour
             return;
         }
         SwapCharacter();
+        
+        //if(mc_m.activeInHierarchy)
+      //  {
+          //GameObject[] HealHolderObject = new GameObject[itemHeal];
+          //GameObject.FindGameObjectWithTag ("Heal");
+          //if(other.CompareTag("Player"))
+         // {
+            //itemheal = GameObject.FindWithTag ("Heal");
+           // itemheal.SetActive(true);
+         // }
+          
+          
+       // }
+
+       // if(mc_g.activeInHierarchy)
+       // {
+          //GameObject[] itemHeal = GameObject.FindGameObjectWithTag ("Heal");
+          //foreach (GameObject Heal in itemheal)
+          //{
+            //itemheal = GameObject.FindWithTag("Heal");
+          //  itemheal.SetActive(false);
+          //GameObject[] itemheal = new GameObject itemHeal;
+         // itemheal = GameObject.FindWithTag ("Heal");
+         // itemheal.SetActive(false);
+          
+       // }
+            
+       // }
+        
 
     }
 
@@ -116,6 +148,8 @@ public class SwapChar : MonoBehaviour
             mc_g.SetActive(true);
             imageActive.sprite = iconGirl;
             imageInActive.sprite = iconBoy;
+            //itemheal = GameObject.FindWithTag ("Heal");
+            //itemheal.SetActive(false);
         }
         if (Input.GetKeyDown(anyKey[1]) && _stat.CurrentHealth > 0)
         {
@@ -125,6 +159,7 @@ public class SwapChar : MonoBehaviour
             BagModel.SetActive(true);
             imageActive.sprite = iconBoy;
             imageInActive.sprite = iconGirl;
+            //itemheal.SetActive(true);
         }
     }
 
