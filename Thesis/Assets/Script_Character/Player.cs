@@ -55,7 +55,6 @@ public class Player : MonoBehaviour
                 
                 AtbPoint += quest.AttributePointReward;
                 AttributeManager.Instance.AttributePoint += quest.AttributePointReward;
-                AttributeManager.Instance.ResetAttributePoint += quest.AttributePointReward;
                 AttributeManager.Instance.UpdateAttributeUI();
                 
                 gold += quest.goldReward;

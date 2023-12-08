@@ -118,7 +118,6 @@ public class Attribute : MonoBehaviour
         {
             stat.ResetStats();
         }
-        Instance.ResetAttributeUI();
         //Instance.AttributeLevels[ID] = resetLevel;
         for (int i = 0; i < Instance.attributeList.Count; i++)
         {
