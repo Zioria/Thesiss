@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BossEnemy
   m_EditorClassIdentifier: 
   maxHealth: 5000
-  maxAttack: 10
+  maxAttack: 15

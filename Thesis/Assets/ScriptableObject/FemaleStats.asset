@@ -15,6 +15,6 @@ MonoBehaviour:
   defaultMaxHealth: 100
   defaultDamage: 10
   defaultAtkSpeed: 3
-  defaultArmor: 3
-  defaultSkillDamage: 3
-  defaultCapEnergy: 3
+  defaultArmor: 10
+  defaultSkillDamage: 10
+  defaultCapEnergy: 10
