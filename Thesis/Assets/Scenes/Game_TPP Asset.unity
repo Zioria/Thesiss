@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.004
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0.11372548, b: 0.8117648, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 0.9960785, b: 0.9960785, a: 1}
+  m_AmbientEquatorColor: {r: 0.48007187, g: 0.6664018, b: 0.55033404, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: bdfc475e919710248bf14d75643fefd2, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c81599feeec05d14fbf3dd64b71864c8, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -15711,7 +15711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018728364253230480, guid: b7f2c85cfee2d854d9bb795496a6cc46, type: 3}
       propertyPath: amountToSpawn
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6018728364253230480, guid: b7f2c85cfee2d854d9bb795496a6cc46, type: 3}
       propertyPath: itemsPrefab.Array.size
@@ -22668,10 +22668,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DirectionalLight: {fileID: 2114283754330233425}
-  Preset: {fileID: 11400000, guid: b18cb56f16ec2ba41863253c5511a279, type: 2}
-  TimeOfDay: 180
-  DayMin: 3
-  MintoTick: 180
+  Preset: {fileID: 11400000, guid: cbdb295c384abdf4b9e9d6454ef33ede, type: 2}
+  TimeOfDay: 60
+  DayMin: 1
+  MintoTick: 60
   CurrenTick: 0
   skybox: {fileID: 1981624008}
 --- !u!114 &1981624008
@@ -22687,12 +22687,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skyboxMaterials:
+  - {fileID: 2100000, guid: c81599feeec05d14fbf3dd64b71864c8, type: 2}
   - {fileID: 2100000, guid: bdfc475e919710248bf14d75643fefd2, type: 2}
   - {fileID: 2100000, guid: 4c12da8dc5dced74e838120da11725a0, type: 2}
+  - {fileID: 2100000, guid: 4f0579e073abe59409641925c6e53e31, type: 2}
   - {fileID: 2100000, guid: f5dcd562bbe8e6741845a6ba29547444, type: 2}
   - {fileID: 2100000, guid: c81599feeec05d14fbf3dd64b71864c8, type: 2}
   makeFirstMaterialSkybox: 0
-  blendSpeed: 0.5
+  blendSpeed: 0.2
   timeToWait: 1
   loop: 1
   updateLighting: 0
@@ -26905,6 +26907,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8191805268214005715, guid: a6d1dcb83a33f10429e8c6febccfd8bb, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191805268214005715, guid: a6d1dcb83a33f10429e8c6febccfd8bb, type: 3}
+      propertyPath: m_Range
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191805268214005715, guid: a6d1dcb83a33f10429e8c6febccfd8bb, type: 3}
+      propertyPath: m_Intensity
+      value: 4.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191805268214005715, guid: a6d1dcb83a33f10429e8c6febccfd8bb, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8207570605471467841, guid: a6d1dcb83a33f10429e8c6febccfd8bb, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -30753,7 +30771,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.054901958, g: 0.054901958, b: 0.054901958, a: 1}
+  m_Color: {r: 1, g: 0.9686275, b: 0.9686275, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30

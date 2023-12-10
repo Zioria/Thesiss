@@ -16,10 +16,9 @@ public class LightingManager : MonoBehaviour
 
     public SkyboxBlender skybox;
      bool isStopped;
-    
-    
 
-    private void Start()
+   
+     private void Start()
     {
         TimeOfDay = MintoTick;
         
@@ -42,7 +41,7 @@ public class LightingManager : MonoBehaviour
             
             TimeOfDay += Time.deltaTime;
             CurrenTick += Time.deltaTime;
-            if (CurrenTick >= MintoTick/4 )
+            if (CurrenTick >= MintoTick/6 )
             {
                 skybox.Blend(true);
                 CurrenTick = 0f;
