@@ -1,0 +1,157 @@
+Step to Assign UI Gameobject :)
+
+UI gameobject: 
+	Cursor Control:
+		-Controller use "Player" gameobject
+		-Player Input use "Player" gameobject
+	Ability UI:
+		-Holder use "Player" gameobject
+		-Ability Image One use "UI -> SkillUI -> BGSkill" Image
+CharacterStatus gameobject:
+	Character Status UI:
+		-Health Text use CharacterStatus -> HpUI -> Silder -> HealthText
+		-Energy Text use CharacterStatus -> EnergyUI -> Slider -> EnergyText
+		-Stats use Player -> Model_Player -> mc_G & mc_M
+
+MiniMapHolder gameobject:
+	Button:
+		OnClick:
+			-use "MapHolder" : Gameobject.SetActive = true (Tick box)
+			-use "MiniMapHolder" : Gameobject.Setactive = false
+			-use "UI" : CursorControl.OpenMenu
+		ButtonOnly:
+			-Player Input use "Player" gameobject
+InventoryControllerUI gameobject:
+		Inventory UI Controller:
+				-Chest Panel use "UI -> InventoryControllerUI -> DynamicInventory"
+				-Player Backpack Panel use "UI -> InventoryControllerUI -> PlayerBackpack"
+				-Player Input use "Player" gameobject
+				-Cursor Control use "UI" gameobject
+				-Player Inv Holder use "Player" gameobject (Player Inventory Holder)
+		HotBarUI:
+			-Hot Bar Display:
+				-Mouse Inventory Item use "UI -> InventoryControllerUI -> MouseItem"
+				-Inv Holder use "Player" gameobject (Player Inventory Holder)
+				-Slots use "UI -> InventoryControllerUI -> HotBarUI -> HotBarItem"
+			-HotBarItem gameobject:
+				-Hot Bar_UI:
+					-Item Sprite use "HotBarItem -> IconItem"
+					-Item Count use "HotBarItem -> ItemCount"
+					-Slot HighLight use "HotBarItem -> HighlightHolder"
+		DynamicInventory / PlayerBackPack:
+			-Dynamic Inventory Display:
+				-Mouse Inventory Item use "UI -> InventoryControllerUI -> MouseItem"
+				-Slot Prefab use "HotBarItem" in Prefab
+		MouseItem:
+			-Item Sprite use "MouseItem -> IconItem"
+			-Item Count use "MouseItem -> ITemCount"
+StatusMeneu gameobject:
+	ButtonHolder:
+		OpenStatusBtn:
+			OnClick:
+				-OpenStatus gameobejct.Setactive = false
+				-StatusWindow gameobject.Setactive = true
+				-CloseStatus gameobject.Setactive = true
+				-MiniMapHolder gameobject.Setactive = false
+				-UI CursorControl.OpenMeneu
+				-ConfirmHolder gameobject.Setactive = false
+			ButtonOnly:
+				-Player Input use "Player" gameobject
+		CloseStatusBtn:
+			OnClick:
+				-ConfirmHolder gameobject.Setactive = true
+	StatusWindow:
+		StrengthStatus / Agility / Technology:
+			AtributeHolder:
+				Attribute:
+					-Decrease Status Btn use "DecreaseBtn"
+					-Increase Status Btn use "IncreaseBtn"
+					-Count Number use "CountNumbers"
+			SkillTreeHolder:
+				SkillOne:
+					Ability Skill:
+						-Ability use "SlowMotion" scriptableObject
+						-Unlock Skill Btn use "SkillOneBtn"
+						-Skill UI use "SkillUI" gameobject
+						-Skill Icon use "SkillUI -> IconSkill"
+				SkillTwo:
+					Ability Skill:
+						-Ability use "SlamGround" scriptableObject
+						-Unlock Skill Btn use "SkillTwoBtn"
+						-Skill UI use "SkillUI" gameobject
+						-Skill Icon use "SkillUI -> IconSkill"
+			ConfirmHolder:
+				BtnHolder:
+					NoBtn:
+						OnClick
+							-ConfitmHolder gameobject.Setactive = false
+					YesBtn:
+						OnClick
+							-OpenStatus gameobject.Setactive = true
+							-CloseStatus gameobject.Setactive = false
+							-StatusWindow gameobject.Setactive = false
+							-DecreaseBtn(Str / Agi / Tech) button.interactable = false
+							-UI CursorControl.CloseMenu
+							-MiniMapHolder gameobject.Setactive = true
+							-TooltipHolder gameobject.Setactive = false
+MapHolder gameobject:
+	CloseMapBtn:
+		OnClick:
+			-MapHolder gameobject.Setactive = false
+			-MiniMapHolder gameobject.Setactive = true
+			-UI CursorControl.CloseMenu
+	LargeMapHolder:
+		RawImage:
+			Large Map Pointer:
+					-Mini Map Cam use "LargeMapCam"
+					-Confirm Holder use "MapHolder -> LargeMapHolder -> ConfirmTeleportHolder"
+	ConfirmTeleportHolder:
+		Confirm Teleport Holder:
+			-Name Text use "ConfirmTeleportHolder -> Header -> NameText"
+		ConfirmBtn:
+			Click To Teleport:
+				-Player Object use "Player" object
+				-Teleport Btn use "ConfirmBtn -> Btn"
+				-Map Holder use "UI -> MapHolder"
+				-Mini Map use "UI -> MiniMapHolder"
+				-Cursor use "UI"
+				-Player Controller use "Player" gameobject
+	ZoomBar:
+		On Value Changed:
+			-LargeMapCam(Gameobject) CameraDragAndZoom.SliderZoom
+
+Setup Manager Holder ( ͡❛ ͜ʖ ͡❛)
+
+ManagerHolder:
+	AttributeManager gameobject:
+		AttributeManager:
+			-Attribute Holder use "UI -> StatusMenu -> StatusWindow -> AttributeHolder
+			-Point Text use "UUI -> StatusMenu -> StatusWindow -> AttributeHolder -> AttributeRemain
+	WaypointManager gameobject:
+		Waypoint Manager:
+			-Waypoint Parent use "WaypointHolder(DontDelete)"
+	CheckpointManager gameobject:
+		Checkpoint Manager:
+			-Checkpoint Holder use "CheckpointHolder"
+	SkillTreeManager gameobject:
+		Skill Tree Manager:
+			-Skill Tree Holder UI use "UI -> StatusMenu -> StatusWindow -> SkillTreeHolder"
+			-Skill One Btn use "UI -> StatusMenu -> StatusWindow -> SkillTreeHolder -> SkillOne -> SkillOneBtn
+			-Skill Two Btn == Skill One Btn
+	TooltipManager gameobject:
+		TooltipManager:
+			-Tooltip Rect use "UI -> TooltipHolder -> TooltipBG"
+			-Text Mesh Pro use "UI -> TooltipHolder ->ToolText"
+			-Tooltip Holder Rect use "UI -> TooltipHolder"
+			-Canvas Rect use "UI" gameobject
+
+Setup Player ¯\_( ͡❛ ͜ʖ ͡❛)_/¯
+
+Player gameobject
+	Interactor:
+		-interact UI use "UI -> InteractUI"
+	Player Inventory Holder
+		-Cursor Control use "UI"
+	Swap Char:
+		-Image Active use "UI -> CharacterStatus -> IconCharacter -> CharacterActive"
+		-Image In Active use "UI -> CharacterStatus -> IconCharactor -> CharacterInActive"
