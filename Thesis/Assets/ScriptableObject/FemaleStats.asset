@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FemaleStats
   m_EditorClassIdentifier: 
   defaultMaxHealth: 100
-  defaultDamage: 10
+  defaultDamage: 30
   defaultAtkSpeed: 3
   defaultArmor: 10
   defaultSkillDamage: 10

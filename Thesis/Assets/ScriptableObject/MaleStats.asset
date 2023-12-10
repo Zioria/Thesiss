@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MaleStats
   m_EditorClassIdentifier: 
   defaultMaxHealth: 100
-  defaultDamage: 5
+  defaultDamage: 8
   defaultAtkSpeed: 5
   defaultArmor: 5
-  defaultSkillDamage: 10
+  defaultSkillDamage: 9
   defaultCapEnergy: 5
