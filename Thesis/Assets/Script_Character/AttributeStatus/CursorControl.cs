@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class CursorControl : MonoBehaviour
 {
     private bool IsStatusMenuOpen;
-    public ThirdPersonController Controller;
+    [SerializeField] ThirdPersonController Controller;
     [SerializeField] private PlayerInput playerInput;
     private void Awake()
     {
@@ -23,17 +23,19 @@ public class CursorControl : MonoBehaviour
             Controller.LockCameraPosition = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            playerInput.enabled = false;
             return;
         }
         Controller.LockCameraPosition = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        playerInput.enabled = true;
     }
 
     public void OpenMenu()
     {
         playerInput.enabled = false;
-        IsStatusMenuOpen = !IsStatusMenuOpen;
+        IsStatusMenuOpen = true;
         Cursor.visible = IsStatusMenuOpen;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -41,7 +43,7 @@ public class CursorControl : MonoBehaviour
     public void CloseMenu()
     {
         playerInput.enabled = true;
-        IsStatusMenuOpen = !IsStatusMenuOpen;
+        IsStatusMenuOpen = false;
         Cursor.visible = IsStatusMenuOpen;
         Cursor.lockState = CursorLockMode.Locked;
     }

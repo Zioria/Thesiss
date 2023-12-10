@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a00fa36841b3c4eb25f458a8941935, type: 3}
+  m_Name: StrengthPotionData
+  m_EditorClassIdentifier: 
+  id: 1
+  displayName: Strength Potion
+  numberGet: 1
+  description: Gain 1 point skill
+  iconItem: {fileID: 21300000, guid: b705a34948dcc6d49a9d0aa2d1e992d8, type: 3}
+  maxStackSize: 2
+  itemPrefab: {fileID: 5414037745856516619, guid: 82b77d7fa35d69f47b1502942cacbc3a, type: 3}
