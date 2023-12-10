@@ -5,18 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class ItemPickup : MonoBehaviour
 {
-    [SerializeField] private float pickupRadius = 1;
+    
     [SerializeField] private ItemScriptable itemData;
     [SerializeField] private float speedRotateItem = 20;
-
-    private SphereCollider _sCollider;
-
-    private void Awake()
-    {
-        _sCollider = GetComponent<SphereCollider>();
-        _sCollider.isTrigger = true;
-        _sCollider.radius = pickupRadius;
-    }
 
     private void Update()
     {
