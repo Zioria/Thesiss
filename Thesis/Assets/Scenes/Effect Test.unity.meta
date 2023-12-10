@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Thesis/Assets/Scenes/Effect Test.unity.meta
 guid: ef8ee2af91c867d4fb5d388dc77bbc0d
+========
+guid: 787711c95b4047543b28f601f5ec60f2
+>>>>>>>> definitly_not_a_map:Thesis/Assets/Scenes/Game_TPP Asset 1.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
