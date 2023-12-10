@@ -4195,7 +4195,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9111646200940161260, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
   m_PrefabInstance: {fileID: 1480408039}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1480408040}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6868d6dd7d95cad48a1b1ec24983b3b8, type: 3}
@@ -15711,7 +15711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6018728364253230480, guid: b7f2c85cfee2d854d9bb795496a6cc46, type: 3}
       propertyPath: amountToSpawn
-      value: 50
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6018728364253230480, guid: b7f2c85cfee2d854d9bb795496a6cc46, type: 3}
       propertyPath: itemsPrefab.Array.size
@@ -17136,8 +17136,64 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8728878785874901596, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 585951767}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2213724489039908564, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1480408042}
+    - targetCorrespondingSourceObject: {fileID: 2213724489039908564, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1480408041}
+    - targetCorrespondingSourceObject: {fileID: 2213724489039908564, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1480408043}
   m_SourcePrefab: {fileID: 100100000, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+--- !u!1 &1480408040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2213724489039908564, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+  m_PrefabInstance: {fileID: 1480408039}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1480408041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480408040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff7a8e0f614f494892e7f8146e6df88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriterSpeed: 50
+--- !u!114 &1480408042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480408040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97f3df1a899e65a4aab0bddb08f627f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  responseBox: {fileID: 434542914}
+  responseButtonTemplate: {fileID: 907038926}
+  responseContainer: {fileID: 814661630}
+--- !u!114 &1480408043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480408040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d0e500b32900f46905df7728ae6608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 771779386}
+  textLabel: {fileID: 1752172444}
 --- !u!1 &1484846323
 GameObject:
   m_ObjectHideFlags: 0
@@ -17638,7 +17694,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 773bdef575475974d862173849e5b0d1, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 773bdef575475974d862173849e5b0d1, type: 3}
       propertyPath: m_LocalScale.x
@@ -22518,7 +22574,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1975255840
 GameObject:
@@ -33572,7 +33628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ceb4b17d818ee4d9f8e03f4f8d31bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueUI: {fileID: 0}
+  dialogueUI: {fileID: 1480408043}
 --- !u!114 &8173707118443882807
 MonoBehaviour:
   m_ObjectHideFlags: 0
