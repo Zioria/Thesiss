@@ -55,10 +55,10 @@ public class EnemyStat : MonoBehaviour, IDamagable
         Debug.Log(_healthPoint);
         if (_healthPoint <= 0)
         {
+            Die();
             _healthBar.gameObject.SetActive(false);
             _enemy.gameObject.tag = "Die";
             _anim.SetTrigger(_deathAnim);
-            Die();
             Player.Instance.GoBattle();
             Disappear();
             return;
