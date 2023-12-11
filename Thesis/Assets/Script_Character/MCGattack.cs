@@ -120,6 +120,7 @@ public class MCGattack : MonoBehaviour
                     {
                         damagable.Damage(attackValue);
                         _stat.GetEnergy(1);
+                        Debug.Log(attackValue);
                     }
                 }
             }
