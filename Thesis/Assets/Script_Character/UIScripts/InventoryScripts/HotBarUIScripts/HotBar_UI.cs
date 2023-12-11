@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.EventSystems;
 
-public class HotBar_UI : MonoBehaviour
+public class HotBar_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image itemSprite;
     [SerializeField] private TextMeshProUGUI itemCount;
@@ -85,5 +86,20 @@ public class HotBar_UI : MonoBehaviour
     public void ToggleHighlight()
     {
         slotHighlight.SetActive(!slotHighlight.activeInHierarchy);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (inventorySlot == null)
+        {
+            return;
+        }
+
+        TooltipManager.ShowToolTip_Static(inventorySlot.ItemData.Description);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        TooltipManager.HideToolTip_Static();
     }
 }

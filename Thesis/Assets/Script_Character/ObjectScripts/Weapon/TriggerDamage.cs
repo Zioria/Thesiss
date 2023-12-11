@@ -18,7 +18,11 @@ public class TriggerDamage : MonoBehaviour
                 _stat = CharacterStatusUI.Instance.CurrentActive(_stats);
                 damagable.Damage((_stat.Damage * (multiplyer / 100)) * _stat.SkillDamage);
                 _stat.GetEnergy(1);
+                Debug.Log(((_stat.Damage * (multiplyer / 100)) * _stat.SkillDamage));
             }
+            
         }
+
+        Destroy(gameObject, 1f);
     }
 }

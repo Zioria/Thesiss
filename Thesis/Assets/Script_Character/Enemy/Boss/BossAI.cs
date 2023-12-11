@@ -26,6 +26,7 @@ public class BossAI : MonoBehaviour, IDamagable
     [SerializeField] private float minDistanceSkill;
     [SerializeField] private float maxDistanceSkill;
 
+    private Vector3 spawnPoint;
     private Transform _player;
     private NavMeshAgent _agent;
     private Animator _anim;
@@ -48,7 +49,7 @@ public class BossAI : MonoBehaviour, IDamagable
         _anim = GetComponent<Animator>();
         _healthBar = GetComponentInChildren<EnemyHealthBar>();
         _agent.speed = speedAgent;
-
+        spawnPoint = transform.position;
     }
 
     private void Start()
@@ -159,6 +160,11 @@ public class BossAI : MonoBehaviour, IDamagable
     public void Damage(float damageAmount)
     {
         TakeDamage(damageAmount);
+    }
+
+    public void SetSpawn()
+    {
+        transform.position = spawnPoint;
     }
 }
 

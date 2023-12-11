@@ -18,4 +18,4 @@ MonoBehaviour:
   description: Gain 1 point skill
   iconItem: {fileID: 21300000, guid: b705a34948dcc6d49a9d0aa2d1e992d8, type: 3}
   maxStackSize: 2
-  itemPrefab: {fileID: 631332901582522672, guid: 1bd43c0efd92e3249a3150b67999bfbd, type: 3}
+  itemPrefab: {fileID: 8537651779966898546, guid: c11954efdfac3c64d89300b1f9d2ce00, type: 3}

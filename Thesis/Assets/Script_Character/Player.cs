@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class Player : MonoBehaviour
@@ -15,7 +16,7 @@ public class Player : MonoBehaviour
    //public int hp;
    public int AtbPoint;
    public int gold;
-   public Text golddisplay;
+   public  TMP_Text golddisplay;
 
    public GameObject questB;
    public GameObject UIq1;

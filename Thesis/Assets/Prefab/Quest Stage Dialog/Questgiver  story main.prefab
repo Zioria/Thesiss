@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2532806077659607450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3891347396644666270}
+  - component: {fileID: 8409045998712560261}
+  m_Layer: 0
+  m_Name: Questgiver  story main
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3891347396644666270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532806077659607450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 637.2887, y: 565.8188, z: 6.8838267}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8409045998712560261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532806077659607450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187c29044e85cc1408fff4c0f7c45774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CloseQuest: {fileID: 7704753382023787662, guid: c84268c3ae79a2341be1353bbd742542, type: 3}
+  ButtonCloseQuest: {fileID: 7414654479694319137, guid: 80d77932804afc64b8984edc2faec9c5, type: 3}
+  UIquest1: {fileID: 5418841469785225977, guid: 4ed94041ad27a3d41be7991ff2bc02f4, type: 3}
+  UIquest2: {fileID: 8077191311297166063, guid: e7185a70ce0503449a175efdb6afcab3, type: 3}
+  UIquest3: {fileID: 6618331250992519461, guid: fb1192a9696b64b4f85497c632a6691e, type: 3}
+  questB: {fileID: 3338004259469574196, guid: c721ebda634723d4ea01ea2628b46a48, type: 3}
+  questDis1: {fileID: 0}
+  questDis2: {fileID: 0}
+  questDis3: {fileID: 0}
+  quest1:
+    isActive: 0
+    title: Hunt Monster Dungeon 1
+    description: Kill 5 enemy
+    goldReward: 10
+    AttributePointReward: 13
+    goal:
+      goalType: 0
+      requiredAmount: 5
+      currentAmount: 0
+  player: {fileID: 0}
+  questUI: {fileID: 1101108489174396966, guid: d1658f655a024b849b0cdbda7c6b3daf, type: 3}
+  title: {fileID: 0}
+  description: {fileID: 0}
+  AttributePoint: {fileID: 0}
+  gold: {fileID: 0}
+  titleUI1: {fileID: 0}
+  descriptionUI1: {fileID: 0}
+  AttributePointUI1: {fileID: 0}
+  goldUI1: {fileID: 0}
+  quest2:
+    isActive: 0
+    title: Hunt Monster Dungeon 2
+    description: Kill 8 enemy
+    goldReward: 100
+    AttributePointReward: 18
+    goal:
+      goalType: 0
+      requiredAmount: 8
+      currentAmount: 0
+  player2: {fileID: 0}
+  questUI2: {fileID: 2998978889473161005, guid: 69eb237b1227c0e4ab021341609e8acc, type: 3}
+  title2: {fileID: 0}
+  description2: {fileID: 0}
+  AttributePoint2: {fileID: 0}
+  gold2: {fileID: 0}
+  titleUI2: {fileID: 0}
+  descriptionUI2: {fileID: 0}
+  AttributePointUI2: {fileID: 0}
+  goldUI2: {fileID: 0}
+  quest3:
+    isActive: 0
+    title: Hunt Monster Dungeon 3
+    description: Kill 15 enemy
+    goldReward: 200
+    AttributePointReward: 25
+    goal:
+      goalType: 0
+      requiredAmount: 15
+      currentAmount: 0
+  player3: {fileID: 0}
+  questUI3: {fileID: 4928920376029592441, guid: 5cf058a28e295c94e833edc2612b8585, type: 3}
+  title3: {fileID: 0}
+  description3: {fileID: 0}
+  AttributePoint3: {fileID: 0}
+  gold3: {fileID: 0}
+  titleUI3: {fileID: 0}
+  descriptionUI3: {fileID: 0}
+  AttributePointUI3: {fileID: 0}
+  goldUI3: {fileID: 0}

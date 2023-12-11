@@ -52,7 +52,7 @@ public class EnemyStat : MonoBehaviour, IDamagable
     {
         _healthPoint -= damage;
         _healthBar.UpdateHealthBar(_healthPoint, stat.MaxHealth);
-
+        Debug.Log(_healthPoint);
         if (_healthPoint <= 0)
         {
             Die();
