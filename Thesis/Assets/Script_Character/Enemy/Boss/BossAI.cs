@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class BossAI : MonoBehaviour, IDamagable
@@ -151,6 +152,7 @@ public class BossAI : MonoBehaviour, IDamagable
             _healthPoint = 0;
             _anim.SetTrigger(_DeadAnim);
             Destroy(gameObject, 4f);
+            SceneManager.LoadScene(sceneName:"EndDeemo");
         }
     }
 
