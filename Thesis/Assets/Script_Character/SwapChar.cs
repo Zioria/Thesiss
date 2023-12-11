@@ -27,6 +27,9 @@ public class SwapChar : MonoBehaviour
     [SerializeField] private Sprite iconGirl;
     [SerializeField] private Sprite iconBoy;
 
+    [Header("Reference")]
+    [SerializeField] private BossAI bossAI;
+
     private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
     private CharacterStats _stat;
     private ThirdPersonController TPC;
@@ -89,7 +92,6 @@ public class SwapChar : MonoBehaviour
             if (G_isAlive)
             {
                 mc_g.SetActive(true);
-                BagModel.SetActive(true);
                 imageActive.sprite = iconGirl;
                 imageInActive.sprite = iconBoy;
             }
@@ -204,6 +206,7 @@ public class SwapChar : MonoBehaviour
         G_isAlive = true;
         imageActive.sprite = iconBoy;
         imageInActive.sprite = iconGirl;
+        bossAI.SetSpawn();
     }
 
     private void ResetController()
