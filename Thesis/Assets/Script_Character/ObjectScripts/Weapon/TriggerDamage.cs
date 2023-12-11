@@ -20,5 +20,7 @@ public class TriggerDamage : MonoBehaviour
                 _stat.GetEnergy(1);
             }
         }
+
+        Destroy(gameObject, 2f);
     }
 }

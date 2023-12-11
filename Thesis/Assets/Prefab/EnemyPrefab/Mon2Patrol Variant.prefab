@@ -457,7 +457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28984e21c4c450f419516c0af969888d, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28984e21c4c450f419516c0af969888d, type: 3}
       propertyPath: m_LocalScale.x
@@ -1720,8 +1720,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.3237457, y: 11.639272, z: 12.461853}
-  m_Center: {x: 0.097084045, y: -1.4336183, z: 0.7583618}
+  m_Size: {x: 7.817459, y: 11.639272, z: 12.461853}
+  m_Center: {x: -0.14629364, y: -1.4336183, z: 0.7583618}
 --- !u!195 &6531844043554902622
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1731,7 +1731,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1211815249773775403}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 6.7
+  m_Radius: 1.76
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50

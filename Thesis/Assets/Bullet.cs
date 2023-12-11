@@ -37,14 +37,4 @@ public class Bullet : MonoBehaviour
            yield break;
        }
    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            return;
-        }
-        
-        Destroy(this.gameObject);
-    }
 }
