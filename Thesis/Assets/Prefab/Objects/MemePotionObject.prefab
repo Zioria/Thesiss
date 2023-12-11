@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1903375812131183672
 Transform:
   m_ObjectHideFlags: 0
@@ -69,7 +69,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67ea779cef436544b07b1b0f246431f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupRadius: 1
   itemData: {fileID: 11400000, guid: 351bf11bb4df5b34f88627a7331d1718, type: 2}
   speedRotateItem: 20
 --- !u!65 &8545491350371645727
