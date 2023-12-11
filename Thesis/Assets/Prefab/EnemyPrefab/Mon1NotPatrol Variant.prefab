@@ -410,7 +410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: db01dec807602da4199c244a5f72b1ed, type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: db01dec807602da4199c244a5f72b1ed, type: 3}
       propertyPath: m_LocalScale.x
@@ -1124,7 +1124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: 2621f88d02a0c4e4a96aa6352f5f3555, type: 2}
   attackRange: 3
-  chaseRange: 6
+  chaseRange: 10
   playerMask:
     serializedVersion: 2
     m_Bits: 128

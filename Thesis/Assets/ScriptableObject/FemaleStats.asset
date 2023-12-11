@@ -16,5 +16,5 @@ MonoBehaviour:
   defaultDamage: 30
   defaultAtkSpeed: 3
   defaultArmor: 10
-  defaultSkillDamage: 10
+  defaultSkillDamage: 4
   defaultCapEnergy: 10
