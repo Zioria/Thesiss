@@ -25,8 +25,6 @@ public class MCGattack : MonoBehaviour
     private CharacterStats _stat;
 
     public float speedStep;
-    public Transform R_hand;
-    public Transform L_hand;
     public float attackRange = 0.5f;
     public float OverlapRadius = 10.0f;
     public float minimumDistance;
@@ -80,93 +78,41 @@ public class MCGattack : MonoBehaviour
 
         FindEnemy();
         
-        
-        if (Attacking)
-        {
-            if (nearestEnemy != null )
-            {
-                Vector3 directionToTarget = nearestEnemy.transform.position - transform.position;
-                directionToTarget.y = 0; // If you don't want to rotate in the y-axis
-
-                if (directionToTarget != Vector3.zero)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-                    transform.rotation =
-                        Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-                    
-                }
-                
-                GrapClose(target);
-            }
-            
-            
-        }
-
-
     }
 
     void attack()
     {
+        
+        
         animator.SetTrigger("Attack");
-        Collider[] hitEnemy1 = Physics.OverlapSphere(R_hand.position, attackRange, enemyLayers);
-        foreach (Collider enemy in hitEnemy1)
+        if (nearestEnemy != null )
         {
-            if (nearestEnemy)
-            {
-                if (enemy.TryGetComponent(out IDamagable enemyStat))
-                {
-                    IDamagable damagable = enemy.GetComponent<IDamagable>();
-                    if (damagable != null)
-                    {
-                        damagable.Damage(attackValue);
-                        _stat.GetEnergy(1);
-                    }
-                }
-            }
-        }
-        
-        Collider[] hitEnemy2 = Physics.OverlapSphere(L_hand.position, attackRange, enemyLayers);
-        foreach (Collider enemy in hitEnemy2)
-        {
-            if (nearestEnemy)
-            {
-                if (enemy.TryGetComponent(out IDamagable enemyStat))
-                {
-                    IDamagable damagable = enemy.GetComponent<IDamagable>();
-                    if (damagable != null)
-                    {
-                        damagable.Damage(attackValue);
-                        _stat.GetEnergy(1);
-                    }
-                }
-            }
-        }
-        
-        
+            Vector3 directionToTarget = nearestEnemy.transform.position - transform.position;
+            directionToTarget.y = 0; // If you don't want to rotate in the y-axis
 
-        Attacking = !Attacking;
-        Invoke(nameof(ResetAttack), timeBetweenAttack);
+            if (directionToTarget != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+                transform.rotation =
+                    Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+                    
+            }
+                
+            
+        }
+        GrapClose(target);
+        //Attacking = !Attacking;
+        //Invoke(nameof(ResetAttack), timeBetweenAttack);
     }
 
+    
+    
     private void ResetAttack()
     {
         Attacking = !Attacking;
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        if (R_hand == null)
-            return;
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(R_hand.position, attackRange);
-        
-        if (L_hand == null)
-            return;
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(L_hand.position, attackRange);
-    }
+   
 
     void FindEnemy()
     { 
@@ -196,7 +142,7 @@ public class MCGattack : MonoBehaviour
     {
         Vector3 position;
         position = nearestEnemy.position;
-        return Vector3.MoveTowards(position, transform.position, Distancedelta);
+        return Vector3.MoveTowards(new Vector3(position.x, 1, position.z), transform.position, Distancedelta);
     }
     
     private void OnDrawGizmos()
