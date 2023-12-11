@@ -7,6 +7,8 @@ using DG.Tweening;
 [RequireComponent(typeof(NavMeshAgent))]
 public class BossAI : MonoBehaviour, IDamagable
 {
+    [SerializeField] private GameObject floatingTextPrefab;
+    
     [SerializeField] private StatsEnemyScriptable stat;
     [Header("Agent Setting")]
     [SerializeField] private CheckPlayerEntrance checkPlayer;
@@ -138,6 +140,7 @@ public class BossAI : MonoBehaviour, IDamagable
 
     private void TakeDamage(float damage)
     {
+        ShowDamage(damage.ToString());
         _healthPoint -= damage;
         _healthBar.UpdateHealthBar(_healthPoint, stat.MaxHealth);
 
@@ -160,6 +163,15 @@ public class BossAI : MonoBehaviour, IDamagable
     public void Damage(float damageAmount)
     {
         TakeDamage(damageAmount);
+    }
+    
+    void ShowDamage(string text)
+    {
+        if (floatingTextPrefab)
+        {
+            GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+            prefab.GetComponentInChildren<TextMesh>().text = text;
+        }
     }
 
     public void SetSpawn()

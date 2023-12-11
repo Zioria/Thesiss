@@ -11,7 +11,8 @@ public class EnemyStat : MonoBehaviour, IDamagable
     [SerializeField] private float chaseRange;
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private float defultSpeed;
-
+    [SerializeField] private GameObject floatingTextPrefab;
+    
     private float _healthPoint;
     private GameObject _enemy;
     private Animator _anim;
@@ -50,6 +51,7 @@ public class EnemyStat : MonoBehaviour, IDamagable
 
     public void TakeDamage(float damage)
     {
+        ShowDamage(damage.ToString());
         _healthPoint -= damage;
         _healthBar.UpdateHealthBar(_healthPoint, stat.MaxHealth);
         Debug.Log(_healthPoint);
@@ -93,5 +95,14 @@ public class EnemyStat : MonoBehaviour, IDamagable
     public void Damage(float damageAmount)
     {
         TakeDamage(damageAmount);
+    }
+
+    void ShowDamage(string text)
+    {
+        if (floatingTextPrefab)
+        {
+            GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+            prefab.GetComponentInChildren<TextMesh>().text = text;
+        }
     }
 }
