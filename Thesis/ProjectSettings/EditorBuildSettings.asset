@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game_TPP Asset.unity
     guid: e9017d5f96b9f09489b4b37e1d6eb914
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EndDeemo.unity
     guid: a9f88832024697a4383684c71d696d74
   m_configObjects:

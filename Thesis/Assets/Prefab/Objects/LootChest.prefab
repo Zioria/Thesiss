@@ -202,11 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugLog: 
-  itemsPrefab:
-  - {fileID: 3881691098716505823, guid: 4206aa6b8ecbd9f4d9685f947e6526b3, type: 3}
-  - {fileID: 8110952281970224238, guid: 6861688c7d5c2ae4089bb8f435479380, type: 3}
-  - {fileID: 6018069789831656408, guid: 48ba0ee78562cc748b79b31deed62998, type: 3}
-  - {fileID: 631332901582522672, guid: 1bd43c0efd92e3249a3150b67999bfbd, type: 3}
+  itemsPrefab: []
   amountToSpawn: 0
 --- !u!65 &3204946724933348095
 BoxCollider:

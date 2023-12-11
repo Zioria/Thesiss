@@ -39,9 +39,7 @@ public class ItemScriptable : ScriptableObject
             case 2:
                 _stat.GetEnergy(numberGet);
                 break;
-            case 3:
-                
-                break;
+            
         }
     }
 }
