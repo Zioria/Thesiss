@@ -2064,6 +2064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13476693322beb04b84e7eb47d3816a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextPrefab: {fileID: 7275540187618630016, guid: 35848c89b3e523248bac58b024fd5fef, type: 3}
   stat: {fileID: 11400000, guid: 30f94bb152fdaec4f85b5b284463c208, type: 2}
   checkPlayer: {fileID: 0}
   speedAgent: 4

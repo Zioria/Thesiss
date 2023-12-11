@@ -1129,6 +1129,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   defultSpeed: 1.5
+  floatingTextPrefab: {fileID: 7275540187618630016, guid: 35848c89b3e523248bac58b024fd5fef, type: 3}
   isPatrol: 0
   Setposition: {x: 0, y: 0, z: 0}
   SpeedAgent: 1.5
