@@ -85,9 +85,13 @@ public class MCGattack : MonoBehaviour
         
         
         animator.SetTrigger("Attack");
-        if (nearestEnemy != null )
+        if (nearestEnemy == null )
         {
-            Vector3 directionToTarget = nearestEnemy.transform.position - transform.position;
+           
+                return;
+            
+        }
+         Vector3 directionToTarget = nearestEnemy.transform.position - transform.position;
             directionToTarget.y = 0; // If you don't want to rotate in the y-axis
 
             if (directionToTarget != Vector3.zero)
@@ -97,9 +101,6 @@ public class MCGattack : MonoBehaviour
                     Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
                     
             }
-                
-            
-        }
         GrapClose(target);
         //Attacking = !Attacking;
         //Invoke(nameof(ResetAttack), timeBetweenAttack);

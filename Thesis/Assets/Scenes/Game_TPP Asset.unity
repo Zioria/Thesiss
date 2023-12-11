@@ -3313,6 +3313,17 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -2.7, y: 20.234001, z: 0.3}
   m_TimeToStationary: 0.5
+--- !u!114 &204084831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8568906036852462816, guid: 1ed8b17dac78bee488f53ee94cf83962, type: 3}
+  m_PrefabInstance: {fileID: 7151801105602713209}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13476693322beb04b84e7eb47d3816a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &206325544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45853,7 +45864,7 @@ MonoBehaviour:
   imageInActive: {fileID: 1161480439}
   iconGirl: {fileID: 21300000, guid: b0ce1bd17bf30a140883cdeb8cadff67, type: 3}
   iconBoy: {fileID: 21300000, guid: 46f5d15218c738c4a824e7541bb63151, type: 3}
-  bossAI: {fileID: 0}
+  bossAI: {fileID: 204084831}
   M_isAlive: 0
   G_isAlive: 0
   _GisDeadFirst: 0
