@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: c81599feeec05d14fbf3dd64b71864c8, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: bdfc475e919710248bf14d75643fefd2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37423,9 +37423,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DirectionalLight: {fileID: 2114283754330233425}
   Preset: {fileID: 11400000, guid: cbdb295c384abdf4b9e9d6454ef33ede, type: 2}
-  TimeOfDay: 300
-  DayMin: 5
-  MintoTick: 300
+  TimeOfDay: 0
+  DayMin: 10
+  MintoTick: 60
   CurrenTick: 0
   skybox: {fileID: 1981624008}
 --- !u!114 &1981624008
@@ -37441,12 +37441,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skyboxMaterials:
-  - {fileID: 2100000, guid: c81599feeec05d14fbf3dd64b71864c8, type: 2}
   - {fileID: 2100000, guid: bdfc475e919710248bf14d75643fefd2, type: 2}
   - {fileID: 2100000, guid: 4c12da8dc5dced74e838120da11725a0, type: 2}
   - {fileID: 2100000, guid: 4f0579e073abe59409641925c6e53e31, type: 2}
   - {fileID: 2100000, guid: f5dcd562bbe8e6741845a6ba29547444, type: 2}
   - {fileID: 2100000, guid: c81599feeec05d14fbf3dd64b71864c8, type: 2}
+  - {fileID: 2100000, guid: c81599feeec05d14fbf3dd64b71864c8, type: 2}
+  - {fileID: 2100000, guid: c81599feeec05d14fbf3dd64b71864c8, type: 2}
+  - {fileID: 2100000, guid: bdfc475e919710248bf14d75643fefd2, type: 2}
   makeFirstMaterialSkybox: 0
   blendSpeed: 0.2
   timeToWait: 1
@@ -48587,14 +48589,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114283754330233424}
-  m_LocalRotation: {x: 0.061628457, y: -0.70441604, z: -0.70441604, w: -0.061628457}
+  m_LocalRotation: {x: 0.08715578, y: -0.9961947, z: 0, w: 0}
   m_LocalPosition: {x: 39.455, y: 0, z: 7.815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2114283753834967213}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: -10}
 --- !u!114 &2114283754330233427
 MonoBehaviour:
   m_ObjectHideFlags: 0
