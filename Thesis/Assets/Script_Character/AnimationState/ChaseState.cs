@@ -39,17 +39,18 @@ public class ChaseState : StateMachineBehaviour
             animator.SetBool(_attackAnim, true);
             return;
         }
-        if (distance < _enemyStat.ChaseRange)
-        {
-            _agent.SetDestination(_playerPos.position);
-            return;
-        }
-        if (_enemyStat.isPatrol)
-        {
-            animator.SetBool(_idleAnim, true);
-            return;
-        }
-        animator.SetBool(_walkBackAnim, true);
+        _agent.SetDestination(_playerPos.position);
+        //if (distance < _enemyStat.ChaseRange)
+        //{
+
+        //    return;
+        //}
+        //if (_enemyStat.isPatrol)
+        //{
+        //    animator.SetBool(_idleAnim, true);
+        //    return;
+        //}
+        //animator.SetBool(_walkBackAnim, true);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

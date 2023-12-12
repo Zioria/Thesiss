@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class CheckPlayerEntrance : MonoBehaviour
 {
+    [SerializeField] private BossHealthController bossHpController;
+
+    private Animator _anim;
     public bool IsPlayerEnter;
+
+    private void Awake()
+    {
+        _anim = GameObject.Find("BossHealthBarUI").GetComponent<Animator>();
+    }
 
     private void Start()
     {
@@ -18,6 +26,13 @@ public class CheckPlayerEntrance : MonoBehaviour
             return;
         }
         IsPlayerEnter = true;
+        if (bossHpController.IsOpenOnce)
+        {
+            bossHpController.ShowHealthBar();
+            return;
+        }
+        _anim.SetTrigger("playerEnter");
+        bossHpController.IsOpenOnce = true;
     }
 
     private void OnTriggerExit(Collider other)
@@ -27,5 +42,6 @@ public class CheckPlayerEntrance : MonoBehaviour
             return;
         }
         IsPlayerEnter = false;
+        Invoke(nameof(bossHpController.HideHealthBar), 2f);
     }
 }

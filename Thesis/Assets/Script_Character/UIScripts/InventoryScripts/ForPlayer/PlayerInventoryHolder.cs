@@ -26,19 +26,19 @@ public class PlayerInventoryHolder : InventoryHolder
 
     private void Update()
     {
-        if (IsOpening)
-        {
-            return;
-        }
+        //if (IsOpening)
+        //{
+        //    return;
+        //}
 
-        if (!Input.GetKeyDown(KeyCode.B))
-        {
-            return;
-        }
-        OnPlayerBackpackDisplayRequested?.Invoke(secondaryInventorySystem);
-        playerInput.enabled = false;
-        cursorControl.OpenMenu();
-        IsOpening = true;
+        //if (!Input.GetKeyDown(KeyCode.B))
+        //{
+        //    return;
+        //}
+        //OnPlayerBackpackDisplayRequested?.Invoke(secondaryInventorySystem);
+        //playerInput.enabled = false;
+        //cursorControl.OpenMenu();
+        //IsOpening = true;
     }
 
     public bool AddToInventory(ItemScriptable data, int amount)

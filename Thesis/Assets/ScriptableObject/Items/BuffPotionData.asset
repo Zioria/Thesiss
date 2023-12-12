@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 2
   displayName: Buff Potion
   numberGet: 1
-  description: Gain 1 point skill
+  description: Gain Energy point
   iconItem: {fileID: 21300000, guid: e46774f0fc1a08d42b2ba982f6253b4c, type: 3}
-  maxStackSize: 2
+  maxStackSize: 99
   itemPrefab: {fileID: 1942362563933463311, guid: ab0c4f7372262a7449ba281137f85216, type: 3}

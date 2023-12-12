@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CameraDragAndZoom : MonoBehaviour
 {
     [SerializeField] private Camera largeCam;
-    [SerializeField] private GameObject largeMinimap;
+    [SerializeField] private CanvasGroup largeMinimap;
     [SerializeField] private float dragSpeed;
     [SerializeField] private float nearMapDragSpeed;
     [SerializeField] private CheckZoom checkZoom;
@@ -31,7 +31,7 @@ public class CameraDragAndZoom : MonoBehaviour
     private void Update()
     {
         Vector3 inputDir = Vector3.zero;
-        if (!largeMinimap.activeInHierarchy)
+        if (!largeMinimap.blocksRaycasts)
         {
             _followScipt.enabled = true;
             return;

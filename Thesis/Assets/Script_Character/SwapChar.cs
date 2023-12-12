@@ -20,6 +20,7 @@ public class SwapChar : MonoBehaviour
     public int addnumber_m = 2;
     
     public KeyCode[] anyKey;
+    [SerializeField] private float timeBetweenChange;
 
     [Header("CharacterIcon")]
     [SerializeField] private Image imageActive;
@@ -29,6 +30,7 @@ public class SwapChar : MonoBehaviour
 
     [Header("Reference")]
     [SerializeField] private BossAI bossAI;
+    [SerializeField] private Image imageCooldown;
 
     private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
     private CharacterStats _stat;
@@ -37,6 +39,7 @@ public class SwapChar : MonoBehaviour
     private PlayerRespawn _playerRespawn;
     private bool _isSpawning;
     private int _GameOver;
+    private bool _isChange;
 
     public bool M_isAlive;
     public bool G_isAlive;
@@ -107,6 +110,14 @@ public class SwapChar : MonoBehaviour
         {
             return;
         }
+        if (_isChange)
+        {
+            imageCooldown.fillAmount -= 1 / (timeBetweenChange - .1f) * Time.deltaTime;
+            if (imageCooldown.fillAmount <= 0)
+            {
+                imageCooldown.fillAmount = 0;
+            }
+        }
         SwapCharacter();
         
         //if(mc_m.activeInHierarchy)
@@ -142,7 +153,12 @@ public class SwapChar : MonoBehaviour
 
     private void SwapCharacter()
     {
-        if (Input.GetKeyDown(anyKey[0]) && _stat.CurrentHealth > 0)
+        if (_isChange)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(anyKey[0]) && _stat.CurrentHealth > 0 && !mc_g.activeInHierarchy)
         {
             _anim.Play("Idle");
             mc_m.SetActive(false);
@@ -150,10 +166,13 @@ public class SwapChar : MonoBehaviour
             mc_g.SetActive(true);
             imageActive.sprite = iconGirl;
             imageInActive.sprite = iconBoy;
+            imageCooldown.fillAmount = 1;
+            _isChange = !_isChange;
+            Invoke(nameof(ResetTimeChange), timeBetweenChange);
             //itemheal = GameObject.FindWithTag ("Heal");
             //itemheal.SetActive(false);
         }
-        if (Input.GetKeyDown(anyKey[1]) && _stat.CurrentHealth > 0)
+        if (Input.GetKeyDown(anyKey[1]) && _stat.CurrentHealth > 0 && !mc_m.activeInHierarchy)
         {
             _anim.Play("Idle");
             mc_g.SetActive(false);
@@ -161,8 +180,16 @@ public class SwapChar : MonoBehaviour
             BagModel.SetActive(true);
             imageActive.sprite = iconBoy;
             imageInActive.sprite = iconGirl;
+            imageCooldown.fillAmount = 1;
+            _isChange = !_isChange;
+            Invoke(nameof(ResetTimeChange), timeBetweenChange);
             //itemheal.SetActive(true);
         }
+    }
+
+    private void ResetTimeChange()
+    {
+        _isChange = !_isChange;
     }
 
     public void Die()

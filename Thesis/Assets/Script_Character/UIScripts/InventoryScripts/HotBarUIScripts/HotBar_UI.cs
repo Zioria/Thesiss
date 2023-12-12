@@ -9,7 +9,6 @@ public class HotBar_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private Image itemSprite;
     [SerializeField] private TextMeshProUGUI itemCount;
     [SerializeField] private InventorySlot inventorySlot;
-    [SerializeField] private GameObject slotHighlight;
 
     private Button _btn;
 
@@ -81,11 +80,6 @@ public class HotBar_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void OnUISlotClick()
     {
         InvDisplay?.SlotClicked(this);
-    }
-
-    public void ToggleHighlight()
-    {
-        slotHighlight.SetActive(!slotHighlight.activeInHierarchy);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
