@@ -12037,6 +12037,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7f2c85cfee2d854d9bb795496a6cc46, type: 3}
+--- !u!1 &693588455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8955682199101005482, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+  m_PrefabInstance: {fileID: 1480408039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &697396365 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1539666915715806134, guid: a6d1dcb83a33f10429e8c6febccfd8bb, type: 3}
@@ -12622,7 +12627,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 427468004}
+    m_TransformParent: {fileID: 1947900388}
     m_Modifications:
     - target: {fileID: 3538608927924163784, guid: 79db5ed519ebba944a99a2703c65f52e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -12790,11 +12795,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3538608927924163791, guid: 79db5ed519ebba944a99a2703c65f52e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -831.0771
+      value: -778.1363
       objectReference: {fileID: 0}
     - target: {fileID: 3538608927924163791, guid: 79db5ed519ebba944a99a2703c65f52e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44
+      value: 4.7054443
       objectReference: {fileID: 0}
     - target: {fileID: 3538608927924163791, guid: 79db5ed519ebba944a99a2703c65f52e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -27269,7 +27274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4300762221984618425, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4300762221984618425, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
@@ -27507,6 +27512,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 4416926083347132232}
+    - target: {fileID: 6249080863946037535, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
+      propertyPath: tooltipBug
+      value: 
+      objectReference: {fileID: 693588455}
     - target: {fileID: 6249080863946037535, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       propertyPath: playerInput
       value: 
@@ -28008,12 +28017,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8728878785874901596, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 771779387}
-    - targetCorrespondingSourceObject: {fileID: 8728878785874901596, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 725313296}
-    - targetCorrespondingSourceObject: {fileID: 8728878785874901596, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1615867427}
     - targetCorrespondingSourceObject: {fileID: 8728878785874901596, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1321575067}
@@ -31472,7 +31475,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 427468004}
+    m_TransformParent: {fileID: 1947900388}
     m_Modifications:
     - target: {fileID: 3538608927924163784, guid: 79db5ed519ebba944a99a2703c65f52e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -31640,11 +31643,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3538608927924163791, guid: 79db5ed519ebba944a99a2703c65f52e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -831.0771
+      value: -778.1363
       objectReference: {fileID: 0}
     - target: {fileID: 3538608927924163791, guid: 79db5ed519ebba944a99a2703c65f52e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44
+      value: 4.7054443
       objectReference: {fileID: 0}
     - target: {fileID: 3538608927924163791, guid: 79db5ed519ebba944a99a2703c65f52e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -36979,6 +36982,8 @@ RectTransform:
   - {fileID: 1828178957}
   - {fileID: 1785231993}
   - {fileID: 168767289}
+  - {fileID: 725313296}
+  - {fileID: 1615867427}
   m_Father: {fileID: 427468004}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51843,6 +51848,7 @@ MonoBehaviour:
   secondaryInventorySize: 10
   secondaryInventorySystem:
     inventorySlots: []
+  playerInput: {fileID: 4416926083347132239}
   cursorControl: {fileID: 427468005}
   IsOpening: 0
 --- !u!114 &8173707118443882808

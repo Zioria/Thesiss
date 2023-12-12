@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class PlayerInventoryHolder : InventoryHolder
 {
     [SerializeField] protected int secondaryInventorySize;
     [SerializeField] protected InventorySystem secondaryInventorySystem;
-    [SerializeField, Tooltip("Find in UI gameobject")] private CursorControl cursorControl;
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private CursorControl cursorControl;
 
     public InventorySystem SecondaryInventorySystem => secondaryInventorySystem;
 
@@ -34,6 +36,7 @@ public class PlayerInventoryHolder : InventoryHolder
             return;
         }
         OnPlayerBackpackDisplayRequested?.Invoke(secondaryInventorySystem);
+        playerInput.enabled = false;
         cursorControl.OpenMenu();
         IsOpening = true;
     }
