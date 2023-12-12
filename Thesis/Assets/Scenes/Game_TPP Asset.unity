@@ -23021,7 +23021,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.95
+  m_fontSize: 34
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -24223,11 +24223,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7620824269988445974, guid: 5529cd024323ee443a6a183aa71540b9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 259.68
+      value: 197.5
       objectReference: {fileID: 0}
     - target: {fileID: 7620824269988445974, guid: 5529cd024323ee443a6a183aa71540b9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 92.6236
+      value: 87.846
       objectReference: {fileID: 0}
     - target: {fileID: 7620824269988445974, guid: 5529cd024323ee443a6a183aa71540b9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24259,11 +24259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7620824269988445974, guid: 5529cd024323ee443a6a183aa71540b9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 821
+      value: -506.06
       objectReference: {fileID: 0}
     - target: {fileID: 7620824269988445974, guid: 5529cd024323ee443a6a183aa71540b9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 486
+      value: 496.08
       objectReference: {fileID: 0}
     - target: {fileID: 7620824269988445974, guid: 5529cd024323ee443a6a183aa71540b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -24279,7 +24279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7620824269988445975, guid: 5529cd024323ee443a6a183aa71540b9, type: 3}
       propertyPath: m_Name
-      value: Button 8 (1)
+      value: Reset
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27747,7 +27747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8770370673761382593, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -67
       objectReference: {fileID: 0}
     - target: {fileID: 8823513269546665028, guid: 42eb16249f1987e41bb994155d74848c, type: 3}
       propertyPath: m_SizeDelta.x
