@@ -62,11 +62,7 @@ public class SwapChar : MonoBehaviour
         BagModel.SetActive(false);
         imageGirl.sprite = iconGirl;
         imageBoy.sprite = iconBoy;
-
-        imageGirl.color = Color.grey;
-        imageBoy.color = Color.white;
-        girlTextNumber.color = Color.grey;
-        boyTextNumber.color = Color.white;
+        ModelGirlActive();
 
         //itemheal.SetActive(false);
 
@@ -93,10 +89,7 @@ public class SwapChar : MonoBehaviour
                     mc_m.SetActive(true);
                     BagModel.SetActive(true);
 
-                    imageGirl.color = Color.white;
-                    imageBoy.color = Color.grey;
-                    girlTextNumber.color = Color.white;
-                    boyTextNumber.color = Color.grey;
+                    ModelBoyActive();
 
                     _GisDeadFirst += 1;
                 }
@@ -110,10 +103,7 @@ public class SwapChar : MonoBehaviour
             {
                 mc_g.SetActive(true);
 
-                imageGirl.color = Color.grey;
-                imageBoy.color = Color.white;
-                girlTextNumber.color = Color.grey;
-                boyTextNumber.color = Color.white;
+                ModelGirlActive();
             }
         }
 
@@ -205,10 +195,7 @@ public class SwapChar : MonoBehaviour
             BagModel.SetActive(false);
             mc_g.SetActive(true);
 
-            imageGirl.color = Color.grey;
-            imageBoy.color = Color.white;
-            girlTextNumber.color = Color.grey;
-            boyTextNumber.color = Color.white;
+            ModelGirlActive();
 
             imageCooldownOne.fillAmount = 1;
             imageCooldownTwo.fillAmount = 1;
@@ -224,10 +211,7 @@ public class SwapChar : MonoBehaviour
             mc_m.SetActive(true);
             BagModel.SetActive(true);
 
-            imageGirl.color = Color.white;
-            imageBoy.color = Color.grey;
-            girlTextNumber.color = Color.white;
-            boyTextNumber.color = Color.grey;
+            ModelBoyActive();
 
             imageCooldownOne.fillAmount = 1;
             imageCooldownTwo.fillAmount = 1;
