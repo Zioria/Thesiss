@@ -26,11 +26,11 @@ public class CheckPlayerEntrance : MonoBehaviour
             return;
         }
         IsPlayerEnter = true;
-        if (bossHpController.IsOpenOnce)
-        {
-            bossHpController.ShowHealthBar();
-            return;
-        }
+        //if (bossHpController.IsOpenOnce)
+        //{
+        //    bossHpController.ShowHealthBar();
+        //    return;
+        //}
         _anim.SetTrigger("playerEnter");
         bossHpController.IsOpenOnce = true;
     }
@@ -42,6 +42,7 @@ public class CheckPlayerEntrance : MonoBehaviour
             return;
         }
         IsPlayerEnter = false;
-        Invoke(nameof(bossHpController.HideHealthBar), 2f);
+        _anim.SetTrigger("playerOut");
+        //bossHpController.HideHealthBar_WithTime();
     }
 }

@@ -33,9 +33,14 @@ public class BossHealthController : MonoBehaviour
         canvasGroup.alpha = 1;
     }
 
-    public void HideHealthBar()
+    private void HideHealthBar()
     {
         canvasGroup.alpha = 0;
+    }
+
+    public void HideHealthBar_WithTime()
+    {
+        Invoke(nameof(HideHealthBar), 2f);
     }
     
 }

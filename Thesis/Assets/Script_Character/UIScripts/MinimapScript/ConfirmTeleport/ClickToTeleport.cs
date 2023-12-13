@@ -8,8 +8,6 @@ public class ClickToTeleport : MonoBehaviour
 {
     [SerializeField] private GameObject playerObject;
     [SerializeField] private Button teleportBtn;
-    [SerializeField] private GameObject mapHolder;
-    [SerializeField] private GameObject miniMap;
     [SerializeField] private CursorControl cursor;
     [SerializeField] private ThirdPersonController playerController;
     [SerializeField] private float timeToReset;
@@ -22,8 +20,6 @@ public class ClickToTeleport : MonoBehaviour
         teleportBtn.onClick.AddListener(() =>
         {
             CheckSpawnpoint();
-            mapHolder.SetActive(false);
-            miniMap.SetActive(true);
             cursor.CloseMenu();
         });
     }

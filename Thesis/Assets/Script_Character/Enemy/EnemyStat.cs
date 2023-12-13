@@ -16,11 +16,9 @@ public class EnemyStat : MonoBehaviour, IDamagable
     private float _healthPoint;
     private GameObject _enemy;
     private Animator _anim;
-    private GameObject _player;
+    private Transform _playerPos;
     private static readonly int _deathAnim = Animator.StringToHash("isDeath");
-    private static readonly int _getHitAnim = Animator.StringToHash("isGetHit");
     private EnemyHealthBar _healthBar;
-    private bool _playerInrange;
 
     public bool isPatrol;
     public Vector3 Setposition;
@@ -35,8 +33,8 @@ public class EnemyStat : MonoBehaviour, IDamagable
         Setposition = transform.position;
         _enemy = this.gameObject;
         _anim = GetComponent<Animator>();
-        _player = GameObject.FindWithTag("Player");
         _healthBar = GetComponentInChildren<EnemyHealthBar>();
+        _playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     private void Start()
@@ -101,7 +99,7 @@ public class EnemyStat : MonoBehaviour, IDamagable
     {
         if (floatingTextPrefab)
         {
-            GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+            GameObject prefab = Instantiate(floatingTextPrefab, transform.position, _playerPos.rotation);
             prefab.GetComponentInChildren<TextMesh>().text = text;
         }
     }

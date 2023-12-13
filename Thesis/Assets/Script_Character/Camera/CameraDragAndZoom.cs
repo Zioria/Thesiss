@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(FollowPosition))]
 public class CameraDragAndZoom : MonoBehaviour
 {
+    [TextArea(4,4)]
+    [SerializeField] private string DEBUG_LOG;
+
     [SerializeField] private Camera largeCam;
+    [SerializeField] private MapHolderUI mHolderUI;
     [SerializeField] private CanvasGroup largeMinimap;
     [SerializeField] private float dragSpeed;
     [SerializeField] private float nearMapDragSpeed;
@@ -14,17 +19,21 @@ public class CameraDragAndZoom : MonoBehaviour
     [SerializeField] private GameObject ZoomBar;
     [SerializeField] private float _maxZoom;
     [SerializeField] private float _minZoom;
+    [SerializeField] private float panSpeed;
+    [SerializeField] private float cameraSpeed;
 
     private FollowPosition _followScipt;
-    private Vector2 _dragOrigin;
-    private bool _isDrag;
-    private float _amountZoom;
+    private Vector3 _dragOrigin;
+    private Vector3 _difference;
     private bool _isNearMap;
+    private bool _isDragging;
+    private float _amountZoom;
+    private Vector3 GetMousePosition => largeCam.ScreenToWorldPoint(Input.mousePosition);
+
     private void Awake()
     {
         _isNearMap = false;
         _amountZoom = largeCam.orthographicSize;
-        _isDrag = false;
         _followScipt = GetComponent<FollowPosition>();
     }
 
@@ -51,35 +60,32 @@ public class CameraDragAndZoom : MonoBehaviour
         {
             return;
         }
-        CheckMouseIsPress();
 
-        if (_isDrag)
-        {
-            Vector2 mouseMovemennt = (Vector2)Input.mousePosition - _dragOrigin;
-
-            inputDir.x = mouseMovemennt.x * (_isNearMap? nearMapDragSpeed: dragSpeed);
-            inputDir.z = mouseMovemennt.y * (_isNearMap ? nearMapDragSpeed : dragSpeed);
-
-            _dragOrigin = Input.mousePosition;
-        }
-
-        Vector3 moveDir = -transform.up * inputDir.z + -transform.right * inputDir.x;
-        transform.position += moveDir * Time.deltaTime;
     }
 
-    private void CheckMouseIsPress()
+    private void LateUpdate()
+    {
+        OnDrag();
+        if (!_isDragging || !mHolderUI.IsOpen)
+
+        {
+            return;
+        }
+        _followScipt.enabled = false;
+        _difference = GetMousePosition - transform.position;
+        transform.position = _dragOrigin - _difference;
+    }
+
+    private void OnDrag()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            _isDrag = true;
-            _followScipt.enabled = false;
-            _dragOrigin = Input.mousePosition;
+            _dragOrigin = GetMousePosition;
         }
-        if (Input.GetMouseButtonUp(0))
-        {
-            _isDrag = false;
-        }
+
+        _isDragging = Input.GetMouseButton(0);
     }
+
 
     private void InputScollWheel(float amout)
     {

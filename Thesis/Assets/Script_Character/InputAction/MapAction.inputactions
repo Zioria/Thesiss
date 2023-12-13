@@ -1,0 +1,34 @@
+{
+    "name": "MapAction",
+    "maps": [
+        {
+            "name": "OnMap",
+            "id": "23c1d113-d7dc-4ec2-8649-3bb8cb924ac0",
+            "actions": [
+                {
+                    "name": "DragMap",
+                    "type": "Button",
+                    "id": "884b2072-1383-4498-9287-cb24f3a7e9a7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8ecaef73-bf2c-4673-a880-e407675fe834",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DragMap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

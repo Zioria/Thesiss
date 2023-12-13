@@ -7,18 +7,24 @@ public class DestroyOnSec : MonoBehaviour
 {
     [SerializeField] private float secondToDestroy;
 
-    public GameObject mainCam;
+    private Camera _camera;
 
     private void Awake()
     {
-        
+        _camera = Camera.main;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.LookAt(mainCam.transform);
+        //transform.LookAt(transform.position + _camera.transform.rotation * Vector3.forward, _camera.transform.rotation * Vector3.up);
         Destroy(gameObject, secondToDestroy);
+    }
+
+    private void LateUpdate()
+    {
+        transform.LookAt(_camera.transform.position);
+        transform.rotation = Quaternion.LookRotation(_camera.transform.forward);
     }
 
 }

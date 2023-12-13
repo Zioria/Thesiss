@@ -236,6 +236,14 @@ public class SwapChar : MonoBehaviour
         bossAI.SetSpawn();
     }
 
+    public void PreventFall()
+    {
+        TPC.IsDisable = true;
+        _anim.enabled = false;
+        gameObject.transform.position = _playerRespawn.PlayerSpawnpoint;
+        Invoke(nameof(ResetController), .5f);
+    }
+
     private void ResetController()
     {
         TPC.IsDisable = false;

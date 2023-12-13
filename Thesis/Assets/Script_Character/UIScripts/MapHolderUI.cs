@@ -36,6 +36,11 @@ public class MapHolderUI : MonoBehaviour
         IsOpen = true;
     }
 
+    public void OpenMap()
+    {
+        IsOpen = true;
+    }
+
     public void CloseMap()
     {
         IsOpen = false;
