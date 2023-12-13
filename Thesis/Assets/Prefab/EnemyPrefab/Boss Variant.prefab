@@ -1617,6 +1617,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e4fac44733a240447b62970f35ee5857, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3391260011828297746}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e4fac44733a240447b62970f35ee5857, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6881531188273744686}
   m_SourcePrefab: {fileID: 100100000, guid: e4fac44733a240447b62970f35ee5857, type: 3}
 --- !u!4 &2861459834667465831 stripped
 Transform:
@@ -1701,6 +1704,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.5624747, y: 4.332035, z: 6.4346094}
   m_Center: {x: -0.10385624, y: 0.20585196, z: 0.6742186}
+--- !u!114 &6881531188273744686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242066317667641053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192d4fef8ef76fe47855664b248da5a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossStat: {fileID: 11400000, guid: 30f94bb152fdaec4f85b5b284463c208, type: 2}
+  healthBar: {fileID: 0}
+  checkPEntrance: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  IsOpenOnce: 0
 --- !u!1001 &8645451161163680861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1739,7 +1759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d3aa38de93ee4a4abd59947f7fdf342, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.2401032
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1d3aa38de93ee4a4abd59947f7fdf342, type: 3}
       propertyPath: m_LocalPosition.z
