@@ -52,7 +52,7 @@ public class EnemyStat : MonoBehaviour, IDamagable
         ShowDamage(damage.ToString());
         _healthPoint -= damage;
         _healthBar.UpdateHealthBar(_healthPoint, stat.MaxHealth);
-        Debug.Log(_healthPoint);
+        _anim.SetBool("isChase", true);
         if (_healthPoint <= 0)
         {
             Die();

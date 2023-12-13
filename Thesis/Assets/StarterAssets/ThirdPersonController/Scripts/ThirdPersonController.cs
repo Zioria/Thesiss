@@ -126,6 +126,7 @@ namespace StarterAssets
         private Rigidbody _rb;
         private const float _threshold = 0.01f;
         private Vector3 _moveDirection;
+        private SwapChar _sChar;
         
         private bool _hasAnimator;
 
@@ -159,6 +160,7 @@ namespace StarterAssets
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
+            _sChar = GetComponent<SwapChar>();
 #if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();
 #else
@@ -176,7 +178,7 @@ namespace StarterAssets
 
         private void Update()
         {
-            if (IsDisable) {
+            if (IsDisable || _sChar.IsChanging) {
                 return;
             }
             _hasAnimator = TryGetComponent(out _animator);

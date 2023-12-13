@@ -16,4 +16,14 @@ public class PreventFallBug : MonoBehaviour
 
         sChar.PreventFall();
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
+
+        sChar.PreventFall();
+    }
 }

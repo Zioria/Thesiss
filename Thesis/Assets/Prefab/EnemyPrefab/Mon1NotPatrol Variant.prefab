@@ -104,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 6920723589529590672}
+  bossHpController: {fileID: 0}
 --- !u!1 &3089321599982685361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,7 +1133,7 @@ MonoBehaviour:
   floatingTextPrefab: {fileID: 7275540187618630016, guid: 35848c89b3e523248bac58b024fd5fef, type: 3}
   isPatrol: 0
   Setposition: {x: 0, y: 0, z: 0}
-  SpeedAgent: 1.5
+  SpeedAgent: 3
 --- !u!114 &2847721086123136657
 MonoBehaviour:
   m_ObjectHideFlags: 0

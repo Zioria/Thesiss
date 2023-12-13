@@ -22,7 +22,7 @@ public class HotBar_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         itemSprite.preserveAspect = true;
         _btn = GetComponent<Button>();
-        _btn?.onClick.AddListener(OnUISlotClick);
+        //_btn?.onClick.AddListener(OnUISlotClick);
 
         InvDisplay = transform.parent.GetComponent<InventoryDisplay>();
     }

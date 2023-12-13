@@ -15,7 +15,6 @@ public class CameraDragAndZoom : MonoBehaviour
     [SerializeField] private CanvasGroup largeMinimap;
     [SerializeField] private float dragSpeed;
     [SerializeField] private float nearMapDragSpeed;
-    [SerializeField] private CheckZoom checkZoom;
     [SerializeField] private GameObject ZoomBar;
     [SerializeField] private float _maxZoom;
     [SerializeField] private float _minZoom;
@@ -25,14 +24,12 @@ public class CameraDragAndZoom : MonoBehaviour
     private FollowPosition _followScipt;
     private Vector3 _dragOrigin;
     private Vector3 _difference;
-    private bool _isNearMap;
     private bool _isDragging;
     private float _amountZoom;
     private Vector3 GetMousePosition => largeCam.ScreenToWorldPoint(Input.mousePosition);
 
     private void Awake()
     {
-        _isNearMap = false;
         _amountZoom = largeCam.orthographicSize;
         _followScipt = GetComponent<FollowPosition>();
     }
@@ -48,23 +45,13 @@ public class CameraDragAndZoom : MonoBehaviour
         InputScollWheel(largeCam.orthographicSize / 4);
         largeCam.orthographicSize = _amountZoom;
         ZoomBar.GetComponent<Slider>().value = _amountZoom;
-        if (_amountZoom < _maxZoom / 2)
-        {
-            _isNearMap = true;
-        }
-        if (_amountZoom >= _maxZoom)
-        {
-            _isNearMap = false;
-        }
-        if (checkZoom.isZoom)
-        {
-            return;
-        }
+        
 
     }
 
     private void LateUpdate()
     {
+
         OnDrag();
         if (!_isDragging || !mHolderUI.IsOpen)
 
