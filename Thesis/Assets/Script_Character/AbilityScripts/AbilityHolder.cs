@@ -7,6 +7,9 @@ public class AbilityHolder : MonoBehaviour
     public AbilityScriptable ability = null;
     [SerializeField] private KeyCode keyCode;
 
+    [SerializeField] private GameObject VFX_groundSlam;
+    [SerializeField] private Transform slamPoint;
+
     private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
     private CharacterStats _stat;
     private float _coolDownTime;
@@ -55,6 +58,11 @@ public class AbilityHolder : MonoBehaviour
                 state = AbilityState.ready;
                 break;
         }
+    }
+
+    public void SpawnParticle()
+    {
+        Instantiate(VFX_groundSlam, slamPoint);
     }
 }
 

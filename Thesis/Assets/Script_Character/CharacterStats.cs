@@ -6,12 +6,10 @@ using UnityEngine;
 public class CharacterStats : MonoBehaviour
 {
     public static CharacterStats Instance;
-    public GameObject Model_G;
-    public GameObject Model_M;
     
-
     [SerializeField] private StatsScriptable statsScriptable;
     [SerializeField] private Animator anim;
+    [SerializeField] private GameObject healingPoint;
 
     public int CurrentHealth;
     public int CurrentArmor { get; private set; }
@@ -68,15 +66,22 @@ public class CharacterStats : MonoBehaviour
     public void HealDamage(int amount)
     {
         CurrentHealth += amount;
+        healingPoint.SetActive(true);
+        Invoke(nameof(CloseHealingPoint), 3f);
         if (CurrentHealth >= MaxHealth)
         {
             CurrentHealth = MaxHealth;
         }
     }
 
+    private void CloseHealingPoint()
+    {
+        healingPoint.SetActive(false);
+    }
+
     private void Initialize()
     {
-        MaxHealth = statsScriptable.defaultMaxHealth;
+        MaxHealth = statsScriptable.DefaultMaxHealth;
         Damage = statsScriptable.DefaultDamage;
         AtkSpeed = statsScriptable.DefaultAtkSpeed;
         Armor = statsScriptable.DefaultArmor;

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768b3fd9c5fdd9a40ad7db4e7eb5bccb, type: 3}
   m_Name: FemaleStats
   m_EditorClassIdentifier: 
+  nameCharacter: 
+  iconCharacter: {fileID: 21300000, guid: b0ce1bd17bf30a140883cdeb8cadff67, type: 3}
   defaultMaxHealth: 100
   defaultDamage: 30
   defaultAtkSpeed: 3

@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         //AttributeManager.Instance.ResetAttributeUI();
         //AttributeManager.Instance.UpdateAttributeUI();
         golddisplay.text = gold.ToString();
-        AtbPoint = AttributeManager.Instance.AttributePoint;
+        AtbPoint = AttributePointManager.Instance.Point;
    }
 
    public void GoBattle()
@@ -80,9 +80,10 @@ public class Player : MonoBehaviour
             {
                 
                 AtbPoint += quest.AttributePointReward;
-                AttributeManager.Instance.AttributePoint += quest.AttributePointReward;
-                AttributeManager.Instance.UpdateAttributeUI();
-                
+                AttributePointManager.Instance.Point += quest.AttributePointReward;
+                AttributeManagerBoy.Instance.UpdateAttributeUI();
+                AttributeManagerGirl.Instance.UpdateAttributeUI();
+
                 gold += quest.goldReward;
                 quest.Complete();
                 questB.SetActive(false);

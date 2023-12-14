@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class AttributeManager : MonoBehaviour
+public class AttributeManagerBoy : MonoBehaviour
 {
-    public static AttributeManager Instance;
+    public static AttributeManagerBoy Instance;
     private void Awake()
     {
         Instance = this;
@@ -14,15 +15,14 @@ public class AttributeManager : MonoBehaviour
     [Tooltip("Current Level Attribute")] public int[] AttributeLevels;
     [Tooltip("Level Cap Attribute")] public int[] AttributeCaps;
     [SerializeField] private GameObject AttributeHolder;
-    [SerializeField] private Text pointText;
+    [SerializeField] private TextMeshProUGUI pointText;
 
-    public int AttributePoint;
-    public List<Attribute> attributeList;
+    public List<AttributeBoy> attributeList;
     
 
     private void Start()
     {
-        foreach (var attribute in AttributeHolder.GetComponentsInChildren<Attribute>())
+        foreach (var attribute in AttributeHolder.GetComponentsInChildren<AttributeBoy>())
         {
             attributeList.Add(attribute);
         }
@@ -45,7 +45,7 @@ public class AttributeManager : MonoBehaviour
         {
             attributeList[i].UpdateUI();
         }
-        pointText.text = "Points: " + AttributePoint;
+        pointText.text = AttributePointManager.Instance.Point.ToString();
         
     }
 
