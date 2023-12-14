@@ -19,6 +19,7 @@ public class QuestGoal
     {
         if (goalType == GoalType.Kill)
            currentAmount++;
+           currentAmount = Player.Instance.Countcurrent;
     }
 
     public void ItemCollected()
@@ -26,6 +27,7 @@ public class QuestGoal
         if (goalType == GoalType.Gathering)
            currentAmount++;
     }
+
 }
 
 public enum GoalType

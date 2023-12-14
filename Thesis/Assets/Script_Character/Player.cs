@@ -17,6 +17,13 @@ public class Player : MonoBehaviour
    public int AtbPoint;
    public int gold;
    public  TMP_Text golddisplay;
+   public int Countcurrent;
+   public Text CountcurrentQ1;
+   public Text CountcurrentQ2;
+   public Text CountcurrentQ3;
+   public Text CountcurrentQ4;
+   public Text CountcurrentQ5;
+   public Text CountcurrentQ6;
 
    public GameObject questB;
    public GameObject UIq1;
@@ -50,10 +57,10 @@ public class Player : MonoBehaviour
   // }
 
 
-   public void ChangeName(string text)
-   {
+  // public void ChangeName(string text)
+  // {
        //datamanager.data.name = text;
-   }
+  // }
 
    public void Awake()
    {
@@ -66,13 +73,26 @@ public class Player : MonoBehaviour
         //AttributeManager.Instance.ResetAttributeUI();
         //AttributeManager.Instance.UpdateAttributeUI();
         golddisplay.text = gold.ToString();
+        CountcurrentQ1.text = Countcurrent.ToString();
+        CountcurrentQ2.text = Countcurrent.ToString();
+        CountcurrentQ3.text = Countcurrent.ToString();
+        CountcurrentQ4.text = Countcurrent.ToString();
+        CountcurrentQ5.text = Countcurrent.ToString();
+        CountcurrentQ6.text = Countcurrent.ToString();
+        CountcurrentQ1.text =  Countcurrent + " / 1 ";
+        CountcurrentQ2.text =  Countcurrent + " / 5 ";
+        CountcurrentQ3.text =  Countcurrent + " / 10 ";
+        CountcurrentQ4.text =  Countcurrent + " / 5 ";
+        CountcurrentQ5.text =  Countcurrent + " / 8 ";
+        CountcurrentQ6.text =  Countcurrent + " / 15 ";
+
         AtbPoint = AttributeManager.Instance.AttributePoint;
    }
 
    public void GoBattle()
    {
      
-        gold += 10;
+        //gold += 10;
         if (quest.isActive)
         {
             quest.goal.EnemyKilled();
@@ -85,12 +105,12 @@ public class Player : MonoBehaviour
                 
                 gold += quest.goldReward;
                 quest.Complete();
-                questB.SetActive(false);
+                questB.SetActive(true);
                 UIq1.SetActive(false);
                 UIq2.SetActive(false);
                 UIq3.SetActive(false);
 
-                questBD.SetActive(false);
+                questBD.SetActive(true);
                 UIq1D.SetActive(false);
                 UIq2D.SetActive(false);
                 UIq3D.SetActive(false);

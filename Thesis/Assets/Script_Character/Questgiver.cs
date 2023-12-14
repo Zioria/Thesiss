@@ -5,7 +5,12 @@ using UnityEngine.UI;
 
 public class Questgiver : MonoBehaviour
 {   
-    
+    public GameObject headQ1;
+    public GameObject headQ2;
+    public GameObject headQ3;
+    public GameObject headQ11;
+    public GameObject headQ22;
+    public GameObject headQ33;
     public GameObject CloseQuest;
     public GameObject ButtonCloseQuest;
     public GameObject UIquest1;
@@ -52,25 +57,69 @@ public class Questgiver : MonoBehaviour
 
     public void Start()
     {
+        headQ11.SetActive(false);
+        headQ22.SetActive(false);
+        headQ33.SetActive(false);
         CloseQuest.SetActive(false);
-        ButtonCloseQuest.SetActive(false);
+        ButtonCloseQuest.SetActive(true);
         UIquest1.SetActive(false);
         UIquest2.SetActive(false);
         UIquest3.SetActive(false);
         questUI.SetActive(false);
         questUI2.SetActive(false);
         questUI3.SetActive(false);
-        questB.SetActive(false);
         questDis1.SetActive(false);
         questDis2.SetActive(false);
         questDis3.SetActive(false);
     }
 
+    public void OpenCQuestWindow()
+    {
+        CloseQuest.SetActive(true);
+    }
+
+     public void CloseCQuestWindow()
+    {
+        CloseQuest.SetActive(false);
+    }
+
+    public void OpenH1QuestWindow()
+    {
+       headQ1.SetActive(false);
+       headQ11.SetActive(true);
+    }
+    public void OpenH2QuestWindow()
+    {
+        headQ2.SetActive(false);
+        headQ22.SetActive(true);
+    }
+    public void OpenH3QuestWindow()
+    {
+        headQ3.SetActive(false);
+        headQ33.SetActive(true);
+    }
+
+    public void OpenH11QuestWindow()
+    {
+       headQ1.SetActive(true);
+       headQ11.SetActive(false);
+    }
+    public void OpenH22QuestWindow()
+    {
+        headQ2.SetActive(true);
+        headQ22.SetActive(false);
+    }
+    public void OpenH33QuestWindow()
+    {
+        headQ3.SetActive(true);
+        headQ33.SetActive(false);
+    }
+
+
     public void OpenQuestWindow1()
     {
         questUI.SetActive(true);
         CloseQuest.SetActive(true);
-        ButtonCloseQuest.SetActive(true);
         title.text = quest1.title;
         description.text = quest1.description;
         AttributePoint.text = quest1.AttributePointReward.ToString();
@@ -83,8 +132,8 @@ public class Questgiver : MonoBehaviour
 
      public void CloseQuestWindow1()
     {
-        CloseQuest.SetActive(false);
-        ButtonCloseQuest.SetActive(false);
+        //CloseQuest.SetActive(false);
+        //ButtonCloseQuest.SetActive(false);
         questUI.SetActive(false);
         title.text = quest1.title;
         description.text = quest1.description;
@@ -102,8 +151,8 @@ public class Questgiver : MonoBehaviour
         questUI2.SetActive(false);
         questUI3.SetActive(false);
         CloseQuest.SetActive(false);
-        ButtonCloseQuest.SetActive(false);
-        questB.SetActive(true);
+        //ButtonCloseQuest.SetActive(false);
+        questB.SetActive(false);
         questDis1.SetActive(true);
         UIquest1.SetActive(true);
         quest1.isActive = true;
@@ -141,8 +190,8 @@ public class Questgiver : MonoBehaviour
         questUI2.SetActive(false);
         questUI3.SetActive(false);
         CloseQuest.SetActive(false);
-        ButtonCloseQuest.SetActive(false);
-        questB.SetActive(true);
+        //ButtonCloseQuest.SetActive(false);
+        questB.SetActive(false);
         questDis2.SetActive(true);
         UIquest2.SetActive(true);
         quest2.isActive = true;
@@ -179,8 +228,8 @@ public class Questgiver : MonoBehaviour
         questUI2.SetActive(false);
         questUI3.SetActive(false);
         CloseQuest.SetActive(false);
-        ButtonCloseQuest.SetActive(false);
-        questB.SetActive(true);
+        //ButtonCloseQuest.SetActive(false);
+        questB.SetActive(false);
         questDis3.SetActive(true);
         UIquest3.SetActive(true);
         quest3.isActive = true;

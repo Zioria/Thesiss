@@ -89,7 +89,7 @@ public class HotBar_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             return;
         }
 
-        TooltipManager.ShowToolTip_Static(inventorySlot.ItemData.Description);
+        //TooltipManager.ShowToolTip_Static(inventorySlot.ItemData.Description);
     }
 
     public void OnPointerExit(PointerEventData eventData)
