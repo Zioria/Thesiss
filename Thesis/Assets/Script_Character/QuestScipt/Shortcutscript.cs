@@ -6,21 +6,26 @@ using UnityEngine.InputSystem;
 
 public class Shortcutscript : MonoBehaviour
 {
-    public PlayerInput _input;
-
+    [SerializeField] private GameObject QuestUI;
+    
 
     private void Awake()
     {
-        _input.GetComponent<PlayerInput>();
+        QuestUI.SetActive(false);
+       
     }
 
     public void OnQuest(InputValue value)
     {
-        Debug.Log("Quest");
+       QuestUI.SetActive(!QuestUI.activeSelf);
+
+       
     }
 
     public void OnStatus(InputValue value)
     {
         Debug.Log("Status");
     }
+
+    
 }
