@@ -1,47 +1,73 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
 
 public class Player : MonoBehaviour
 {
-   public static Player Instance;  
-   public int hp;
+   public static Player Instance;
+
+   
+   //public Text playerName;
+   //public Datamanager datamanager;
+
+   //public int hp;
    public int AtbPoint;
    public int gold;
+   public  TMP_Text golddisplay;
 
    public GameObject questB;
    public GameObject UIq1;
    public GameObject UIq2;
    public GameObject UIq3;
 
+   public GameObject questBD;
+   public GameObject UIq1D;
+   public GameObject UIq2D;
+   public GameObject UIq3D;
 
    public Quest quest;
+   
+   
 
-   public void SavePlayer ()
+   void Start()
    {
-        Debug.Log("Save completed!");
-        Savesystem.SavePlayer(this);
+       // datamanager.Load();
+        //playerName.text = datamanager.data.name; 
+        //gold = datamanager.data.gold1;
    }
 
-   public void LoadPlayer ()
+   public void SaveFile()
    {
-        Debug.Log("LoadSave completed!");
-        PlayerData data = Savesystem.LoadPlayer();
+       // datamanager.Save();
+   }
 
-        AtbPoint = data.AtbPoint;
-        gold = data.gold;
+   //public void LoadFile()
+  // {
+       // datamanager.Load();
+  // }
 
+
+   public void ChangeName(string text)
+   {
+       //datamanager.data.name = text;
    }
 
    public void Awake()
    {
       Instance = this;
+      //AttributeManager.Instance.UpdateAttributeUI();
    }
 
-   // private void Die()
-   // {
-        //Destroy(this.gameObject);
-  //  }
+   private void Update()
+   {
+        //AttributeManager.Instance.ResetAttributeUI();
+        //AttributeManager.Instance.UpdateAttributeUI();
+        golddisplay.text = gold.ToString();
+        AtbPoint = AttributeManager.Instance.AttributePoint;
+   }
 
    public void GoBattle()
    {
@@ -55,7 +81,6 @@ public class Player : MonoBehaviour
                 
                 AtbPoint += quest.AttributePointReward;
                 AttributeManager.Instance.AttributePoint += quest.AttributePointReward;
-                AttributeManager.Instance.ResetAttributePoint += quest.AttributePointReward;
                 AttributeManager.Instance.UpdateAttributeUI();
                 
                 gold += quest.goldReward;
@@ -64,12 +89,17 @@ public class Player : MonoBehaviour
                 UIq1.SetActive(false);
                 UIq2.SetActive(false);
                 UIq3.SetActive(false);
+
+                questBD.SetActive(false);
+                UIq1D.SetActive(false);
+                UIq2D.SetActive(false);
+                UIq3D.SetActive(false);
                 
 
             }
         }
    }  
 
-
+   
 
 }

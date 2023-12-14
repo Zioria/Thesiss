@@ -1,7 +1,5 @@
-﻿namespace Script_Character.Interface
+﻿
+public interface IDamagable
 {
-    public interface IDamagable
-    {
-        public void Damage(int damageAmount);
-    }
+    public void Damage(float damageAmount);
 }

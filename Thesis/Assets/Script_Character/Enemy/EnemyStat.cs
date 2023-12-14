@@ -4,49 +4,66 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyStat : MonoBehaviour
+public class EnemyStat : MonoBehaviour, IDamagable
 {
-    [SerializeField] private float healthPoint;
-
-    [SerializeField] private float minDestroy;
-    [SerializeField] private float maxDestroy;
-
+    [SerializeField] private StatsEnemyScriptable stat;
+    [SerializeField] private float attackRange;
+    [SerializeField] private float chaseRange;
+    [SerializeField] private LayerMask playerMask;
+    [SerializeField] private float defultSpeed;
+    [SerializeField] private GameObject floatingTextPrefab;
+    
+    private float _healthPoint;
     private GameObject _enemy;
     private Animator _anim;
-    private GameObject _player;
+    private Transform _playerPos;
     private static readonly int _deathAnim = Animator.StringToHash("isDeath");
-    private static readonly int _getHitAnim = Animator.StringToHash("isGetHit");
+    private EnemyHealthBar _healthBar;
 
-    public bool isEnemyDie;
-    // public static Player Instance;
-    // public GameObject questB;
+    public bool isPatrol;
+    public Vector3 Setposition;
+    public StatsEnemyScriptable Stat => stat;
+    public float AttackRange => attackRange;
+    public float ChaseRange => chaseRange;
+    public float SpeedAgent;
+    public float DefultSpeed => defultSpeed;
 
     private void Awake()
     {
+        Setposition = transform.position;
         _enemy = this.gameObject;
         _anim = GetComponent<Animator>();
-        _player = GameObject.FindWithTag("Player");
+        _healthBar = GetComponentInChildren<EnemyHealthBar>();
+        _playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
-    
+
+    private void Start()
+    {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        _healthPoint = stat.MaxHealth;
+    }
 
     public void TakeDamage(float damage)
     {
-        healthPoint -= damage;
-
-        if (healthPoint <= 0)
+        ShowDamage(damage.ToString());
+        _healthPoint -= damage;
+        _healthBar.UpdateHealthBar(_healthPoint, stat.MaxHealth);
+        _anim.SetBool("isChase", true);
+        if (_healthPoint <= 0)
         {
-            isEnemyDie = true;
+            Die();
+            _healthBar.gameObject.SetActive(false);
             _enemy.gameObject.tag = "Die";
             _anim.SetTrigger(_deathAnim);
-            Die();
             Player.Instance.GoBattle();
             Disappear();
             return;
         }
-
-        _anim.SetTrigger(_getHitAnim);
     }
-
     
     private void Die()
     {
@@ -55,10 +72,35 @@ public class EnemyStat : MonoBehaviour
         _anim.GetComponent<NavMeshAgent>().SetDestination(gameObject.transform.position);
     }
 
-   private void Disappear()
-   {
-       Destroy(this.gameObject ,3);
-   }
+    private void Disappear()
+    {
+        Destroy(this.gameObject, 3);
+    }
 
-   
+    public void UpdateSpeedAgent()
+    {
+        SpeedAgent = defultSpeed;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, chaseRange);
+    }
+
+    public void Damage(float damageAmount)
+    {
+        TakeDamage(damageAmount);
+    }
+
+    void ShowDamage(string text)
+    {
+        if (floatingTextPrefab)
+        {
+            GameObject prefab = Instantiate(floatingTextPrefab, transform.position, _playerPos.rotation);
+            prefab.GetComponentInChildren<TextMesh>().text = text;
+        }
+    }
 }

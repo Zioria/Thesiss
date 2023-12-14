@@ -5,15 +5,18 @@ using UnityEngine;
 public class IdleState : StateMachineBehaviour
 {
     
-    [SerializeField] private float chaseRange;
-    [SerializeField] private float attackRange;
+    //[SerializeField] private float attackRange;
     private Transform _playerPos;
+    private EnemyStat _enemyStat;
+    private bool alreadyInRange = false;
     private static readonly int _patrolAnim = Animator.StringToHash("isPatrol");
     private static readonly int _idleAnim = Animator.StringToHash("isIdle");
     private static readonly int _attackAnim = Animator.StringToHash("isAttack");
+    private static readonly int _chaseAnim = Animator.StringToHash("isChase");
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _enemyStat = animator.GetComponent<EnemyStat>();
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         animator.SetBool(_idleAnim, true);
     }
@@ -21,11 +24,23 @@ public class IdleState : StateMachineBehaviour
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        if (alreadyInRange)
+        {
+            animator.SetBool(_chaseAnim, true);
+        }
         float distance = Vector3.Distance(_playerPos.position, animator.transform.position);
-        if (distance <= attackRange)
+        if (distance <= _enemyStat.AttackRange)
         {
             animator.SetBool(_attackAnim, true);
+            return;
+        }
+        if (distance < _enemyStat.ChaseRange)
+        {
+            alreadyInRange = true;
+            return;
+        }
+        if (!_enemyStat.isPatrol)
+        {
             return;
         }
         if (Random.Range(0, 100) < 10)

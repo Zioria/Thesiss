@@ -6,9 +6,6 @@ public class DestroyWhenCollide : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject, .5f);
     }
 }

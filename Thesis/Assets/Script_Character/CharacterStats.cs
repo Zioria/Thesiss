@@ -8,14 +8,14 @@ public class CharacterStats : MonoBehaviour
     public static CharacterStats Instance;
     public GameObject Model_G;
     public GameObject Model_M;
-    public SwapChar _swapchar;
     
 
     [SerializeField] private StatsScriptable statsScriptable;
+    [SerializeField] private Animator anim;
 
     public int CurrentHealth;
     public int CurrentArmor { get; private set; }
-    public int CurrentCapEnergy { get; private set; }
+    public int CurrentCapEnergy;
 
     public int MaxHealth;
     public int Damage;
@@ -32,8 +32,6 @@ public class CharacterStats : MonoBehaviour
     {
         Instance = this;
         
-
-        _swapchar = GameObject.Find("Player").GetComponent<SwapChar>();
         
         if (_isRunOneTime)
         {
@@ -43,15 +41,27 @@ public class CharacterStats : MonoBehaviour
         _isRunOneTime = true;
     }
 
-    private void Update()
+    public void EnergyUse(int energy)
     {
-        //Debug.Log(_isRunOneTime);
-       
-        
+        CurrentCapEnergy -= energy;
+        if (CurrentCapEnergy <= 0)
+        {
+            CurrentCapEnergy = 0;
+        }
+    }
+
+    public void GetEnergy(int energy)
+    {
+        CurrentCapEnergy += energy;
+        if (CurrentCapEnergy >= CapEnergy)
+        {
+            CurrentCapEnergy = CapEnergy;
+        }
     }
 
     public void TakeDamage(float damage)
     {
+        anim.SetTrigger("damage");
         CurrentHealth -= (int)damage;
     }
 

@@ -10,6 +10,11 @@ TagManager:
   - Waypoint
   - Enermy
   - Die
+  - Checkpoint
+  - TimeManager
+  - Heal
+  - FxTemporaire
+  - InteractUI
   layers:
   - Default
   - TransparentFX
@@ -21,10 +26,10 @@ TagManager:
   - whatIsPlayer
   - whatIsObstacle
   - Enemy
-  - 
-  - 
-  - 
-  - 
+  - MiniMapPoint
+  - Bullet
+  - Light2
+  - item
   - 
   - 
   - 

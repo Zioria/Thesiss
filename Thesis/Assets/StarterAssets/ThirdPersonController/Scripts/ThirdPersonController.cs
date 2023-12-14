@@ -16,7 +16,7 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
-       
+        public bool IsDisable;
         
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -89,11 +89,14 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
+        [SerializeField, Tooltip("For player Toggle Sprint or press")] private bool useToggleSprint;
+
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
 
         // player
+        private float _targetSpeed;
         private float _speed;
         private float _animationBlend;
         private float _targetRotation = 0.0f;
@@ -116,13 +119,14 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
 #endif
-        private Animator _animator;
+        public Animator _animator ;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
         private Rigidbody _rb;
         private const float _threshold = 0.01f;
         private Vector3 _moveDirection;
+        private SwapChar _sChar;
         
         private bool _hasAnimator;
 
@@ -146,6 +150,7 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+            IsDisable = false;
         }
 
         private void Start()
@@ -155,6 +160,7 @@ namespace StarterAssets
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
+            _sChar = GetComponent<SwapChar>();
 #if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();
 #else
@@ -172,10 +178,21 @@ namespace StarterAssets
 
         private void Update()
         {
+            if (IsDisable || _sChar.IsChanging) {
+                return;
+            }
             _hasAnimator = TryGetComponent(out _animator);
             
             JumpAndGravity();
             GroundedCheck();
+            if (MCGattack.Instance.Attacking || MCMattack.Instance.Attacking)
+            {
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                useToggleSprint = !useToggleSprint;
+            }
             Move();
             Dash();
         }
@@ -209,8 +226,10 @@ namespace StarterAssets
             }
         }
 
-        private void CameraRotation()
+        public void CameraRotation()
         {
+        
+
             // if there is an input and camera position is not fixed
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
@@ -230,16 +249,20 @@ namespace StarterAssets
                 _cinemachineTargetYaw, 0.0f);
         }
 
-        private void Move()
+        public void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            _targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
+            if (useToggleSprint)
+            {
+                _targetSpeed = SprintSpeed;
+            }
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+            if (_input.move == Vector2.zero) _targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -248,12 +271,12 @@ namespace StarterAssets
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
             // accelerate or decelerate to target speed
-            if (currentHorizontalSpeed < targetSpeed - speedOffset ||
-                currentHorizontalSpeed > targetSpeed + speedOffset)
+            if (currentHorizontalSpeed < _targetSpeed - speedOffset ||
+                currentHorizontalSpeed > _targetSpeed + speedOffset)
             {
                 // creates curved result rather than a linear one giving a more organic speed change
                 // note T in Lerp is clamped, so we don't need to clamp our speed
-                _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
+                _speed = Mathf.Lerp(currentHorizontalSpeed, _targetSpeed * inputMagnitude,
                     Time.deltaTime * SpeedChangeRate);
 
                 // round speed to 3 decimal places
@@ -261,10 +284,10 @@ namespace StarterAssets
             }
             else
             {
-                _speed = targetSpeed;
+                _speed = _targetSpeed;
             }
 
-            _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
+            _animationBlend = Mathf.Lerp(_animationBlend, _targetSpeed, Time.deltaTime * SpeedChangeRate);
             if (_animationBlend < 0.01f) _animationBlend = 0f;
 
             // normalise input direction
@@ -287,10 +310,6 @@ namespace StarterAssets
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
-            if (MaleeAttack.Instance.Attacking)
-            {
-                return;
-            }
                 _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
             
@@ -323,7 +342,7 @@ namespace StarterAssets
                 }
 
                 // Jump
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                /*if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -333,7 +352,7 @@ namespace StarterAssets
                     {
                         _animator.SetBool(_animIDJump, true);
                     }
-                }
+                }*/
 
                 // jump timeout
                 if (_jumpTimeoutDelta >= 0.0f)
@@ -392,6 +411,7 @@ namespace StarterAssets
             
                 if (_input.dash && !Dash_check)
                 {
+                    _animator.SetTrigger("Dash");
                     Dash_check = !Dash_check;
                     Invoke(nameof(ResetDash), timeBetweenDash);
                     CurrentDashDuration = 0f;

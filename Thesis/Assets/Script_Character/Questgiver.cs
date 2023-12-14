@@ -25,9 +25,7 @@ public class Questgiver : MonoBehaviour
     public Text gold;
     public Text titleUI1;
     public Text descriptionUI1;
-    public Text AttributePointUI1;
-    public Text goldUI1;
-
+    
     public Quest quest2;
     public Player player2;
     public GameObject questUI2;
@@ -37,8 +35,7 @@ public class Questgiver : MonoBehaviour
     public Text gold2;
     public Text titleUI2;
     public Text descriptionUI2;
-    public Text AttributePointUI2;
-    public Text goldUI2;
+    
 
     public Quest quest3;
     public Player player3;
@@ -49,8 +46,7 @@ public class Questgiver : MonoBehaviour
     public Text gold3;
     public Text titleUI3;
     public Text descriptionUI3;
-    public Text AttributePointUI3;
-    public Text goldUI3;
+    
 
    
 
@@ -81,8 +77,7 @@ public class Questgiver : MonoBehaviour
         gold.text = quest1.goldReward.ToString();
         titleUI1.text = quest1.title;
         descriptionUI1.text = quest1.description;
-        AttributePointUI1.text = quest1.AttributePointReward.ToString();
-        goldUI1.text = quest1.goldReward.ToString();
+       
         
     }
 
@@ -97,8 +92,7 @@ public class Questgiver : MonoBehaviour
         gold.text = quest1.goldReward.ToString();
         titleUI1.text = quest1.title;
         descriptionUI1.text = quest1.description;
-        AttributePointUI1.text = quest1.AttributePointReward.ToString();
-        goldUI1.text = quest1.goldReward.ToString();
+       
 
     }
 
@@ -125,8 +119,7 @@ public class Questgiver : MonoBehaviour
         gold2.text = quest2.goldReward.ToString();
         titleUI2.text = quest2.title;
         descriptionUI2.text = quest2.description;
-        AttributePointUI2.text = quest2.AttributePointReward.ToString();
-        goldUI2.text = quest2.goldReward.ToString();
+       
 
     }
 
@@ -139,8 +132,7 @@ public class Questgiver : MonoBehaviour
         gold2.text = quest2.goldReward.ToString();
         titleUI2.text = quest2.title;
         descriptionUI2.text = quest2.description;
-        AttributePointUI2.text = quest2.AttributePointReward.ToString();
-        goldUI2.text = quest2.goldReward.ToString();
+        
     }
 
     public void AcceptQuest2()
@@ -166,8 +158,7 @@ public class Questgiver : MonoBehaviour
         gold3.text = quest3.goldReward.ToString();
         titleUI3.text = quest3.title;
         descriptionUI3.text = quest3.description;
-        AttributePointUI3.text = quest3.AttributePointReward.ToString();
-        goldUI3.text = quest3.goldReward.ToString();
+       
     }
 
      public void CloseQuestWindow3()
@@ -179,8 +170,7 @@ public class Questgiver : MonoBehaviour
         gold3.text = quest3.goldReward.ToString();
         titleUI3.text = quest3.title;
         descriptionUI3.text = quest3.description;
-        AttributePointUI3.text = quest3.AttributePointReward.ToString();
-        goldUI3.text = quest3.goldReward.ToString();
+        
     }
 
     public void AcceptQuest3()

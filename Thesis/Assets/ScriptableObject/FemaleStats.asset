@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768b3fd9c5fdd9a40ad7db4e7eb5bccb, type: 3}
   m_Name: FemaleStats
   m_EditorClassIdentifier: 
-  defaultMaxHealth: 50
-  defaultDamage: 10
+  defaultMaxHealth: 100
+  defaultDamage: 30
   defaultAtkSpeed: 3
-  defaultArmor: 3
-  defaultSkillDamage: 3
-  defaultCapEnergy: 3
+  defaultArmor: 10
+  defaultSkillDamage: 4
+  defaultCapEnergy: 10

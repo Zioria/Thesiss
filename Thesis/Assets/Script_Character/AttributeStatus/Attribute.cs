@@ -9,7 +9,6 @@ public class Attribute : MonoBehaviour
     [Header("Reference")]
     [SerializeField] private Button decreaseStatusBtn;
     [SerializeField] private Button increaseStatusBtn;
-    [SerializeField] private Button ResetStatusBtn;
     [SerializeField] private Text countNumber;
     [SerializeField] private int resetLevel;
 
@@ -29,7 +28,6 @@ public class Attribute : MonoBehaviour
             IncreaseCharacterStatus();
             IncreaseStatus();
         });
-        ResetStatusBtn.onClick.AddListener(ResetAttriute);
     }
 
     private void Update()
@@ -39,7 +37,7 @@ public class Attribute : MonoBehaviour
 
     public void UpdateUI()
     {
-        countNumber.text = Instance.AttributeLevels[ID].ToString();  
+        countNumber.text = Instance.AttributeLevels[ID].ToString();
     }
 
     private void DecreaseStatus()
@@ -61,6 +59,7 @@ public class Attribute : MonoBehaviour
         if (ID == 0)
         {
             stat.MaxHealth--;
+            stat.CurrentHealth--;
             stat.Damage--;
         }
         else if (ID == 1)
@@ -72,6 +71,7 @@ public class Attribute : MonoBehaviour
         {
             stat.SkillDamage--;
             stat.CapEnergy--;
+            stat.CurrentCapEnergy--;
         }
     }
 
@@ -95,6 +95,7 @@ public class Attribute : MonoBehaviour
         if (ID == 0)
         {
             stat.MaxHealth++;
+            stat.CurrentHealth++;
             stat.Damage++;
         }
         else if (ID == 1)
@@ -106,6 +107,7 @@ public class Attribute : MonoBehaviour
         {
             stat.SkillDamage++;
             stat.CapEnergy++;
+            stat.CurrentCapEnergy++;
         }
     }
 
@@ -116,7 +118,6 @@ public class Attribute : MonoBehaviour
         {
             stat.ResetStats();
         }
-        Instance.ResetAttributeUI();
         //Instance.AttributeLevels[ID] = resetLevel;
         for (int i = 0; i < Instance.attributeList.Count; i++)
         {

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "StatsCharacter", menuName = "ScriptableObject/Stats")]
+[CreateAssetMenu(fileName = "StatsCharacter", menuName = "ScriptableObject/CharacterStat")]
 public class StatsScriptable : ScriptableObject
 {
     [Header("Status Strength")]
