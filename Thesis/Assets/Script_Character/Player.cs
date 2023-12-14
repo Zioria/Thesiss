@@ -114,6 +114,9 @@ public class Player : MonoBehaviour
                 UIq1D.SetActive(false);
                 UIq2D.SetActive(false);
                 UIq3D.SetActive(false);
+
+                Countcurrent = 0;
+                GetComponent<Shortcutscript>().enabled = true;
                 
 
             }

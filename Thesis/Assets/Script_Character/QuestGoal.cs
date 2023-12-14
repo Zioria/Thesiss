@@ -19,7 +19,7 @@ public class QuestGoal
     {
         if (goalType == GoalType.Kill)
            currentAmount++;
-           currentAmount = Player.Instance.Countcurrent;
+           Player.Instance.Countcurrent = currentAmount;
     }
 
     public void ItemCollected()

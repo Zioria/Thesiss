@@ -8,6 +8,7 @@ public class Shortcutscript : MonoBehaviour
 {
     [SerializeField] private GameObject QuestUI;
     
+    //public static Shortcutscript Instance;
 
     private void Awake()
     {
@@ -18,7 +19,11 @@ public class Shortcutscript : MonoBehaviour
     public void OnQuest(InputValue value)
     {
        QuestUI.SetActive(!QuestUI.activeSelf);
+       
+       //if()
+      // {
 
+       //}
        
     }
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Questgiver : MonoBehaviour
 {   
+    public static Questgiver Instance;
     public GameObject headQ1;
     public GameObject headQ2;
     public GameObject headQ3;
@@ -157,6 +158,8 @@ public class Questgiver : MonoBehaviour
         UIquest1.SetActive(true);
         quest1.isActive = true;
         player.quest = quest1;
+        //PlayerInput = 
+        //GetComponent<Shortcutscript>().enabled = false;
     }
    
     public void OpenQuestWindow2()
@@ -196,6 +199,7 @@ public class Questgiver : MonoBehaviour
         UIquest2.SetActive(true);
         quest2.isActive = true;
         player.quest = quest2;
+        //GetComponent<Shortcutscript>().enabled = false;
     }
 
     public void OpenQuestWindow3()
@@ -234,6 +238,7 @@ public class Questgiver : MonoBehaviour
         UIquest3.SetActive(true);
         quest3.isActive = true;
         player.quest = quest3;
+        //GetComponent<Shortcutscript>() = false;
     }
    
 }
