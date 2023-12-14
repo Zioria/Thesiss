@@ -82,28 +82,26 @@ public class MCGattack : MonoBehaviour
 
     void attack()
     {
+        Attacking = !Attacking;
+        Invoke(nameof(ResetAttack), timeBetweenAttack);
         
         
         animator.SetTrigger("Attack");
         if (nearestEnemy == null )
         {
-           
-                return;
-            
+                return;   
         }
-         Vector3 directionToTarget = nearestEnemy.transform.position - transform.position;
-            directionToTarget.y = 0; // If you don't want to rotate in the y-axis
+        Vector3 directionToTarget = nearestEnemy.transform.position - transform.position;
+        directionToTarget.y = 0; // If you don't want to rotate in the y-axis
 
-            if (directionToTarget != Vector3.zero)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
-                transform.rotation =
-                    Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        if (directionToTarget != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+            transform.rotation =
+                Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
                     
-            }
+        }
         GrapClose(target);
-        //Attacking = !Attacking;
-        //Invoke(nameof(ResetAttack), timeBetweenAttack);
     }
 
     

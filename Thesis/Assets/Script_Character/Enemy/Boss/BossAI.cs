@@ -50,7 +50,7 @@ public class BossAI : MonoBehaviour, IDamagable
         _agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         _anim = GetComponent<Animator>();
-        _healthBar = GetComponentInChildren<EnemyHealthBar>();
+        _healthBar = GameObject.Find("BossHealthBarUI").GetComponent<EnemyHealthBar>();
         _agent.speed = speedAgent;
         spawnPoint = transform.position;
     }
@@ -171,7 +171,7 @@ public class BossAI : MonoBehaviour, IDamagable
     {
         if (floatingTextPrefab)
         {
-            GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+            GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Camera.main.transform.rotation);
             prefab.GetComponentInChildren<TextMesh>().text = text;
         }
     }

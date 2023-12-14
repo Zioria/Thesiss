@@ -17,5 +17,5 @@ MonoBehaviour:
   numberGet: 0
   description: Gain ...
   iconItem: {fileID: 21300000, guid: 66168d57d40182e44937ce7442e5a0b4, type: 3}
-  maxStackSize: 10
+  maxStackSize: 99
   itemPrefab: {fileID: 5309299776258143605, guid: 3e71a4ac2bb653c47bc52672ee913b78, type: 3}

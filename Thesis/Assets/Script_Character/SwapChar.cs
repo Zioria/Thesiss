@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.InputSystem;
 
 public class SwapChar : MonoBehaviour
@@ -20,15 +21,20 @@ public class SwapChar : MonoBehaviour
     public int addnumber_m = 2;
     
     public KeyCode[] anyKey;
+    [SerializeField] private float timeBetweenChange;
 
     [Header("CharacterIcon")]
-    [SerializeField] private Image imageActive;
-    [SerializeField] private Image imageInActive;
+    [SerializeField] private Image imageGirl;
+    [SerializeField] private Image imageBoy;
     [SerializeField] private Sprite iconGirl;
     [SerializeField] private Sprite iconBoy;
+    [SerializeField] private TextMeshProUGUI girlTextNumber;
+    [SerializeField] private TextMeshProUGUI boyTextNumber;
 
     [Header("Reference")]
     [SerializeField] private BossAI bossAI;
+    [SerializeField] private Image imageCooldownOne, imageCooldownTwo;
+
 
     private CharacterStats[] _stats => CharacterStatusUI.Instance.Stats;
     private CharacterStats _stat;
@@ -37,12 +43,13 @@ public class SwapChar : MonoBehaviour
     private PlayerRespawn _playerRespawn;
     private bool _isSpawning;
     private int _GameOver;
+    private bool _isChange;
 
     public bool M_isAlive;
     public bool G_isAlive;
     public int _GisDeadFirst;
 
-    
+    public bool IsChanging => _isChange;
 
 
     private void Start()
@@ -53,8 +60,10 @@ public class SwapChar : MonoBehaviour
         mc_g.SetActive(true);
         mc_m.SetActive(false);
         BagModel.SetActive(false);
-        imageActive.sprite = iconGirl;
-        imageInActive.sprite = iconBoy;
+        imageGirl.sprite = iconGirl;
+        imageBoy.sprite = iconBoy;
+        ModelGirlActive();
+
         //itemheal.SetActive(false);
 
         TPC = GetComponent<ThirdPersonController>();
@@ -79,8 +88,9 @@ public class SwapChar : MonoBehaviour
                 {
                     mc_m.SetActive(true);
                     BagModel.SetActive(true);
-                    imageActive.sprite = iconBoy;
-                    imageInActive.sprite = iconGirl;
+
+                    ModelBoyActive();
+
                     _GisDeadFirst += 1;
                 }
 
@@ -92,8 +102,8 @@ public class SwapChar : MonoBehaviour
             if (G_isAlive)
             {
                 mc_g.SetActive(true);
-                imageActive.sprite = iconGirl;
-                imageInActive.sprite = iconBoy;
+
+                ModelGirlActive();
             }
         }
 
@@ -106,6 +116,20 @@ public class SwapChar : MonoBehaviour
         if (!G_isAlive || !M_isAlive)
         {
             return;
+        }
+        if (_isChange)
+        {
+            imageCooldownOne.fillAmount -= 1 / (timeBetweenChange - .1f) * Time.deltaTime;
+            if (imageCooldownOne.fillAmount <= 0)
+            {
+                imageCooldownOne.fillAmount = 0;
+            }
+
+            imageCooldownTwo.fillAmount -= 1 / (timeBetweenChange - .1f) * Time.deltaTime;
+            if (imageCooldownTwo.fillAmount <= 0)
+            {
+                imageCooldownTwo.fillAmount = 0;
+            }
         }
         SwapCharacter();
         
@@ -140,29 +164,66 @@ public class SwapChar : MonoBehaviour
 
     }
 
+    private void ModelGirlActive()
+    {
+        imageGirl.color = Color.grey;
+        imageBoy.color = Color.white;
+        girlTextNumber.color = Color.grey;
+        boyTextNumber.color = Color.white;
+    }
+
+    private void ModelBoyActive()
+    {
+        imageGirl.color = Color.white;
+        imageBoy.color = Color.grey;
+        girlTextNumber.color = Color.white;
+        boyTextNumber.color = Color.grey;
+    }
+    
+
     private void SwapCharacter()
     {
-        if (Input.GetKeyDown(anyKey[0]) && _stat.CurrentHealth > 0)
+        if (_isChange)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(anyKey[0]) && _stat.CurrentHealth > 0 && !mc_g.activeInHierarchy)
         {
             _anim.Play("Idle");
             mc_m.SetActive(false);
             BagModel.SetActive(false);
             mc_g.SetActive(true);
-            imageActive.sprite = iconGirl;
-            imageInActive.sprite = iconBoy;
+
+            ModelGirlActive();
+
+            imageCooldownOne.fillAmount = 1;
+            imageCooldownTwo.fillAmount = 1;
+            _isChange = !_isChange;
+            Invoke(nameof(ResetTimeChange), timeBetweenChange);
             //itemheal = GameObject.FindWithTag ("Heal");
             //itemheal.SetActive(false);
         }
-        if (Input.GetKeyDown(anyKey[1]) && _stat.CurrentHealth > 0)
+        if (Input.GetKeyDown(anyKey[1]) && _stat.CurrentHealth > 0 && !mc_m.activeInHierarchy)
         {
             _anim.Play("Idle");
             mc_g.SetActive(false);
             mc_m.SetActive(true);
             BagModel.SetActive(true);
-            imageActive.sprite = iconBoy;
-            imageInActive.sprite = iconGirl;
+
+            ModelBoyActive();
+
+            imageCooldownOne.fillAmount = 1;
+            imageCooldownTwo.fillAmount = 1;
+            _isChange = !_isChange;
+            Invoke(nameof(ResetTimeChange), timeBetweenChange);
             //itemheal.SetActive(true);
         }
+    }
+
+    private void ResetTimeChange()
+    {
+        _isChange = !_isChange;
     }
 
     public void Die()
@@ -170,6 +231,12 @@ public class SwapChar : MonoBehaviour
         if (!M_isAlive && !G_isAlive)
         {
             Debug.Log("GameOver");
+
+            imageGirl.color = Color.grey;
+            imageBoy.color = Color.grey;
+            girlTextNumber.color = Color.grey;
+            boyTextNumber.color = Color.grey;
+
             _GameOver += 1;
             TPC.IsDisable = true;
             _anim.enabled = false;
@@ -194,8 +261,12 @@ public class SwapChar : MonoBehaviour
         {
             G_isAlive = true;
             mc_g.SetActive(true);
-            imageActive.sprite = iconGirl;
-            imageInActive.sprite = iconBoy;
+
+            imageGirl.color = Color.grey;
+            imageBoy.color = Color.white;
+            girlTextNumber.color = Color.grey;
+            boyTextNumber.color = Color.white;
+
             _GisDeadFirst = 0;
             M_isAlive = true;
             return;
@@ -203,10 +274,24 @@ public class SwapChar : MonoBehaviour
         M_isAlive = true;
         mc_m.SetActive(true);
         BagModel.SetActive(true);
+
+        imageGirl.color = Color.white;
+        imageBoy.color = Color.grey;
+        girlTextNumber.color = Color.white;
+        boyTextNumber.color = Color.grey;
+
         G_isAlive = true;
-        imageActive.sprite = iconBoy;
-        imageInActive.sprite = iconGirl;
+        //imageActive.sprite = iconBoy;
+        //imageInActive.sprite = iconGirl;
         bossAI.SetSpawn();
+    }
+
+    public void PreventFall()
+    {
+        TPC.IsDisable = true;
+        _anim.enabled = false;
+        gameObject.transform.position = _playerRespawn.PlayerSpawnpoint;
+        Invoke(nameof(ResetController), .5f);
     }
 
     private void ResetController()

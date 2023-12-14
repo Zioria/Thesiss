@@ -23,27 +23,28 @@ public class CursorControl : MonoBehaviour
             Controller.LockCameraPosition = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            playerInput.enabled = false;
+            Time.timeScale = 0;
             return;
         }
         Controller.LockCameraPosition = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        playerInput.enabled = true;
+        Time.timeScale = 1;
     }
 
     public void OpenMenu()
     {
-        playerInput.enabled = false;
+        Debug.Log("OpenMenu");
         IsStatusMenuOpen = true;
+        Time.timeScale = 0;
         Cursor.visible = IsStatusMenuOpen;
         Cursor.lockState = CursorLockMode.None;
     }
 
     public void CloseMenu()
     {
-        playerInput.enabled = true;
         IsStatusMenuOpen = false;
+        Time.timeScale = 1;
         Cursor.visible = IsStatusMenuOpen;
         Cursor.lockState = CursorLockMode.Locked;
     }

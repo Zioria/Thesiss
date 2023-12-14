@@ -12,6 +12,7 @@ public class InventoryUIController : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField, Tooltip("Find in UI gameobject")] private CursorControl cursorControl;
     [SerializeField, Tooltip("Find in Player gameobject")] private PlayerInventoryHolder playerInvHolder;
+    [SerializeField] private GameObject tooltipBug;
     
 
     private void Awake()
@@ -62,5 +63,6 @@ public class InventoryUIController : MonoBehaviour
         }
         cursorControl.CloseMenu();
         playerInvHolder.IsOpening = false;
+        tooltipBug.SetActive(false);
     }
 }

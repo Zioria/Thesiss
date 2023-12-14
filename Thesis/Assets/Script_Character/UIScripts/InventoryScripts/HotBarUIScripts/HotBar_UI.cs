@@ -9,7 +9,6 @@ public class HotBar_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private Image itemSprite;
     [SerializeField] private TextMeshProUGUI itemCount;
     [SerializeField] private InventorySlot inventorySlot;
-    [SerializeField] private GameObject slotHighlight;
 
     private Button _btn;
 
@@ -23,7 +22,7 @@ public class HotBar_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         itemSprite.preserveAspect = true;
         _btn = GetComponent<Button>();
-        _btn?.onClick.AddListener(OnUISlotClick);
+        //_btn?.onClick.AddListener(OnUISlotClick);
 
         InvDisplay = transform.parent.GetComponent<InventoryDisplay>();
     }
@@ -83,11 +82,6 @@ public class HotBar_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         InvDisplay?.SlotClicked(this);
     }
 
-    public void ToggleHighlight()
-    {
-        slotHighlight.SetActive(!slotHighlight.activeInHierarchy);
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (inventorySlot == null)
@@ -95,7 +89,7 @@ public class HotBar_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             return;
         }
 
-        //TooltipManager.ShowToolTip_Static(inventorySlot.ItemData.Description);
+        TooltipManager.ShowToolTip_Static(inventorySlot.ItemData.Description);
     }
 
     public void OnPointerExit(PointerEventData eventData)

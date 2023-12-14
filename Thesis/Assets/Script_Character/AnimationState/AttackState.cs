@@ -51,11 +51,11 @@ public class AttackState : StateMachineBehaviour
         {
             return;
         }
-        if (_enemyStat.isPatrol)
-        { 
-            animator.SetBool(_idleAnim, true);
-            return;
-        }
+        //if (_enemyStat.isPatrol)
+        //{ 
+        //    animator.SetBool(_idleAnim, true);
+        //    return;
+        //}
         animator.SetBool(_chaseAnim, true);
     }
 

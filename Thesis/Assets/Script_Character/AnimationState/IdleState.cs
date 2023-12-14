@@ -8,6 +8,7 @@ public class IdleState : StateMachineBehaviour
     //[SerializeField] private float attackRange;
     private Transform _playerPos;
     private EnemyStat _enemyStat;
+    private bool alreadyInRange = false;
     private static readonly int _patrolAnim = Animator.StringToHash("isPatrol");
     private static readonly int _idleAnim = Animator.StringToHash("isIdle");
     private static readonly int _attackAnim = Animator.StringToHash("isAttack");
@@ -23,7 +24,10 @@ public class IdleState : StateMachineBehaviour
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        if (alreadyInRange)
+        {
+            animator.SetBool(_chaseAnim, true);
+        }
         float distance = Vector3.Distance(_playerPos.position, animator.transform.position);
         if (distance <= _enemyStat.AttackRange)
         {
@@ -32,7 +36,7 @@ public class IdleState : StateMachineBehaviour
         }
         if (distance < _enemyStat.ChaseRange)
         {
-            animator.SetBool(_chaseAnim, true);
+            alreadyInRange = true;
             return;
         }
         if (!_enemyStat.isPatrol)

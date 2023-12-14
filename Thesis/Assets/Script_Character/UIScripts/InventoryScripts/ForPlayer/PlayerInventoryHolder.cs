@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class PlayerInventoryHolder : InventoryHolder
 {
     [SerializeField] protected int secondaryInventorySize;
     [SerializeField] protected InventorySystem secondaryInventorySystem;
-    [SerializeField, Tooltip("Find in UI gameobject")] private CursorControl cursorControl;
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private CursorControl cursorControl;
 
     public InventorySystem SecondaryInventorySystem => secondaryInventorySystem;
 
@@ -24,18 +26,19 @@ public class PlayerInventoryHolder : InventoryHolder
 
     private void Update()
     {
-        if (IsOpening)
-        {
-            return;
-        }
+        //if (IsOpening)
+        //{
+        //    return;
+        //}
 
-        if (!Input.GetKeyDown(KeyCode.B))
-        {
-            return;
-        }
-        OnPlayerBackpackDisplayRequested?.Invoke(secondaryInventorySystem);
-        cursorControl.OpenMenu();
-        IsOpening = true;
+        //if (!Input.GetKeyDown(KeyCode.B))
+        //{
+        //    return;
+        //}
+        //OnPlayerBackpackDisplayRequested?.Invoke(secondaryInventorySystem);
+        //playerInput.enabled = false;
+        //cursorControl.OpenMenu();
+        //IsOpening = true;
     }
 
     public bool AddToInventory(ItemScriptable data, int amount)

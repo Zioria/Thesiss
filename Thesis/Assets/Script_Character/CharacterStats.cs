@@ -8,10 +8,10 @@ public class CharacterStats : MonoBehaviour
     public static CharacterStats Instance;
     public GameObject Model_G;
     public GameObject Model_M;
-    public SwapChar _swapchar;
     
 
     [SerializeField] private StatsScriptable statsScriptable;
+    [SerializeField] private Animator anim;
 
     public int CurrentHealth;
     public int CurrentArmor { get; private set; }
@@ -32,8 +32,6 @@ public class CharacterStats : MonoBehaviour
     {
         Instance = this;
         
-
-        _swapchar = GameObject.Find("Player").GetComponent<SwapChar>();
         
         if (_isRunOneTime)
         {
@@ -63,6 +61,7 @@ public class CharacterStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        anim.SetTrigger("damage");
         CurrentHealth -= (int)damage;
     }
 

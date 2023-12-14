@@ -24,7 +24,7 @@ public class PlayerDialogue : MonoBehaviour
         
        // rb.MovePosition(rb.position + input.normalized * Time.fixedDeltaTime);
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             Interactable?.Interact(this);
         }

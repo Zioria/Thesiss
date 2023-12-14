@@ -2,7 +2,7 @@ using System;
 using Unity.Mathematics;
 using UnityEngine;
 
-[ExecuteAlways]
+
 public class LightingManager : MonoBehaviour
 {
     //Scene References
@@ -20,15 +20,16 @@ public class LightingManager : MonoBehaviour
    
      private void Start()
     {
-        TimeOfDay = MintoTick;
-        
-        
+        MintoTick = DayMin * 60f;
+        //TimeOfDay += MintoTick / 4;
+        //CurrenTick += MintoTick / 6;
+
     }
 
     private void Update()
     {
         
-        MintoTick = DayMin * 60f;
+        //MintoTick = DayMin * 60f;
         
         
         
@@ -41,7 +42,7 @@ public class LightingManager : MonoBehaviour
             
             TimeOfDay += Time.deltaTime;
             CurrenTick += Time.deltaTime;
-            if (CurrenTick >= MintoTick/6 )
+            if (CurrenTick >= MintoTick/8 )
             {
                 skybox.Blend(true);
                 CurrenTick = 0f;
@@ -77,7 +78,7 @@ public class LightingManager : MonoBehaviour
         {
             DirectionalLight.color = Preset.DirectionColor.Evaluate(timePercent);
 
-            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 90f, 170f, 0));
+            DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 0, 170f, 0));
         }
 
     }

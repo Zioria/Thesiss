@@ -248,17 +248,6 @@
                 },
                 {
                     "name": "",
-                    "id": "d4640c6e-aa56-4b16-b695-ae99eb9fc0a0",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ca5060c1-c2f8-4548-8c18-57fa948e9c2c",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
