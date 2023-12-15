@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
         CountcurrentQ5.text =  Countcurrent + " / 8 ";
         CountcurrentQ6.text =  Countcurrent + " / 15 ";
 
-        AtbPoint = AttributeManager.Instance.AttributePoint;
+        AtbPoint =  AttributePointManager.Instance.Point;
         
    }
    
@@ -109,8 +109,10 @@ public class Player : MonoBehaviour
             {
                 
                 AtbPoint += quest.AttributePointReward;
-                AttributeManager.Instance.AttributePoint += quest.AttributePointReward;
-                AttributeManager.Instance.UpdateAttributeUI();
+                AttributePointManager.Instance.Point += quest.AttributePointReward;
+                AttributeManagerBoy.Instance.UpdateAttributeUI();
+                AttributeManagerGirl.Instance.UpdateAttributeUI();
+
                 //OpenGate.Instance.Countopen += quest.goldReward;
 
                 gold += quest.goldReward;

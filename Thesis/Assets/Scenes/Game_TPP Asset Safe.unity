@@ -15137,12 +15137,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187c29044e85cc1408fff4c0f7c45774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headQ1: {fileID: 0}
+  headQ2: {fileID: 0}
+  headQ3: {fileID: 0}
+  headQ11: {fileID: 0}
+  headQ22: {fileID: 0}
+  headQ33: {fileID: 0}
   CloseQuest: {fileID: 1899228362}
   ButtonCloseQuest: {fileID: 379284685}
   UIquest1: {fileID: 1135220896}
   UIquest2: {fileID: 1154793050}
   UIquest3: {fileID: 741950280}
   questB: {fileID: 725313297}
+  questDisB: {fileID: 0}
   questDis1: {fileID: 145861033}
   questDis2: {fileID: 1844482081}
   questDis3: {fileID: 1628990549}
@@ -25511,12 +25518,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187c29044e85cc1408fff4c0f7c45774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headQ1: {fileID: 0}
+  headQ2: {fileID: 0}
+  headQ3: {fileID: 0}
+  headQ11: {fileID: 0}
+  headQ22: {fileID: 0}
+  headQ33: {fileID: 0}
   CloseQuest: {fileID: 508393571}
   ButtonCloseQuest: {fileID: 36722844}
   UIquest1: {fileID: 1713264803}
   UIquest2: {fileID: 1464645146}
   UIquest3: {fileID: 1506721718}
   questB: {fileID: 1615867428}
+  questDisB: {fileID: 0}
   questDis1: {fileID: 1084149045}
   questDis2: {fileID: 108662279}
   questDis3: {fileID: 1006832421}
@@ -36283,6 +36297,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1165842433}
+    - target: {fileID: 8871747318715624044, guid: 4a5458b35726e054085c132ec162f3cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9119036466497809071, guid: 4a5458b35726e054085c132ec162f3cb, type: 3}
       propertyPath: stat
       value: 

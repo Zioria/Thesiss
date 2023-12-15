@@ -7,12 +7,14 @@ using UnityEngine.InputSystem;
 public class Shortcutscript : MonoBehaviour
 {
     [SerializeField] private GameObject QuestUI;
+   // [SerializeField] private GameObject StatusUI;
     
     //public static Shortcutscript Instance;
 
     private void Awake()
     {
         QuestUI.SetActive(false);
+       // StatusUIUI.SetActive(false);
        
     }
 
@@ -29,7 +31,7 @@ public class Shortcutscript : MonoBehaviour
 
     public void OnStatus(InputValue value)
     {
-        Debug.Log("Status");
+       //StatusUI.SetActive(!StatusUI.activeSelf);
     }
 
     
