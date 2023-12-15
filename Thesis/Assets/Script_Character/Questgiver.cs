@@ -22,6 +22,12 @@ public class Questgiver : MonoBehaviour
     public GameObject questDis1;
     public GameObject questDis2;
     public GameObject questDis3;
+    
+    public GameObject Monall;
+    public GameObject Camp1;
+    public GameObject Camp2;
+    public GameObject Camp3;
+    public GameObject Camp4;
 
     public Quest quest1;
     public Player player;
@@ -153,15 +159,15 @@ public class Questgiver : MonoBehaviour
         questUI2.SetActive(false);
         questUI3.SetActive(false);
         CloseQuest.SetActive(false);
-        //ButtonCloseQuest.SetActive(false);
         questB.SetActive(false);
         questDis1.SetActive(true);
         UIquest1.SetActive(true);
         questDisB.SetActive(true);
+        Camp1.SetActive(true);
+        Monall.SetActive(false);
         quest1.isActive = true;
         player.quest = quest1;
-        //PlayerInput = 
-        //GetComponent<Shortcutscript>().enabled = false;
+        
     }
    
     public void OpenQuestWindow2()
@@ -195,14 +201,16 @@ public class Questgiver : MonoBehaviour
         questUI2.SetActive(false);
         questUI3.SetActive(false);
         CloseQuest.SetActive(false);
-        //ButtonCloseQuest.SetActive(false);
         questB.SetActive(false);
         questDis2.SetActive(true);
         UIquest2.SetActive(true);
         questDisB.SetActive(true);
+        Camp2.SetActive(true);
+        Monall.SetActive(false);
         quest2.isActive = true;
         player.quest = quest2;
-        //GetComponent<Shortcutscript>().enabled = false;
+
+        
     }
 
     public void OpenQuestWindow3()
@@ -235,14 +243,16 @@ public class Questgiver : MonoBehaviour
         questUI2.SetActive(false);
         questUI3.SetActive(false);
         CloseQuest.SetActive(false);
-        //ButtonCloseQuest.SetActive(false);
         questB.SetActive(false);
         questDis3.SetActive(true);
         UIquest3.SetActive(true);
         questDisB.SetActive(true);
+        Camp3.SetActive(true);
+        Camp4.SetActive(true);
+        Monall.SetActive(false);
         quest3.isActive = true;
         player.quest = quest3;
-        //GetComponent<Shortcutscript>() = false;
+        
     }
    
 }

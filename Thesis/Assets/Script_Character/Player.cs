@@ -38,6 +38,17 @@ public class Player : MonoBehaviour
    public GameObject UIq2D;
    public GameObject UIq3D;
 
+   public GameObject Monalll;
+   public GameObject Camp11;
+   public GameObject Camp22;
+   public GameObject Camp33;
+   public GameObject Camp44;
+
+   public GameObject MonDalll;
+   public GameObject CampD11;
+   public GameObject CampD22;
+   public GameObject CampD33;
+
    public Quest quest;
    
    
@@ -89,9 +100,9 @@ public class Player : MonoBehaviour
         CountcurrentQ1.text =  Countcurrent + " / 1 ";
         CountcurrentQ2.text =  Countcurrent + " / 5 ";
         CountcurrentQ3.text =  Countcurrent + " / 10 ";
-        CountcurrentQ4.text =  Countcurrent + " / 5 ";
-        CountcurrentQ5.text =  Countcurrent + " / 8 ";
-        CountcurrentQ6.text =  Countcurrent + " / 15 ";
+        CountcurrentQ4.text =  Countcurrent + " / 6 ";
+        CountcurrentQ5.text =  Countcurrent + " / 7 ";
+        CountcurrentQ6.text =  Countcurrent + " / 10 ";
 
         AtbPoint =  AttributePointManager.Instance.Point;
         
@@ -130,8 +141,15 @@ public class Player : MonoBehaviour
                 UIq3D.SetActive(false);
 
                 Countcurrent = 0;
-                //GetComponent<Shortcutscript>().enabled = true;
-                
+                Camp11.SetActive(false);
+                Camp22.SetActive(false);
+                Camp33.SetActive(false);
+                Camp44.SetActive(false);
+                CampD11.SetActive(false);
+                CampD22.SetActive(false);
+                CampD33.SetActive(false);
+                Monalll.SetActive(true);
+                MonDalll.SetActive(true);
 
             }
         }

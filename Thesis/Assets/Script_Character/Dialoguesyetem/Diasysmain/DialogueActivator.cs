@@ -4,6 +4,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
 {
     [SerializeField] private DialogueObject dialogueObject;
     public GameObject unlocknextstage;
+    public GameObject UIbutton;
 
     public void UpdateDialogueObject(DialogueObject dialogueObject)
     {
@@ -14,6 +15,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerDialogue player))
         {
+            UIbutton.SetActive(true);
             player.Interactable = this;
         }
     }
@@ -26,6 +28,7 @@ public class DialogueActivator : MonoBehaviour, IInteractable
             {
                 player.Interactable = null;
                 unlocknextstage.SetActive(true);
+                UIbutton.SetActive(false);
             }
         }
     }
