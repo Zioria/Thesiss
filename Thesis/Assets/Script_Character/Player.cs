@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
    {
       if(gold == 3)
         {
-          Npcopengate.SetActive(true);
+            Npcopengate.SetActive(true);
         }
         //AttributeManager.Instance.ResetAttributeUI();
         //AttributeManager.Instance.UpdateAttributeUI();
