@@ -16,8 +16,9 @@ public class Player : MonoBehaviour
    //public int hp;
    public int AtbPoint;
    public int gold;
-   public  TMP_Text golddisplay;
+   public TMP_Text golddisplay;
    public int Countcurrent;
+   public GameObject Npcopengate;
    public Text CountcurrentQ1;
    public Text CountcurrentQ2;
    public Text CountcurrentQ3;
@@ -72,6 +73,10 @@ public class Player : MonoBehaviour
 
    private void Update()
    {
+      if(gold == 3)
+        {
+          Npcopengate.SetActive(true);
+        }
         //AttributeManager.Instance.ResetAttributeUI();
         //AttributeManager.Instance.UpdateAttributeUI();
         golddisplay.text = gold.ToString();
@@ -89,7 +94,9 @@ public class Player : MonoBehaviour
         CountcurrentQ6.text =  Countcurrent + " / 15 ";
 
         AtbPoint = AttributeManager.Instance.AttributePoint;
+        
    }
+   
 
    public void GoBattle()
    {
@@ -104,7 +111,8 @@ public class Player : MonoBehaviour
                 AtbPoint += quest.AttributePointReward;
                 AttributeManager.Instance.AttributePoint += quest.AttributePointReward;
                 AttributeManager.Instance.UpdateAttributeUI();
-                
+                //OpenGate.Instance.Countopen += quest.goldReward;
+
                 gold += quest.goldReward;
                 quest.Complete();
                 questB.SetActive(true);
@@ -120,7 +128,7 @@ public class Player : MonoBehaviour
                 UIq3D.SetActive(false);
 
                 Countcurrent = 0;
-                GetComponent<Shortcutscript>().enabled = true;
+                //GetComponent<Shortcutscript>().enabled = true;
                 
 
             }
