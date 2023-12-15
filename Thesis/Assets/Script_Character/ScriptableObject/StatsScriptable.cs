@@ -4,9 +4,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StatsCharacter", menuName = "ScriptableObject/CharacterStat")]
 public class StatsScriptable : ScriptableObject
 {
+    [Header("Setting Character")]
+    [SerializeField] private string nameCharacter;
+    [SerializeField] private Sprite iconCharacter;
+
+    public string NameCharacter => nameCharacter;
+    public Sprite IconCharacter => iconCharacter;
+
     [Header("Status Strength")]
 
-    [Range(1, 100)] public int defaultMaxHealth;
+    [Range(1, 100)] [SerializeField] private int defaultMaxHealth;
     [SerializeField] private int defaultDamage;
 
     public int DefaultMaxHealth => defaultMaxHealth;

@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
-using static AttributeManager;
+using TMPro;
+using static AttributeManagerBoy;
 
-public class Attribute : MonoBehaviour
+public class AttributeBoy : MonoBehaviour
 {
     [Header("Reference")]
     [SerializeField] private Button decreaseStatusBtn;
     [SerializeField] private Button increaseStatusBtn;
-    [SerializeField] private Text countNumber;
+    [SerializeField] private TextMeshProUGUI countNumber;
     [SerializeField] private int resetLevel;
 
     private CharacterStats[] stats => CharacterStatusUI.Instance.Stats;
@@ -20,11 +20,13 @@ public class Attribute : MonoBehaviour
 
     private void Awake()
     {
-        decreaseStatusBtn.onClick.AddListener(() => {
+        decreaseStatusBtn.onClick.AddListener(() =>
+        {
             DecreaseCharacterStatus();
             DecreaseStatus();
         });
-        increaseStatusBtn.onClick.AddListener(() => {
+        increaseStatusBtn.onClick.AddListener(() =>
+        {
             IncreaseCharacterStatus();
             IncreaseStatus();
         });
@@ -47,7 +49,7 @@ public class Attribute : MonoBehaviour
             return;
         }        
         Instance.AttributeLevels[ID]--;
-        Instance.AttributePoint++;
+        AttributePointManager.Instance.Point++;
         Instance.UpdateAttributeUI();        
     }
     private void DecreaseCharacterStatus()
@@ -77,18 +79,18 @@ public class Attribute : MonoBehaviour
 
     private void IncreaseStatus()
     {
-        if (Instance.AttributePoint <= 0 || Instance.AttributeLevels[ID] >= Instance.AttributeCaps[ID])
+        if (AttributePointManager.Instance.Point <= 0 || Instance.AttributeLevels[ID] >= Instance.AttributeCaps[ID])
         {
             return; 
         }
         Instance.AttributeLevels[ID]++;
-        Instance.AttributePoint--;
+        AttributePointManager.Instance.Point--;
         Instance.UpdateAttributeUI();   
     }
 
     private void IncreaseCharacterStatus()
     {
-        if (Instance.AttributePoint <= 0 || Instance.AttributeLevels[ID] >= Instance.AttributeCaps[ID])
+        if (AttributePointManager.Instance.Point <= 0 || Instance.AttributeLevels[ID] >= Instance.AttributeCaps[ID])
         {
             return;
         }
@@ -110,6 +112,12 @@ public class Attribute : MonoBehaviour
             stat.CurrentCapEnergy++;
         }
     }
+
+    public void IncreaseStatus_Static() => IncreaseStatus();
+    public void IncreaseCharacter_Static() => IncreaseCharacterStatus();
+
+    public void DecreaseStatus_Static() => DecreaseStatus();
+    public void DecreaseCharacter_Static() => DecreaseCharacterStatus();
 
     private void ResetAttriute()
     {

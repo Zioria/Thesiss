@@ -12,12 +12,21 @@ public class AbilitySkill : MonoBehaviour
     [SerializeField] private Image skillIcon;
 
     private AbilityHolder _abilityHolder;
+    private CharacterStats[] stats => CharacterStatusUI.Instance.Stats;
+    private CharacterStats stat;
 
     public AbilityScriptable Ability => ability;
 
     private void Awake()
     {
-        unlockSkillBtn.onClick.AddListener(UpdateUI);
+        unlockSkillBtn.onClick.AddListener(() =>
+        {
+            stat = CharacterStatusUI.Instance.CurrentActive(stats);
+            if (stat.name == "Mc_G")
+            {
+                UpdateUI();
+            }
+        });
     }
 
     public void UpdateUI()

@@ -33,8 +33,9 @@ public class ItemScriptable : ScriptableObject
                 _stat.HealDamage(numberGet);
                 break;
             case 1:
-                AttributeManager.Instance.AttributePoint += numberGet;
-                AttributeManager.Instance.UpdateAttributeUI();
+                AttributePointManager.Instance.Point += numberGet;
+                AttributeManagerBoy.Instance.UpdateAttributeUI();
+                AttributeManagerGirl.Instance.UpdateAttributeUI();
                 break;
             case 2:
                 _stat.GetEnergy(numberGet);
