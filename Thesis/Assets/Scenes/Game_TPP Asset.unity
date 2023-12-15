@@ -5168,12 +5168,12 @@ RectTransform:
   - {fileID: 603320626}
   - {fileID: 36722845}
   - {fileID: 1693824221}
-  m_Father: {fileID: 1947900388}
+  m_Father: {fileID: 8728878786817884603}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 122.38745, y: -0.25756836}
+  m_AnchoredPosition: {x: 69.446655, y: 39.036987}
   m_SizeDelta: {x: 1754.9482, y: 765.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &508393573
@@ -9481,7 +9481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -482}
+  m_AnchoredPosition: {x: 0, y: -389.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &776152523
@@ -13231,12 +13231,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187c29044e85cc1408fff4c0f7c45774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headQ1: {fileID: 0}
+  headQ2: {fileID: 0}
+  headQ3: {fileID: 0}
+  headQ11: {fileID: 0}
+  headQ22: {fileID: 0}
+  headQ33: {fileID: 0}
   CloseQuest: {fileID: 1899228362}
   ButtonCloseQuest: {fileID: 379284685}
   UIquest1: {fileID: 1135220896}
   UIquest2: {fileID: 1154793050}
   UIquest3: {fileID: 741950280}
   questB: {fileID: 725313297}
+  questDisB: {fileID: 0}
   questDis1: {fileID: 145861033}
   questDis2: {fileID: 1844482081}
   questDis3: {fileID: 1628990549}
@@ -21460,12 +21467,12 @@ RectTransform:
   m_Children:
   - {fileID: 408861108}
   - {fileID: 379284686}
-  m_Father: {fileID: 1947900388}
+  m_Father: {fileID: 8728878786817884603}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 129.38745, y: 0}
+  m_AnchoredPosition: {x: 76.446655, y: 39.294556}
   m_SizeDelta: {x: 1754.9482, y: 778.3432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1899228364
@@ -21868,7 +21875,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 666055017}
-  - {fileID: 508393572}
   - {fileID: 1713264804}
   - {fileID: 1464645147}
   - {fileID: 1506721719}
@@ -21876,7 +21882,6 @@ RectTransform:
   - {fileID: 2083619317}
   - {fileID: 277846905}
   - {fileID: 559517995}
-  - {fileID: 1899228363}
   - {fileID: 1135220897}
   - {fileID: 1154793051}
   - {fileID: 741950281}
@@ -22103,12 +22108,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187c29044e85cc1408fff4c0f7c45774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headQ1: {fileID: 0}
+  headQ2: {fileID: 0}
+  headQ3: {fileID: 0}
+  headQ11: {fileID: 0}
+  headQ22: {fileID: 0}
+  headQ33: {fileID: 0}
   CloseQuest: {fileID: 508393571}
   ButtonCloseQuest: {fileID: 36722844}
   UIquest1: {fileID: 1713264803}
   UIquest2: {fileID: 1464645146}
   UIquest3: {fileID: 1506721718}
   questB: {fileID: 1615867428}
+  questDisB: {fileID: 0}
   questDis1: {fileID: 1084149045}
   questDis2: {fileID: 108662279}
   questDis3: {fileID: 1006832421}
@@ -37516,11 +37528,21 @@ MonoBehaviour:
   AtbPoint: 5
   gold: 1000
   golddisplay: {fileID: 542576269}
+  Countcurrent: 0
+  Npcopengate: {fileID: 0}
+  CountcurrentQ1: {fileID: 0}
+  CountcurrentQ2: {fileID: 0}
+  CountcurrentQ3: {fileID: 0}
+  CountcurrentQ4: {fileID: 0}
+  CountcurrentQ5: {fileID: 0}
+  CountcurrentQ6: {fileID: 0}
   questB: {fileID: 725313297}
+  questBDIS: {fileID: 0}
   UIq1: {fileID: 1135220896}
   UIq2: {fileID: 1154793050}
   UIq3: {fileID: 741950280}
   questBD: {fileID: 1615867428}
+  questBDIS2: {fileID: 0}
   UIq1D: {fileID: 1713264803}
   UIq2D: {fileID: 1464645146}
   UIq3D: {fileID: 1506721718}
@@ -95176,12 +95198,14 @@ RectTransform:
   - {fileID: 54445754639313585}
   - {fileID: 898704376266627090}
   - {fileID: 3138494476951858512}
-  - {fileID: 1947900388}
   - {fileID: 432356071222421287}
   - {fileID: 3560480043721668688}
   - {fileID: 5386228440160425846}
   - {fileID: 874773134973422881}
   - {fileID: 8214438516697680937}
+  - {fileID: 508393572}
+  - {fileID: 1899228363}
+  - {fileID: 1947900388}
   - {fileID: 771779387}
   - {fileID: 1321575067}
   - {fileID: 1239451115}
