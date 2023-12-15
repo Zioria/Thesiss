@@ -26,11 +26,13 @@ public class Player : MonoBehaviour
    public Text CountcurrentQ6;
 
    public GameObject questB;
+   public GameObject questBDIS;
    public GameObject UIq1;
    public GameObject UIq2;
    public GameObject UIq3;
 
    public GameObject questBD;
+   public GameObject questBDIS2;
    public GameObject UIq1D;
    public GameObject UIq2D;
    public GameObject UIq3D;
@@ -106,11 +108,13 @@ public class Player : MonoBehaviour
                 gold += quest.goldReward;
                 quest.Complete();
                 questB.SetActive(true);
+                questBDIS.SetActive(false);
                 UIq1.SetActive(false);
                 UIq2.SetActive(false);
                 UIq3.SetActive(false);
 
                 questBD.SetActive(true);
+                questBDIS2.SetActive(false);
                 UIq1D.SetActive(false);
                 UIq2D.SetActive(false);
                 UIq3D.SetActive(false);

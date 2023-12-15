@@ -18,6 +18,7 @@ public class Questgiver : MonoBehaviour
     public GameObject UIquest2;
     public GameObject UIquest3;
     public GameObject questB;
+    public GameObject questDisB;
     public GameObject questDis1;
     public GameObject questDis2;
     public GameObject questDis3;
@@ -156,6 +157,7 @@ public class Questgiver : MonoBehaviour
         questB.SetActive(false);
         questDis1.SetActive(true);
         UIquest1.SetActive(true);
+        questDisB.SetActive(true);
         quest1.isActive = true;
         player.quest = quest1;
         //PlayerInput = 
@@ -197,6 +199,7 @@ public class Questgiver : MonoBehaviour
         questB.SetActive(false);
         questDis2.SetActive(true);
         UIquest2.SetActive(true);
+        questDisB.SetActive(true);
         quest2.isActive = true;
         player.quest = quest2;
         //GetComponent<Shortcutscript>().enabled = false;
@@ -236,6 +239,7 @@ public class Questgiver : MonoBehaviour
         questB.SetActive(false);
         questDis3.SetActive(true);
         UIquest3.SetActive(true);
+        questDisB.SetActive(true);
         quest3.isActive = true;
         player.quest = quest3;
         //GetComponent<Shortcutscript>() = false;
