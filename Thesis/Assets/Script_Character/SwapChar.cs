@@ -49,7 +49,7 @@ public class SwapChar : MonoBehaviour
     public bool G_isAlive;
     public int _GisDeadFirst;
 
-    public bool IsChanging => _isChange;
+    public bool IsChanging;
 
 
     private void Start()
@@ -63,7 +63,8 @@ public class SwapChar : MonoBehaviour
         imageGirl.sprite = iconGirl;
         imageBoy.sprite = iconBoy;
         ModelGirlActive();
-
+        _isChange = false;
+        IsChanging = false;
         //itemheal.SetActive(false);
 
         TPC = GetComponent<ThirdPersonController>();
@@ -200,6 +201,8 @@ public class SwapChar : MonoBehaviour
             imageCooldownOne.fillAmount = 1;
             imageCooldownTwo.fillAmount = 1;
             _isChange = !_isChange;
+            IsChanging = !IsChanging;
+            Invoke(nameof(ResetChange), .5f);
             Invoke(nameof(ResetTimeChange), timeBetweenChange);
             //itemheal = GameObject.FindWithTag ("Heal");
             //itemheal.SetActive(false);
@@ -216,9 +219,16 @@ public class SwapChar : MonoBehaviour
             imageCooldownOne.fillAmount = 1;
             imageCooldownTwo.fillAmount = 1;
             _isChange = !_isChange;
+            IsChanging = !IsChanging;
+            Invoke(nameof(ResetChange), .5f);
             Invoke(nameof(ResetTimeChange), timeBetweenChange);
             //itemheal.SetActive(true);
         }
+    }
+
+    private void ResetChange()
+    {
+        IsChanging = !IsChanging;
     }
 
     private void ResetTimeChange()

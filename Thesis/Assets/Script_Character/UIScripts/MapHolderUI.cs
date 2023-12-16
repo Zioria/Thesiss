@@ -6,34 +6,54 @@ using UnityEngine.UI;
 
 public class MapHolderUI : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup mapHolderCanvasGroup;
-    [SerializeField] private CanvasGroup largeMapHolderCanvasGroup;
-    [SerializeField] private CanvasGroup miniMapHolderCanvasGroup;
+    [SerializeField] private GameObject mapHolder;
+    [SerializeField] private GameObject largeMapHolder;
+    [SerializeField] private GameObject miniMapHolder;
     [SerializeField] private CursorControl uiCursorControl;
+    [SerializeField] private CheckCharacterActive checkCharActive;
+    [SerializeField] private CloseUIQuest closeUIQuest;
     public bool IsOpen;
-    
-    
-    public void OnMap(InputValue value)
+
+    private void OnEnable()
     {
+        Shortcutscript.OnMinimapClick += ToggleMap;
+    }
+
+    private void OnDisable()
+    {
+        Shortcutscript.OnMinimapClick -= ToggleMap;
+    }
+
+    private void Start()
+    {
+        IsOpen = false;
+        mapHolder.SetActive(IsOpen);
+        largeMapHolder.SetActive(IsOpen);
+        miniMapHolder.SetActive(!IsOpen);
+    }
+
+    public void ToggleMap()
+    {
+        if (checkCharActive.IsOpen || closeUIQuest.IsOpen)
+        {
+            return;
+        }
+
+        IsOpen = !IsOpen;
         if (IsOpen)
         {
-            IsOpen = false;
-            mapHolderCanvasGroup.alpha = 0;
-            mapHolderCanvasGroup.blocksRaycasts = false;
-            largeMapHolderCanvasGroup.blocksRaycasts = false;
-            miniMapHolderCanvasGroup.alpha = 1;
-            uiCursorControl.CloseMenu();
+            mapHolder.SetActive(IsOpen);
+            largeMapHolder.SetActive(IsOpen);
+            miniMapHolder.SetActive(!IsOpen);
+            uiCursorControl.OpenMenu();
             return;
-            
-        }
-        
-        mapHolderCanvasGroup.alpha = 1;
-        mapHolderCanvasGroup.blocksRaycasts = true;
-        largeMapHolderCanvasGroup.blocksRaycasts = true;
-        miniMapHolderCanvasGroup.alpha = 0;
-        uiCursorControl.OpenMenu();
 
-        IsOpen = true;
+        }
+
+        mapHolder.SetActive(IsOpen);
+        largeMapHolder.SetActive(IsOpen);
+        miniMapHolder.SetActive(!IsOpen);
+        uiCursorControl.CloseMenu();
     }
 
     public void OpenMap()

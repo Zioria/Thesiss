@@ -6,33 +6,23 @@ using UnityEngine.InputSystem;
 
 public class Shortcutscript : MonoBehaviour
 {
-    [SerializeField] private GameObject QuestUI;
-   // [SerializeField] private GameObject StatusUI;
-    
-    //public static Shortcutscript Instance;
+    public static event Action OnStatusClick;
+    public static event Action OnMinimapClick;
+    public static event Action OnQuestClick;
 
-    private void Awake()
-    {
-        QuestUI.SetActive(false);
-       // StatusUIUI.SetActive(false);
-       
-    }
 
     public void OnQuest(InputValue value)
     {
-       QuestUI.SetActive(!QuestUI.activeSelf);
-       
-       //if()
-      // {
-
-       //}
-       
+        OnQuestClick?.Invoke();
     }
 
     public void OnStatus(InputValue value)
     {
-       //StatusUI.SetActive(!StatusUI.activeSelf);
+        OnStatusClick?.Invoke();
     }
 
-    
+    public void OnMap(InputValue value)
+    {
+        OnMinimapClick?.Invoke();
+    }
 }

@@ -12,7 +12,7 @@ public class CameraDragAndZoom : MonoBehaviour
 
     [SerializeField] private Camera largeCam;
     [SerializeField] private MapHolderUI mHolderUI;
-    [SerializeField] private CanvasGroup largeMinimap;
+    [SerializeField] private GameObject largeMinimap;
     [SerializeField] private float dragSpeed;
     [SerializeField] private float nearMapDragSpeed;
     [SerializeField] private GameObject ZoomBar;
@@ -37,7 +37,7 @@ public class CameraDragAndZoom : MonoBehaviour
     private void Update()
     {
         Vector3 inputDir = Vector3.zero;
-        if (!largeMinimap.blocksRaycasts)
+        if (!largeMinimap.activeInHierarchy)
         {
             _followScipt.enabled = true;
             return;
