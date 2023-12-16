@@ -26,10 +26,7 @@ public class HotBarDisplay : StaticInventoryDisplay
         {
             UseItem(2);
         }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            UseItem(3);
-        }
+        
     }
 
     private void UseItem(int index)

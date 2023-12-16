@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 public class BossAI : MonoBehaviour, IDamagable
 {
     [SerializeField] private GameObject floatingTextPrefab;
+    [SerializeField] private GameObject UIend;
+    [SerializeField] private EndUI showcur;
     
     [SerializeField] private StatsEnemyScriptable stat;
     [Header("Agent Setting")]
@@ -151,8 +153,9 @@ public class BossAI : MonoBehaviour, IDamagable
             _state = StateSkill.Dead;
             _healthPoint = 0;
             _anim.SetTrigger(_DeadAnim);
+            UIend.SetActive(true);
+            showcur.ShowUI();
             Destroy(gameObject, 4f);
-            SceneManager.LoadScene(sceneName:"EndDeemo");
         }
     }
 
