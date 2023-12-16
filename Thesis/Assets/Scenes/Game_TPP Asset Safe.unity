@@ -2777,6 +2777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: b6c58119acc4f394bbfa0bfe9b2cc44b, type: 2}
   unlocknextstage: {fileID: 1289276122}
+  UIbutton: {fileID: 0}
 --- !u!65 &241776371
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6095,6 +6096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: 02aa3073994d43d489abc033cee393a0, type: 2}
   unlocknextstage: {fileID: 777970538}
+  UIbutton: {fileID: 0}
 --- !u!65 &569534716
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10081,6 +10083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: 1c1b8b063645a0b4996bb22f72131169, type: 2}
   unlocknextstage: {fileID: 881745777}
+  UIbutton: {fileID: 0}
 --- !u!65 &777970541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14508,6 +14511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: 58e7850397acd3045894f7f4af5f425f, type: 2}
   unlocknextstage: {fileID: 1675711466}
+  UIbutton: {fileID: 0}
 --- !u!65 &1082257085
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15153,6 +15157,11 @@ MonoBehaviour:
   questDis1: {fileID: 145861033}
   questDis2: {fileID: 1844482081}
   questDis3: {fileID: 1628990549}
+  Monall: {fileID: 0}
+  Camp1: {fileID: 0}
+  Camp2: {fileID: 0}
+  Camp3: {fileID: 0}
+  Camp4: {fileID: 0}
   quest1:
     isActive: 0
     title: Hunt Monster
@@ -15942,6 +15951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: 75b1ba1a8536a6d4f9c863f1a3d34662, type: 2}
   unlocknextstage: {fileID: 241776367}
+  UIbutton: {fileID: 0}
 --- !u!65 &1225710405
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16855,6 +16865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: 4b49e4241e469d6408eed85175905948, type: 2}
   unlocknextstage: {fileID: 569534712}
+  UIbutton: {fileID: 0}
 --- !u!65 &1289276125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21290,6 +21301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: 35c9b8e8fceeae44fafb509581809444, type: 2}
   unlocknextstage: {fileID: 2005493763}
+  UIbutton: {fileID: 0}
 --- !u!65 &1575055711
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22543,6 +22555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueObject: {fileID: 11400000, guid: 8ff352b3448794a45be8bcb94568c072, type: 2}
   unlocknextstage: {fileID: 1225710401}
+  UIbutton: {fileID: 0}
 --- !u!65 &1675711469
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25534,6 +25547,11 @@ MonoBehaviour:
   questDis1: {fileID: 1084149045}
   questDis2: {fileID: 108662279}
   questDis3: {fileID: 1006832421}
+  Monall: {fileID: 0}
+  Camp1: {fileID: 0}
+  Camp2: {fileID: 0}
+  Camp3: {fileID: 0}
+  Camp4: {fileID: 0}
   quest1:
     isActive: 0
     title: Hunt Monster Dungeon 1
@@ -35953,6 +35971,10 @@ PrefabInstance:
       propertyPath: invHolder
       value: 
       objectReference: {fileID: 8173707118443882807}
+    - target: {fileID: 1198133777838219876, guid: 4a5458b35726e054085c132ec162f3cb, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1788206698749521158, guid: 4a5458b35726e054085c132ec162f3cb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -36029,6 +36051,10 @@ PrefabInstance:
       propertyPath: playerInvHolder
       value: 
       objectReference: {fileID: 8173707118443882807}
+    - target: {fileID: 2618822952487653073, guid: 4a5458b35726e054085c132ec162f3cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2772065607018171303, guid: 4a5458b35726e054085c132ec162f3cb, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -36105,10 +36131,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'UI '
       objectReference: {fileID: 0}
+    - target: {fileID: 4739538015306377206, guid: 4a5458b35726e054085c132ec162f3cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5135865856928216936, guid: 4a5458b35726e054085c132ec162f3cb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1974453776}
+    - target: {fileID: 5679129478430287675, guid: 4a5458b35726e054085c132ec162f3cb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679129478430287675, guid: 4a5458b35726e054085c132ec162f3cb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 93.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5973232251422244098, guid: 4a5458b35726e054085c132ec162f3cb, type: 3}
       propertyPath: playerInput
       value: 

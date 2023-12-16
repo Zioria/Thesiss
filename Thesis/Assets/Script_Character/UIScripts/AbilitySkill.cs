@@ -29,6 +29,19 @@ public class AbilitySkill : MonoBehaviour
         });
     }
 
+    private void Update()
+    {
+         if ((AttributeManagerGirl.Instance.AttributeLevels[0] < 15 || AttributeManagerGirl.Instance.AttributeLevels[2] < 5) && AttributeManagerGirl.Instance.AttributeLevels[1] >= 0)
+        {
+            skillIcon.sprite = null;
+            skillUI.alpha = 0;
+            if (_abilityHolder.ability != null)
+            {
+                _abilityHolder.ability = null;
+            }
+        }
+    } 
+
     public void UpdateUI()
     {
         _abilityHolder = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilityHolder>();
