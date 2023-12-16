@@ -26,6 +26,7 @@ public class CloseUIQuest : MonoBehaviour
     {
         IsOpen = false;
         closeUIQuest.SetActive(IsOpen);
+        
     }
 
     public void ToggleQuest()
@@ -42,7 +43,6 @@ public class CloseUIQuest : MonoBehaviour
             uiCursorControl.OpenMenu();
             return;
         }
-
         closeUIQuest.SetActive(IsOpen);
         uiCursorControl.CloseMenu();
     }
