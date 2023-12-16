@@ -19,6 +19,7 @@ public class AbilitySkill : MonoBehaviour
 
     private void Awake()
     {
+        _abilityHolder = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilityHolder>();
         unlockSkillBtn.onClick.AddListener(() =>
         {
             stat = CharacterStatusUI.Instance.CurrentActive(stats);
@@ -44,7 +45,7 @@ public class AbilitySkill : MonoBehaviour
 
     public void UpdateUI()
     {
-        _abilityHolder = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilityHolder>();
+    
         _abilityHolder.ability = this.ability;
 
         skillIcon.sprite = ability.IconAbility;
