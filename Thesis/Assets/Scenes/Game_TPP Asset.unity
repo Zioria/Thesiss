@@ -16885,7 +16885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b44cc8f5b1f1fab4c8b3a1d80bb1f189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: b44cc8f5b1f1fab4c8b3a1d80bb1f189, type: 3}
       propertyPath: m_LocalScale.x
@@ -20481,12 +20481,12 @@ RectTransform:
   - {fileID: 1734062923}
   - {fileID: 638905885}
   - {fileID: 1341919804}
-  m_Father: {fileID: 1899228363}
+  m_Father: {fileID: 8728878786817884603}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -789.94037, y: 38.812073}
+  m_AnchoredPosition: {x: -789.9408, y: 41.294556}
   m_SizeDelta: {x: 579.3295, y: 294.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &747577495
@@ -29892,7 +29892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1077548075
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31552,12 +31552,12 @@ RectTransform:
   - {fileID: 1367654691}
   - {fileID: 839801322}
   - {fileID: 221308111}
-  m_Father: {fileID: 1899228363}
+  m_Father: {fileID: 8728878786817884603}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -789.94037, y: 38.812073}
+  m_AnchoredPosition: {x: -789.9408, y: 41.294556}
   m_SizeDelta: {x: 579.3295, y: 294.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1137085664 stripped
@@ -32156,12 +32156,12 @@ RectTransform:
   - {fileID: 11919914}
   - {fileID: 444462231}
   - {fileID: 399837800}
-  m_Father: {fileID: 1899228363}
+  m_Father: {fileID: 8728878786817884603}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -789.94037, y: 38.812073}
+  m_AnchoredPosition: {x: -789.9408, y: 41.294556}
   m_SizeDelta: {x: 579.3295, y: 294.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1154848068
@@ -40328,12 +40328,12 @@ RectTransform:
   - {fileID: 1588110007}
   - {fileID: 22079748}
   - {fileID: 1672765125}
-  m_Father: {fileID: 1899228363}
+  m_Father: {fileID: 8728878786817884603}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -789.94037, y: 38.812073}
+  m_AnchoredPosition: {x: -789.9408, y: 41.294556}
   m_SizeDelta: {x: 579.3295, y: 294.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1464899855
@@ -41318,12 +41318,12 @@ RectTransform:
   - {fileID: 238801172}
   - {fileID: 1315948201}
   - {fileID: 1291251884}
-  m_Father: {fileID: 1899228363}
+  m_Father: {fileID: 8728878786817884603}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -789.94037, y: 38.812073}
+  m_AnchoredPosition: {x: -789.9408, y: 41.294556}
   m_SizeDelta: {x: 579.3295, y: 294.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1509399305
@@ -48257,12 +48257,12 @@ RectTransform:
   - {fileID: 268506125}
   - {fileID: 1156898171}
   - {fileID: 1552803560}
-  m_Father: {fileID: 1899228363}
+  m_Father: {fileID: 8728878786817884603}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -789.94037, y: 38.812073}
+  m_AnchoredPosition: {x: -789.9408, y: 41.294556}
   m_SizeDelta: {x: 579.3295, y: 294.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1713269223
@@ -53440,15 +53440,9 @@ RectTransform:
   - {fileID: 1312691846}
   - {fileID: 408861108}
   - {fileID: 379284686}
-  - {fileID: 1135220897}
-  - {fileID: 1154793051}
-  - {fileID: 741950281}
   - {fileID: 1828178957}
   - {fileID: 1785231993}
   - {fileID: 168767289}
-  - {fileID: 1713264804}
-  - {fileID: 1464645147}
-  - {fileID: 1506721719}
   - {fileID: 1745349969}
   - {fileID: 2083619317}
   - {fileID: 277846905}
@@ -126334,12 +126328,18 @@ RectTransform:
   - {fileID: 874773134973422881}
   - {fileID: 1321575067}
   - {fileID: 666055017}
+  - {fileID: 1135220897}
+  - {fileID: 1154793051}
+  - {fileID: 741950281}
+  - {fileID: 1713264804}
+  - {fileID: 1464645147}
+  - {fileID: 1506721719}
   - {fileID: 872748036}
   - {fileID: 770364026}
-  - {fileID: 771779387}
   - {fileID: 1947900388}
   - {fileID: 8214438516697680937}
   - {fileID: 1157098653}
+  - {fileID: 771779387}
   - {fileID: 1845126429}
   - {fileID: 1239451115}
   - {fileID: 859274714}
