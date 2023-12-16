@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6eb390d67a00ca4fb8049e7ea6587d9, type: 3}
   m_Name: FlyingEnemy
   m_EditorClassIdentifier: 
-  maxHealth: 750
-  maxAttack: 3
+  maxHealth: 1000
+  maxAttack: 8
