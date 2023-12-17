@@ -5,20 +5,27 @@ using UnityEngine;
 public class InfoUI : MonoBehaviour
 {
     [SerializeField] private GameObject infoHoleder;
-    //[SerializeField] private GameObject Tutorial;
+    [SerializeField] private GameObject popup1Open;
+    [SerializeField] private GameObject popup1Close;
+    [SerializeField] private GameObject popup2Open;
+    [SerializeField] private GameObject popup2Close;
+    [SerializeField] private GameObject popup3Open;
+    [SerializeField] private GameObject popup3Close;
+    [SerializeField] private GameObject popup4Open;
+    [SerializeField] private GameObject popup4Close;
 
-    public float waitOpen;
-    
-    
+    [SerializeField] private GameObject info1;
+    [SerializeField] private GameObject info2;
+    [SerializeField] private GameObject info3;
+    [SerializeField] private GameObject info4;
     
 
     private void Start()
     {
-        //StartCoroutine(WaitTime());
         
+        infoHoleder.SetActive(true);
         if (infoHoleder.activeInHierarchy)
         {
-            
             Time.timeScale = 0;
         }
         else if(infoHoleder.activeInHierarchy == false)
@@ -28,15 +35,9 @@ public class InfoUI : MonoBehaviour
 
     }
 
-    public void No()
-    {
-        //Tutorial.SetActive(false);
-
-    }
-
     private void Awake()
     {
-        infoHoleder.SetActive(false);
+       
         Time.timeScale = 1;
     }
 
@@ -44,7 +45,6 @@ public class InfoUI : MonoBehaviour
     public void PauseGameInfo()
     {
         infoHoleder.SetActive(true);
-        //Tutorial.SetActive(false);
         Time.timeScale = 0;
     }
     
@@ -55,10 +55,44 @@ public class InfoUI : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    //IEnumerator WaitTime()
-   // {
-       // yield return new  WaitForSeconds(waitOpen);
-      //  Tutorial.SetActive(true);
+    public void Open1()
+    {
+
+    }
+
+    public void Close1()
+    {
         
-   // }
+    }
+
+    public void Open2()
+    {
+
+    }
+
+    public void Close2()
+    {
+        
+    }
+
+    public void Open3()
+    {
+
+    }
+
+    public void Close3()
+    {
+        
+    }
+
+    public void Open4()
+    {
+
+    }
+
+    public void Close4()
+    {
+        
+    }
+
 }
