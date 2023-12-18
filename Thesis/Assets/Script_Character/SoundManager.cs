@@ -11,8 +11,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] public static bool hasIntance => _instance != null;
     public enum SoundName
     {
-        BGM,
-        BGM2,
+        BGMGameplay,
+        BGMDangeon,
         Playerdie,
         EnemyG,
         EnemyGhost,
@@ -20,9 +20,7 @@ public class SoundManager : MonoBehaviour
         Walk,
         Win,
         ItemCollect,
-
-        BT,
-        BGM3
+        BGMBoss
     }
 
     [SerializeField] private Sound[] _sounds;
@@ -53,6 +51,20 @@ public class SoundManager : MonoBehaviour
         }
 
         sound.audioSource.Play();
+    }
+
+    public void Stop(SoundName name)
+    {
+        Sound sound = GetSound(name);
+        if (sound.audioSource == null)
+        {
+            sound.audioSource = gameObject.AddComponent<AudioSource>();
+            sound.audioSource.clip = sound.clip;
+            sound.audioSource.volume = sound.volume;
+            sound.audioSource.loop = sound.loop;
+        }
+
+        sound.audioSource.Stop();
     }
 
     private Sound GetSound(SoundName name)
