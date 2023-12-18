@@ -21,12 +21,17 @@ public class CheckPlayerEntrance : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (!other.CompareTag("Player"))
         {
+            
             return;
         }
         IsPlayerEnter = true;
-        //if (bossHpController.IsOpenOnce)
+        SoundManager.instance.Play(SoundManager.SoundName.BGMBoss);
+        SoundManager.instance.Stop(SoundManager.SoundName.BGMDangeon);
+        SoundManager.instance.Stop(SoundManager.SoundName.BGMGameplay);
+            //if (bossHpController.IsOpenOnce)
         //{
         //    bossHpController.ShowHealthBar();
         //    return;
@@ -41,6 +46,9 @@ public class CheckPlayerEntrance : MonoBehaviour
         {
             return;
         }
+        SoundManager.instance.Stop(SoundManager.SoundName.BGMBoss);
+        SoundManager.instance.Play(SoundManager.SoundName.BGMDangeon);
+        SoundManager.instance.Stop(SoundManager.SoundName.BGMGameplay);
         IsPlayerEnter = false;
         _anim.SetTrigger("playerOut");
         //bossHpController.HideHealthBar_WithTime();

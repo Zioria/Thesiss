@@ -13,13 +13,6 @@ public class SoundManager : MonoBehaviour
     {
         BGMGameplay,
         BGMDangeon,
-        Playerdie,
-        EnemyG,
-        EnemyGhost,
-        Jump,
-        Walk,
-        Win,
-        ItemCollect,
         BGMBoss
     }
 

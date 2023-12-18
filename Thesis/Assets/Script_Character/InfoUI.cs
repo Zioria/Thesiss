@@ -24,7 +24,6 @@ public class InfoUI : MonoBehaviour
 
     private void Start()
     {
-        
         infoHoleder.SetActive(true);
         if (infoHoleder.activeInHierarchy)
         {

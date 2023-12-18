@@ -153,6 +153,9 @@ public class BossAI : MonoBehaviour, IDamagable
             _state = StateSkill.Dead;
             _healthPoint = 0;
             _anim.SetTrigger(_DeadAnim);
+            SoundManager.instance.Stop(SoundManager.SoundName.BGMBoss);
+            SoundManager.instance.Stop(SoundManager.SoundName.BGMDangeon);
+            SoundManager.instance.Stop(SoundManager.SoundName.BGMGameplay);
             UIend.SetActive(true);
             showcur.ShowUI();
             Destroy(gameObject, 4f);
